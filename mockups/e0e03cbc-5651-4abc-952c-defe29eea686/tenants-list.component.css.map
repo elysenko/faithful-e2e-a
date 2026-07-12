@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/tenants-list/tenants-list.component.css"],
+  "sourcesContent": [":host { display: block; }\n\n.page { max-width: 880px; margin: 0 auto; }\n\n.page-head { align-items: flex-end; gap: var(--space-3); margin-bottom: var(--space-2); }\n.page-head h1 { font-size: var(--fs-2xl); }\n.page-head p { margin-top: var(--space-1); }\n\n.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }\n.table { min-width: 640px; }\n\n.table th.num,\n.table td.num { text-align: right; white-space: nowrap; }\n\n.strong { font-weight: 700; color: var(--color-ink); }\n.nowrap { white-space: nowrap; }\n\n.actions-col { text-align: right; white-space: nowrap; }\n\n.state-icon { font-size: var(--fs-2xl); }\n"],
+  "mappings": ";AAAA;AAAQ,WAAS;AAAO;AAExB,CAAC;AAAO,aAAW;AAAO,UAAQ,EAAE;AAAM;AAE1C,CAAC;AAAY,eAAa;AAAU,OAAK,IAAI;AAAY,iBAAe,IAAI;AAAY;AACxF,CADC,UACU;AAAK,aAAW,IAAI;AAAW;AAC1C,CAFC,UAEU;AAAI,cAAY,IAAI;AAAY;AAE3C,CAAC;AAAa,cAAY;AAAM,8BAA4B;AAAO;AACnE,CAAC;AAAQ,aAAW;AAAO;AAE3B,CAFC,MAEM,EAAE,CAAC;AACV,CAHC,MAGM,EAAE,CADC;AACM,cAAY;AAAO,eAAa;AAAQ;AAExD,CAAC;AAAS,eAAa;AAAK,SAAO,IAAI;AAAc;AACrD,CAAC;AAAS,eAAa;AAAQ;AAE/B,CAAC;AAAc,cAAY;AAAO,eAAa;AAAQ;AAEvD,CAAC;AAAa,aAAW,IAAI;AAAW;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/admin/admin-orders/admin-orders.component.css"],
+  "sourcesContent": [".table-wrap { overflow-x: auto; margin-top: var(--sp-4); }\n.admin-table { width: 100%; border-collapse: collapse; font-size: var(--fs-base); min-width: 640px; }\n.admin-table th, .admin-table td { padding: var(--sp-3); text-align: left; border-bottom: 1px solid var(--color-border); vertical-align: top; }\n.admin-table th { font-size: var(--fs-sm); color: var(--color-muted); text-transform: uppercase; letter-spacing: .03em; }\n.admin-table tr:last-child td { border-bottom: none; }\n.num { text-align: right; }\n.order-id { font-weight: 700; }\n.block { display: block; font-size: var(--fs-xs); }\n.actions-col, .actions { text-align: right; }\n"],
+  "mappings": ";AAAA,CAAC;AAAa,cAAY;AAAM,cAAY,IAAI;AAAS;AACzD,CAAC;AAAc,SAAO;AAAM,mBAAiB;AAAU,aAAW,IAAI;AAAY,aAAW;AAAO;AACpG,CADC,YACY;AAAI,CADhB,YAC6B;AAAK,WAAS,IAAI;AAAS,cAAY;AAAM,iBAAe,IAAI,MAAM,IAAI;AAAiB,kBAAgB;AAAK;AAC9I,CAFC,YAEY;AAAK,aAAW,IAAI;AAAU,SAAO,IAAI;AAAgB,kBAAgB;AAAW,kBAAgB;AAAO;AACxH,CAHC,YAGY,EAAE,YAAY;AAAK,iBAAe;AAAM;AACrD,CAAC;AAAM,cAAY;AAAO;AAC1B,CAAC;AAAW,eAAa;AAAK;AAC9B,CAAC;AAAQ,WAAS;AAAO,aAAW,IAAI;AAAU;AAClD,CAAC;AAAa,CAAC;AAAU,cAAY;AAAO;",
+  "names": []
+}

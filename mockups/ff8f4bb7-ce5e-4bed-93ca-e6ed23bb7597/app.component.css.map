@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["angular:styles/component:css;a3fd8e8bff7ae7a93118388bf7c555e03ab305be312462e43b62c506028cbf29;/workspace/.pipeline-worktrees/pipeline-2026-07-11-6e2f9819/web/frontend/src/app/app.component.ts"],
+  "sourcesContent": [".app-shell { display: contents; }"],
+  "mappings": ";AAAA,CAAC;AAAY,WAAS;AAAU;",
+  "names": []
+}

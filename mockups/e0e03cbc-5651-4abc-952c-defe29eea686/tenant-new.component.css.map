@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/tenant-new/tenant-new.component.css"],
+  "sourcesContent": [":host { display: block; }\n\n.page { max-width: 560px; margin: 0 auto; }\n\n.page-head { margin-bottom: var(--space-2); }\n.page-head h1 { font-size: var(--fs-2xl); margin-top: var(--space-2); }\n.page-head p { margin-top: var(--space-1); }\n\n.back-link {\n  display: inline-block;\n  font-size: var(--fs-sm);\n  font-weight: 600;\n  color: var(--color-muted);\n}\n.back-link:hover { color: var(--color-brand); text-decoration: none; }\n\n.note { margin-top: var(--space-1); }\n\n.form-actions { gap: var(--space-3); align-items: center; }\n\nselect.field { appearance: auto; }\n"],
+  "mappings": ";AAAA;AAAQ,WAAS;AAAO;AAExB,CAAC;AAAO,aAAW;AAAO,UAAQ,EAAE;AAAM;AAE1C,CAAC;AAAY,iBAAe,IAAI;AAAY;AAC5C,CADC,UACU;AAAK,aAAW,IAAI;AAAW,cAAY,IAAI;AAAY;AACtE,CAFC,UAEU;AAAI,cAAY,IAAI;AAAY;AAE3C,CAAC;AACC,WAAS;AACT,aAAW,IAAI;AACf,eAAa;AACb,SAAO,IAAI;AACb;AACA,CANC,SAMS;AAAS,SAAO,IAAI;AAAgB,mBAAiB;AAAM;AAErE,CAAC;AAAO,cAAY,IAAI;AAAY;AAEpC,CAAC;AAAe,OAAK,IAAI;AAAY,eAAa;AAAQ;AAE1D,MAAM,CAAC;AAAQ,cAAY;AAAM;",
+  "names": []
+}

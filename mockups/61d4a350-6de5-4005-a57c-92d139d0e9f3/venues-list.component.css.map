@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/venues-list/venues-list.component.css"],
+  "sourcesContent": [".back-link { font-size: var(--fs-sm); font-weight: 600; width: 100%; }\n.venue-card { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-4); }\n.venue-card h3 { font-size: var(--fs-md); }\n.venue-card .addr { color: var(--color-muted); font-size: var(--fs-sm); margin: 0; }\n.venue-card .cap { margin: 0; }\n.venue-actions { display: flex; gap: var(--space-2); margin-top: auto; padding-top: var(--space-2); }\n.venue-actions .btn { flex: 1; }\n"],
+  "mappings": ";AAAA,CAAC;AAAY,aAAW,IAAI;AAAU,eAAa;AAAK,SAAO;AAAM;AACrE,CAAC;AAAa,WAAS;AAAM,kBAAgB;AAAQ,OAAK,IAAI;AAAY,WAAS,IAAI;AAAY;AACnG,CADC,WACW;AAAK,aAAW,IAAI;AAAU;AAC1C,CAFC,WAEW,CAAC;AAAO,SAAO,IAAI;AAAgB,aAAW,IAAI;AAAU,UAAQ;AAAG;AACnF,CAHC,WAGW,CAAC;AAAM,UAAQ;AAAG;AAC9B,CAAC;AAAgB,WAAS;AAAM,OAAK,IAAI;AAAY,cAAY;AAAM,eAAa,IAAI;AAAY;AACpG,CADC,cACc,CAAC;AAAM,QAAM;AAAG;",
+  "names": []
+}

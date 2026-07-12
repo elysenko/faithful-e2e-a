@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/my-events/my-events.component.css"],
+  "sourcesContent": [".rsvp-row {\n  display: flex;\n  align-items: center;\n  gap: var(--space-3);\n  padding: var(--space-4);\n  color: inherit;\n  transition: box-shadow .15s, border-color .15s;\n}\n.rsvp-row:hover { text-decoration: none; box-shadow: var(--shadow); border-color: var(--color-border-strong); }\n.rsvp-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }\n.rsvp-main h3 { font-size: var(--fs-md); margin: var(--space-1) 0 0; }\n.rsvp-main .meta { font-size: var(--fs-sm); color: var(--color-muted); margin: 0; }\n"],
+  "mappings": ";AAAA,CAAC;AACC,WAAS;AACT,eAAa;AACb,OAAK,IAAI;AACT,WAAS,IAAI;AACb,SAAO;AACP,cAAY,WAAW,IAAI,EAAE,aAAa;AAC5C;AACA,CARC,QAQQ;AAAS,mBAAiB;AAAM,cAAY,IAAI;AAAW,gBAAc,IAAI;AAAwB;AAC9G,CAAC;AAAY,QAAM;AAAG,aAAW;AAAG,WAAS;AAAM,kBAAgB;AAAQ,OAAK;AAAK;AACrF,CADC,UACU;AAAK,aAAW,IAAI;AAAU,UAAQ,IAAI,WAAW,EAAE;AAAG;AACrE,CAFC,UAEU,CAAC;AAAO,aAAW,IAAI;AAAU,SAAO,IAAI;AAAgB,UAAQ;AAAG;",
+  "names": []
+}

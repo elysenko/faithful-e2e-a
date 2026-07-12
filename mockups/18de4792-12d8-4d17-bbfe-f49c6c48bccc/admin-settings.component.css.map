@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/admin-settings/admin-settings.component.css"],
+  "sourcesContent": [".svc-card { padding: var(--space-5); }\n.svc-head {\n  display: flex;\n  align-items: flex-start;\n  gap: var(--space-3);\n  margin-bottom: var(--space-4);\n}\n.svc-title h3 { margin: 0 0 var(--space-1); font-size: var(--fs-md); }\n.svc-key {\n  font-family: var(--font-mono);\n  font-size: var(--fs-xs);\n  color: var(--color-muted);\n  background: var(--color-surface-inset);\n  padding: 2px var(--space-2);\n  border-radius: var(--radius-sm);\n}\n.svc-head .badge { margin-left: auto; }\n\n.svc-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\n  gap: var(--space-3);\n}\n.svc-actions {\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  gap: var(--space-3);\n  margin-top: var(--space-4);\n}\n"],
+  "mappings": ";AAAA,CAAC;AAAW,WAAS,IAAI;AAAY;AACrC,CAAC;AACC,WAAS;AACT,eAAa;AACb,OAAK,IAAI;AACT,iBAAe,IAAI;AACrB;AACA,CAAC,UAAU;AAAK,UAAQ,EAAE,EAAE,IAAI;AAAY,aAAW,IAAI;AAAU;AACrE,CAAC;AACC,eAAa,IAAI;AACjB,aAAW,IAAI;AACf,SAAO,IAAI;AACX,cAAY,IAAI;AAChB,WAAS,IAAI,IAAI;AACjB,iBAAe,IAAI;AACrB;AACA,CAfC,SAeS,CAAC;AAAQ,eAAa;AAAM;AAEtC,CAAC;AACC,WAAS;AACT,yBAAuB,OAAO,QAAQ,EAAE,OAAO,KAAK,EAAE;AACtD,OAAK,IAAI;AACX;AACA,CAAC;AACC,WAAS;AACT,eAAa;AACb,mBAAiB;AACjB,OAAK,IAAI;AACT,cAAY,IAAI;AAClB;",
+  "names": []
+}

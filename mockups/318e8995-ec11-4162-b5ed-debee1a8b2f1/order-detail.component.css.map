@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/orders/order-detail.component.css"],
+  "sourcesContent": [".back { display: inline-block; margin-bottom: var(--sp-4); font-size: var(--fs-sm); font-weight: 600; }\n.confirmation { margin-bottom: var(--sp-4); }\n.detail-grid { display: grid; grid-template-columns: 1fr 300px; gap: var(--sp-5); align-items: start; }\n.total-label { font-weight: 700; }\n.total-value { font-weight: 700; font-size: var(--fs-md); }\n.ship h2 { font-size: var(--fs-md); margin-bottom: var(--sp-3); }\n.ship-name { font-weight: 600; margin: 0 0 2px; }\n.ship hr { border: none; border-top: 1px solid var(--color-border); margin: var(--sp-4) 0; }\n.small { font-size: var(--fs-sm); }\n\n@media (max-width: 768px) {\n  .detail-grid { grid-template-columns: 1fr; }\n}\n"],
+  "mappings": ";AAAA,CAAC;AAAO,WAAS;AAAc,iBAAe,IAAI;AAAS,aAAW,IAAI;AAAU,eAAa;AAAK;AACtG,CAAC;AAAe,iBAAe,IAAI;AAAS;AAC5C,CAAC;AAAc,WAAS;AAAM,yBAAuB,IAAI;AAAO,OAAK,IAAI;AAAS,eAAa;AAAO;AACtG,CAAC;AAAc,eAAa;AAAK;AACjC,CAAC;AAAc,eAAa;AAAK,aAAW,IAAI;AAAU;AAC1D,CAAC,KAAK;AAAK,aAAW,IAAI;AAAU,iBAAe,IAAI;AAAS;AAChE,CAAC;AAAY,eAAa;AAAK,UAAQ,EAAE,EAAE;AAAK;AAChD,CAFC,KAEK;AAAK,UAAQ;AAAM,cAAY,IAAI,MAAM,IAAI;AAAiB,UAAQ,IAAI,QAAQ;AAAG;AAC3F,CAAC;AAAQ,aAAW,IAAI;AAAU;AAElC,OAAO,CAAC,SAAS,EAAE;AACjB,GATD;AASgB,2BAAuB;AAAK;AAC7C;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/item-form/item-form.component.css"],
+  "sourcesContent": [".narrow { max-width: 640px; }\n.back-link { display: inline-block; margin-bottom: var(--space-4); font-size: var(--fs-sm); }\nh1 { font-size: var(--fs-xl); }\nh1 + .muted { margin: var(--space-1) 0 var(--space-5); }\n\n.form-card { padding: var(--space-5); }\n.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }\n\n.form-actions {\n  display: flex;\n  gap: var(--space-3);\n  margin-top: var(--space-4);\n}\n\n@media (max-width: 560px) {\n  .grid-2 { grid-template-columns: 1fr; }\n  .form-actions { flex-direction: column-reverse; }\n  .form-actions .btn { width: 100%; }\n}\n"],
+  "mappings": ";AAAA,CAAC;AAAS,aAAW;AAAO;AAC5B,CAAC;AAAY,WAAS;AAAc,iBAAe,IAAI;AAAY,aAAW,IAAI;AAAU;AAC5F;AAAK,aAAW,IAAI;AAAU;AAC9B,GAAG,EAAE,CAAC;AAAQ,UAAQ,IAAI,WAAW,EAAE,IAAI;AAAY;AAEvD,CAAC;AAAY,WAAS,IAAI;AAAY;AACtC,CAAC;AAAS,WAAS;AAAM,yBAAuB,IAAI;AAAK,OAAK,IAAI;AAAY;AAE9E,CAAC;AACC,WAAS;AACT,OAAK,IAAI;AACT,cAAY,IAAI;AAClB;AAEA,OAAO,CAAC,SAAS,EAAE;AACjB,GATD;AASW,2BAAuB;AAAK;AACtC,GARD;AAQiB,oBAAgB;AAAgB;AAChD,GATD,aASe,CAAC;AAAM,WAAO;AAAM;AACpC;",
+  "names": []
+}

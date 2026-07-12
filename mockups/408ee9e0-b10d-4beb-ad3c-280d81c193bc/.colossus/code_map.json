@@ -1,0 +1,127 @@
+{
+  "app-catalog": {
+    "component_file": "frontend/src/app/pages/catalog.component.ts",
+    "template_file": "frontend/src/app/pages/catalog.component.html",
+    "source": "summary_parse"
+  },
+  "app-product-detail": {
+    "component_file": "frontend/src/app/pages/product-detail.component.ts",
+    "template_file": "frontend/src/app/pages/product-detail.component.html",
+    "source": "summary_parse"
+  },
+  "app-cart": {
+    "component_file": "frontend/src/app/pages/cart.component.ts",
+    "template_file": "frontend/src/app/pages/cart.component.html",
+    "source": "summary_parse"
+  },
+  "app-checkout": {
+    "component_file": "frontend/src/app/pages/checkout.component.ts",
+    "template_file": "frontend/src/app/pages/checkout.component.html",
+    "source": "summary_parse"
+  },
+  "app-search": {
+    "component_file": "frontend/src/app/pages/search.component.ts",
+    "template_file": "frontend/src/app/pages/search.component.html",
+    "source": "summary_parse"
+  },
+  "app-kb-index": {
+    "component_file": "frontend/src/app/pages/kb-index.component.ts",
+    "template_file": "frontend/src/app/pages/kb-index.component.html",
+    "source": "summary_parse"
+  },
+  "app-kb-article": {
+    "component_file": "frontend/src/app/pages/kb-article.component.ts",
+    "template_file": "frontend/src/app/pages/kb-article.component.html",
+    "source": "summary_parse"
+  },
+  "app-order-history": {
+    "component_file": "frontend/src/app/pages/order-history.component.ts",
+    "template_file": "frontend/src/app/pages/order-history.component.html",
+    "source": "summary_parse"
+  },
+  "app-order-detail": {
+    "component_file": "frontend/src/app/pages/order-detail.component.ts",
+    "template_file": "frontend/src/app/pages/order-detail.component.html",
+    "source": "summary_parse"
+  },
+  "app-about": {
+    "component_file": "frontend/src/app/pages/about.component.ts",
+    "template_file": "frontend/src/app/pages/about.component.html",
+    "source": "summary_parse"
+  },
+  "app-login": {
+    "component_file": "frontend/src/app/pages/login.component.ts",
+    "template_file": "frontend/src/app/pages/login.component.html",
+    "source": "summary_parse"
+  },
+  "app-signup": {
+    "component_file": "frontend/src/app/pages/signup.component.ts",
+    "template_file": "frontend/src/app/pages/signup.component.html",
+    "source": "summary_parse"
+  },
+  "app-admin-login": {
+    "component_file": "frontend/src/app/pages/admin-login.component.ts",
+    "template_file": "frontend/src/app/pages/admin-login.component.html",
+    "source": "summary_parse"
+  },
+  "app-product-card": {
+    "component_file": "frontend/src/app/shared/product-card.component.ts",
+    "template_file": "frontend/src/app/shared/product-card.component.html",
+    "source": "summary_parse"
+  },
+  "app-storefront-layout": {
+    "component_file": "frontend/src/app/shared/storefront-layout.component.ts",
+    "template_file": "frontend/src/app/shared/storefront-layout.component.html",
+    "source": "summary_parse"
+  },
+  "app-admin-layout": {
+    "component_file": "frontend/src/app/shared/admin-layout.component.ts",
+    "template_file": "frontend/src/app/shared/admin-layout.component.html",
+    "source": "summary_parse"
+  },
+  "app-admin-orders": {
+    "component_file": "frontend/src/app/admin/admin-orders.component.ts",
+    "template_file": "frontend/src/app/admin/admin-orders.component.html",
+    "source": "summary_parse"
+  },
+  "app-admin-products": {
+    "component_file": "frontend/src/app/admin/admin-products.component.ts",
+    "template_file": "frontend/src/app/admin/admin-products.component.html",
+    "source": "summary_parse"
+  },
+  "app-admin-inventory-upload": {
+    "component_file": "frontend/src/app/admin/admin-inventory-upload.component.ts",
+    "template_file": "frontend/src/app/admin/admin-inventory-upload.component.html",
+    "source": "summary_parse"
+  },
+  "app-admin-inventory-chat": {
+    "component_file": "frontend/src/app/admin/admin-inventory-chat.component.ts",
+    "template_file": "frontend/src/app/admin/admin-inventory-chat.component.html",
+    "source": "summary_parse"
+  },
+  "app-kb-editor": {
+    "component_file": "frontend/src/app/admin/kb-editor.component.ts",
+    "template_file": "frontend/src/app/admin/kb-editor.component.html",
+    "source": "summary_parse"
+  },
+  "app-admin-users": {
+    "component_file": "frontend/src/app/admin/admin-users.component.ts",
+    "template_file": "frontend/src/app/admin/admin-users.component.html",
+    "source": "summary_parse"
+  },
+  "app-admin-reports": {
+    "component_file": "frontend/src/app/admin/admin-reports.component.ts",
+    "template_file": "frontend/src/app/admin/admin-reports.component.html",
+    "source": "summary_parse"
+  },
+  "app-admin-settings": {
+    "component_file": "frontend/src/app/admin/admin-settings.component.ts",
+    "template_file": "frontend/src/app/admin/admin-settings.component.html",
+    "source": "summary_parse"
+  },
+  "app-root": {
+    "component_file": "/workspace/frontend/src/app/app.component.ts",
+    "template_file": "/workspace/frontend/src/app/app.component.ts",
+    "source": "filesystem_scan"
+  }
+}

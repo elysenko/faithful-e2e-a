@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/instructor/gradebook/gradebook.component.css"],
+  "sourcesContent": [":host { display: block; }\n\n.back { display: inline-block; margin-bottom: var(--space-3); font-size: var(--fs-sm); }\n\n.table-wrap { padding: var(--space-2); overflow-x: auto; overscroll-behavior-y: contain; }\n.center { text-align: center; }\n\n.student { display: flex; flex-direction: column; }\n.s-name { font-weight: 600; white-space: nowrap; }\n.s-email { font-size: var(--fs-xs); }\n\n.prog-cell { display: flex; align-items: center; gap: var(--space-2); min-width: 120px; }\n.prog-cell .progress { flex: 1; }\n.prog-pct { font-size: var(--fs-xs); font-weight: 700; color: var(--color-brand); width: 34px; text-align: right; }\n\n.note { margin-top: var(--space-3); font-size: var(--fs-xs); }\n"],
+  "mappings": ";AAAA;AAAQ,WAAS;AAAO;AAExB,CAAC;AAAO,WAAS;AAAc,iBAAe,IAAI;AAAY,aAAW,IAAI;AAAU;AAEvF,CAAC;AAAa,WAAS,IAAI;AAAY,cAAY;AAAM,yBAAuB;AAAS;AACzF,CAAC;AAAS,cAAY;AAAQ;AAE9B,CAAC;AAAU,WAAS;AAAM,kBAAgB;AAAQ;AAClD,CAAC;AAAS,eAAa;AAAK,eAAa;AAAQ;AACjD,CAAC;AAAU,aAAW,IAAI;AAAU;AAEpC,CAAC;AAAY,WAAS;AAAM,eAAa;AAAQ,OAAK,IAAI;AAAY,aAAW;AAAO;AACxF,CADC,UACU,CAAC;AAAW,QAAM;AAAG;AAChC,CAAC;AAAW,aAAW,IAAI;AAAU,eAAa;AAAK,SAAO,IAAI;AAAgB,SAAO;AAAM,cAAY;AAAO;AAElH,CAAC;AAAO,cAAY,IAAI;AAAY,aAAW,IAAI;AAAU;",
+  "names": []
+}

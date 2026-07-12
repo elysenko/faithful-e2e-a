@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/movements/audit-log.component.css"],
+  "sourcesContent": [".filters {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) auto;\n  gap: var(--space-3);\n  align-items: end;\n  margin-bottom: var(--space-4);\n}\n.filters .field { margin-bottom: 0; }\n.clear-btn { min-width: 88px; }\n@media (max-width: 768px) {\n  .filters { grid-template-columns: 1fr 1fr; }\n  .clear-btn { grid-column: 1 / -1; }\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,WAAS;AACT,yBAAuB,OAAO,QAAQ,EAAE,OAAO,KAAK,EAAE,MAAM;AAC5D,OAAK,IAAI;AACT,eAAa;AACb,iBAAe,IAAI;AACrB;AACA,CAPC,QAOQ,CAAC;AAAQ,iBAAe;AAAG;AACpC,CAAC;AAAY,aAAW;AAAM;AAC9B,OAAO,CAAC,SAAS,EAAE;AACjB,GAVD;AAUY,2BAAuB,IAAI;AAAK;AAC3C,GAHD;AAGc,iBAAa,EAAE,EAAE;AAAI;AACpC;",
+  "names": []
+}

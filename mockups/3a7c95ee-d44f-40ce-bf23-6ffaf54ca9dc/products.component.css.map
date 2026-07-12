@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/products/products.component.css"],
+  "sourcesContent": [".num .btn { margin-left: var(--space-1); }\n"],
+  "mappings": ";AAAA,CAAC,IAAI,CAAC;AAAM,eAAa,IAAI;AAAY;",
+  "names": []
+}

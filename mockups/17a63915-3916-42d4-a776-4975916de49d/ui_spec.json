@@ -1,0 +1,113 @@
+{
+  "created_at": "2026-07-10T18:32:10Z",
+  "mockup_dir": "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d",
+  "design_tokens": {
+    "--color-primary": "#1b7bd0",
+    "--color-primary-dark": "#1461a8",
+    "--color-primary-light": "#e8f2fb",
+    "--color-accent": "#0b8a6b",
+    "--color-bg": "#f3f5f9",
+    "--color-surface": "#ffffff",
+    "--color-surface-alt": "#f7f9fc",
+    "--color-border": "#dde3ec",
+    "--color-text": "#16202f",
+    "--color-text-muted": "#5c6b80",
+    "--color-text-inverse": "#ffffff",
+    "--color-danger": "#c0392b",
+    "--color-danger-light": "#fdecea",
+    "--color-warning": "#b7791f",
+    "--color-success": "#0b8a6b",
+    "--stage-prospecting": "#6b7c93",
+    "--stage-qualification": "#1b7bd0",
+    "--stage-proposal": "#7d4fc4",
+    "--stage-negotiation": "#b7791f",
+    "--stage-won": "#0b8a6b",
+    "--stage-lost": "#c0392b",
+    "--radius-sm": "6px",
+    "--radius-md": "10px",
+    "--radius-lg": "16px",
+    "--shadow-sm": "0 1px 2px rgba(22, 32, 47, 0.08)",
+    "--shadow-md": "0 6px 18px rgba(22, 32, 47, 0.10)",
+    "--space-1": "4px",
+    "--space-2": "8px",
+    "--space-3": "12px",
+    "--space-4": "16px",
+    "--space-5": "24px",
+    "--space-6": "32px",
+    "--sidebar-width": "240px",
+    "--topbar-height": "56px",
+    "--font-sans": "system-ui,"
+  },
+  "components": [],
+  "pages": [
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/index.html"
+  ],
+  "protected_files": [
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/3rdpartylicenses.txt",
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/chunk-3RZ3CGIC.js",
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/chunk-3USUBKG5.js",
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/chunk-7CYS4DDO.js",
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/chunk-7UNCWGIA.js",
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/chunk-AJDBYOGF.js",
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/chunk-BBUAWB6P.js",
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/chunk-CLRCJV4X.js",
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/chunk-CXVND5PM.js",
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/chunk-DV6ARPVF.js",
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/chunk-EB4K6L3K.js",
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/chunk-LXZGR5UI.js",
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/chunk-OLUXMIEX.js",
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/chunk-SNGWQZLB.js",
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/chunk-UAIKTCHS.js",
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/chunk-XQHX2KXM.js",
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/chunk-YZTMZEBD.js",
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/chunk-ZIVHJNEG.js",
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/index.html",
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/main-2XL4EOUK.js",
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/polyfills-5CFQRCPP.js",
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/prerendered-routes.json",
+    "/workspace/mockups/17a63915-3916-42d4-a776-4975916de49d/styles-3OWEMOE2.css"
+  ],
+  "behavioral_requirements": [
+    {
+      "text": "Animation in absolute temperature mode displays interpolated daily mean temperature heatmap with cold-to-hot gradient legend in \u00b0F and calendar date",
+      "type": "behavioral",
+      "selector": "_global"
+    },
+    {
+      "text": "Animation in deviation mode displays temperature departure heatmap from 1991-2020 NOAA Climate Normal with diverging gradient, excluding stations without Climate Normal data",
+      "type": "behavioral",
+      "selector": "_global"
+    },
+    {
+      "text": "Date ranges exceeding 30 days trigger validation error 'Date range must be 30 days or fewer' and prevent animation load",
+      "type": "behavioral",
+      "selector": "_global"
+    },
+    {
+      "text": "Dates beyond 5 years in the past are disabled in date picker with note 'Data is available for the past 5 years only'",
+      "type": "behavioral",
+      "selector": "_global"
+    },
+    {
+      "text": "Unprocessed date ranges display 'No data available for this date range yet' and prevent animation load",
+      "type": "behavioral",
+      "selector": "_global"
+    },
+    {
+      "text": "Missing station readings trigger interpolation using available stations; grid cells with insufficient nearby coverage render with reduced opacity",
+      "type": "behavioral",
+      "selector": "_global"
+    },
+    {
+      "text": "Playback controls support play, pause, frame stepping, timeline scrubbing, speed selection (1/2/5/10 fps), with calendar date synchronized to current frame",
+      "type": "behavioral",
+      "selector": "_global"
+    },
+    {
+      "text": "Mode toggle switches visualization between absolute temperature and deviation modes with corresponding data and legends",
+      "type": "behavioral",
+      "selector": "_global"
+    }
+  ],
+  "spec_overrides": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/orders/order-history.component.css"],
+  "sourcesContent": [".empty { text-align: center; display: flex; flex-direction: column; gap: var(--sp-4); align-items: center; }\n.table td { vertical-align: middle; }\n"],
+  "mappings": ";AAAA,CAAC;AAAQ,cAAY;AAAQ,WAAS;AAAM,kBAAgB;AAAQ,OAAK,IAAI;AAAS,eAAa;AAAQ;AAC3G,CAAC,MAAM;AAAK,kBAAgB;AAAQ;",
+  "names": []
+}

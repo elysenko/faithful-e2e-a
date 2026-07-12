@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/core/money.ts"],
+  "sourcesContent": ["/** Format integer cents as a USD dollar string. */\nexport function formatCents(cents: number | null | undefined): string {\n  const value = (cents ?? 0) / 100;\n  return value.toLocaleString('en-US', {\n    style: 'currency',\n    currency: 'USD',\n    minimumFractionDigits: 2,\n    maximumFractionDigits: 2,\n  });\n}\n\n/** Parse a dollar string/number into integer cents. */\nexport function toCents(dollars: number | string): number {\n  const n = typeof dollars === 'string' ? parseFloat(dollars) : dollars;\n  return Math.round((isNaN(n) ? 0 : n) * 100);\n}\n"],
+  "mappings": ";AACM,SAAU,YAAY,OAAgC;AAC1D,QAAM,SAAS,SAAS,KAAK;AAC7B,SAAO,MAAM,eAAe,SAAS;IACnC,OAAO;IACP,UAAU;IACV,uBAAuB;IACvB,uBAAuB;GACxB;AACH;AAGM,SAAU,QAAQ,SAAwB;AAC9C,QAAM,IAAI,OAAO,YAAY,WAAW,WAAW,OAAO,IAAI;AAC9D,SAAO,KAAK,OAAO,MAAM,CAAC,IAAI,IAAI,KAAK,GAAG;AAC5C;",
+  "names": []
+}

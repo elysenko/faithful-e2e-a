@@ -1,0 +1,237 @@
+{
+  "app-root": {
+    "component_file": "/workspace/frontend/src/app/app.component.ts",
+    "views": [],
+    "rendered_sections": [],
+    "section_headers": [],
+    "methods": []
+  },
+  "app-storefront-layout": {
+    "component_file": "/workspace/frontend/src/app/shared/storefront-layout.component.ts",
+    "views": [],
+    "rendered_sections": [],
+    "section_headers": [],
+    "methods": [
+      "toggleDrawer",
+      "closeDrawer",
+      "search",
+      "logout"
+    ]
+  },
+  "app-product-card": {
+    "component_file": "/workspace/frontend/src/app/shared/product-card.component.ts",
+    "views": [],
+    "rendered_sections": [],
+    "section_headers": [],
+    "methods": []
+  },
+  "app-about": {
+    "component_file": "/workspace/frontend/src/app/pages/about.component.ts",
+    "views": [],
+    "rendered_sections": [],
+    "section_headers": [],
+    "methods": []
+  },
+  "app-order-history": {
+    "component_file": "/workspace/frontend/src/app/pages/order-history.component.ts",
+    "views": [],
+    "rendered_sections": [],
+    "section_headers": [],
+    "methods": [
+      "itemCount",
+      "badgeClass"
+    ]
+  },
+  "app-kb-article": {
+    "component_file": "/workspace/frontend/src/app/pages/kb-article.component.ts",
+    "views": [],
+    "rendered_sections": [],
+    "section_headers": [],
+    "methods": [
+      "isList",
+      "listItems"
+    ]
+  },
+  "app-search": {
+    "component_file": "/workspace/frontend/src/app/pages/search.component.ts",
+    "views": [],
+    "rendered_sections": [],
+    "section_headers": [],
+    "methods": [
+      "search"
+    ]
+  },
+  "app-admin-login": {
+    "component_file": "/workspace/frontend/src/app/pages/admin-login.component.ts",
+    "views": [],
+    "rendered_sections": [],
+    "section_headers": [],
+    "methods": [
+      "submit",
+      "demoLogin"
+    ]
+  },
+  "app-kb-index": {
+    "component_file": "/workspace/frontend/src/app/pages/kb-index.component.ts",
+    "views": [],
+    "rendered_sections": [],
+    "section_headers": [],
+    "methods": [
+      "setCategory"
+    ]
+  },
+  "app-checkout": {
+    "component_file": "/workspace/frontend/src/app/pages/checkout.component.ts",
+    "views": [
+      "idle",
+      "processing",
+      "declined",
+      "blocked",
+      "confirmed"
+    ],
+    "rendered_sections": [],
+    "section_headers": [],
+    "methods": [
+      "placeOrder",
+      "retryPayment"
+    ]
+  },
+  "app-product-detail": {
+    "component_file": "/workspace/frontend/src/app/pages/product-detail.component.ts",
+    "views": [],
+    "rendered_sections": [],
+    "section_headers": [],
+    "methods": [
+      "decrement",
+      "increment",
+      "setQuantity",
+      "addToCart",
+      "notifyMe"
+    ]
+  },
+  "app-signup": {
+    "component_file": "/workspace/frontend/src/app/pages/signup.component.ts",
+    "views": [],
+    "rendered_sections": [],
+    "section_headers": [],
+    "methods": [
+      "submit"
+    ]
+  },
+  "app-catalog": {
+    "component_file": "/workspace/frontend/src/app/pages/catalog.component.ts",
+    "views": [],
+    "rendered_sections": [],
+    "section_headers": [],
+    "methods": [
+      "setManufacturer"
+    ]
+  },
+  "app-order-detail": {
+    "component_file": "/workspace/frontend/src/app/pages/order-detail.component.ts",
+    "views": [],
+    "rendered_sections": [],
+    "section_headers": [],
+    "methods": [
+      "badgeClass"
+    ]
+  },
+  "app-login": {
+    "component_file": "/workspace/frontend/src/app/pages/login.component.ts",
+    "views": [],
+    "rendered_sections": [],
+    "section_headers": [],
+    "methods": [
+      "submit",
+      "demoLogin",
+      "demoStorefront"
+    ]
+  },
+  "app-cart": {
+    "component_file": "/workspace/frontend/src/app/pages/cart.component.ts",
+    "views": [],
+    "rendered_sections": [],
+    "section_headers": [],
+    "methods": [
+      "decrement",
+      "increment",
+      "onQuantityInput"
+    ]
+  },
+  "app-kb-editor": {
+    "component_file": "/workspace/frontend/src/app/admin/kb-editor.component.ts",
+    "views": [],
+    "rendered_sections": [],
+    "section_headers": [],
+    "methods": [
+      "newArticle",
+      "edit",
+      "remove",
+      "onFileSelected",
+      "removeUpload",
+      "cancel",
+      "save"
+    ]
+  },
+  "app-admin-orders": {
+    "component_file": "/workspace/frontend/src/app/admin/admin-orders.component.ts",
+    "views": [],
+    "rendered_sections": [],
+    "section_headers": [],
+    "methods": [
+      "itemCount",
+      "badgeClass",
+      "nextStatusLabel",
+      "canAdvance",
+      "advanceStatus",
+      "onStatusFilterChange",
+      "onSearchChange",
+      "prevPage",
+      "nextPage"
+    ]
+  },
+  "app-admin-products": {
+    "component_file": "/workspace/frontend/src/app/admin/admin-products.component.ts",
+    "views": [],
+    "rendered_sections": [],
+    "section_headers": [],
+    "methods": [
+      "isLowStock",
+      "toggleForm",
+      "onPdfSelected",
+      "triggerPdfTypeError",
+      "uploadDoc",
+      "saveProduct"
+    ]
+  },
+  "app-admin-reports": {
+    "component_file": "/workspace/frontend/src/app/admin/admin-reports.component.ts",
+    "views": [],
+    "rendered_sections": [],
+    "section_headers": [
+      "Controls",
+      "UI state",
+      "Datasets (backend-shaped signals)",
+      "Column definitions per report type",
+      "Computed: which dataset + columns to render",
+      "Actions"
+    ],
+    "methods": [
+      "runReport",
+      "simulateEmptyRange",
+      "onReportTypeChange",
+      "exportReport"
+    ]
+  },
+  "app-admin-users": {
+    "component_file": "/workspace/frontend/src/app/admin/admin-users.component.ts",
+    "views": [],
+    "rendered_sections": [],
+    "section_headers": [],
+    "methods": [
+      "roleBadgeClass",
+      "toggleActive",
+      "resetPassword"
+    ]
+  }
+}

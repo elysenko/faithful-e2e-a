@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/admin-orders/admin-orders.component.css"],
+  "sourcesContent": [".page-head { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-5); }\n.page-head h1 { font-size: var(--fs-xl); }\n\n.table-wrap { overflow-x: auto; overscroll-behavior-x: contain; }\n.num { text-align: right; }\n.actions-col { text-align: right; white-space: nowrap; }\n\n.order-id { font-weight: 700; }\n.order-date { font-size: var(--fs-xs); }\n"],
+  "mappings": ";AAAA,CAAC;AAAY,WAAS;AAAM,eAAa;AAAQ,OAAK,IAAI;AAAY,iBAAe,IAAI;AAAY;AACrG,CADC,UACU;AAAK,aAAW,IAAI;AAAU;AAEzC,CAAC;AAAa,cAAY;AAAM,yBAAuB;AAAS;AAChE,CAAC;AAAM,cAAY;AAAO;AAC1B,CAAC;AAAc,cAAY;AAAO,eAAa;AAAQ;AAEvD,CAAC;AAAW,eAAa;AAAK;AAC9B,CAAC;AAAa,aAAW,IAAI;AAAU;",
+  "names": []
+}

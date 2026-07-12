@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/practice-form/practice-form.component.css"],
+  "sourcesContent": [".selected-boat {\n  border-color: var(--color-brand);\n  box-shadow: 0 0 0 2px var(--color-brand-light);\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,gBAAc,IAAI;AAClB,cAAY,EAAE,EAAE,EAAE,IAAI,IAAI;AAC5B;",
+  "names": []
+}

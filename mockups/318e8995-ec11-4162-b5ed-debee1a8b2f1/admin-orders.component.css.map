@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/admin/admin-orders.component.css"],
+  "sourcesContent": [".small { font-size: var(--fs-xs); }\n.table td { vertical-align: middle; }\n"],
+  "mappings": ";AAAA,CAAC;AAAQ,aAAW,IAAI;AAAU;AAClC,CAAC,MAAM;AAAK,kBAAgB;AAAQ;",
+  "names": []
+}

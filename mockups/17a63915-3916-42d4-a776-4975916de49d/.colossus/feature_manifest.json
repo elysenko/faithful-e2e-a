@@ -1,0 +1,94 @@
+{
+  "app-root": {
+    "component_file": "/workspace/frontend/src/app/app.component.ts",
+    "views": [],
+    "rendered_sections": [],
+    "section_headers": [],
+    "methods": []
+  },
+  "app-home": {
+    "component_file": "/workspace/frontend/src/app/home/home.component.ts",
+    "views": [],
+    "rendered_sections": [],
+    "section_headers": [],
+    "methods": []
+  },
+  "_behavioral_specs": {
+    "_global": {
+      "requirements": [
+        {
+          "text": "Animation in absolute temperature mode displays interpolated daily mean temperature heatmap with cold-to-hot gradient legend in \u00b0F and calendar date",
+          "type": "behavioral",
+          "source": "spec",
+          "actor": "visitor",
+          "rev": 0,
+          "superseded": false,
+          "superseded_by": null
+        },
+        {
+          "text": "Animation in deviation mode displays temperature departure heatmap from 1991-2020 NOAA Climate Normal with diverging gradient, excluding stations without Climate Normal data",
+          "type": "behavioral",
+          "source": "spec",
+          "actor": "visitor",
+          "rev": 0,
+          "superseded": false,
+          "superseded_by": null
+        },
+        {
+          "text": "Date ranges exceeding 30 days trigger validation error 'Date range must be 30 days or fewer' and prevent animation load",
+          "type": "behavioral",
+          "source": "spec",
+          "actor": "visitor",
+          "rev": 0,
+          "superseded": false,
+          "superseded_by": null
+        },
+        {
+          "text": "Dates beyond 5 years in the past are disabled in date picker with note 'Data is available for the past 5 years only'",
+          "type": "behavioral",
+          "source": "spec",
+          "actor": "visitor",
+          "rev": 0,
+          "superseded": false,
+          "superseded_by": null
+        },
+        {
+          "text": "Unprocessed date ranges display 'No data available for this date range yet' and prevent animation load",
+          "type": "behavioral",
+          "source": "spec",
+          "actor": "visitor",
+          "rev": 0,
+          "superseded": false,
+          "superseded_by": null
+        },
+        {
+          "text": "Missing station readings trigger interpolation using available stations; grid cells with insufficient nearby coverage render with reduced opacity",
+          "type": "behavioral",
+          "source": "spec",
+          "actor": "visitor",
+          "rev": 0,
+          "superseded": false,
+          "superseded_by": null
+        },
+        {
+          "text": "Playback controls support play, pause, frame stepping, timeline scrubbing, speed selection (1/2/5/10 fps), with calendar date synchronized to current frame",
+          "type": "behavioral",
+          "source": "spec",
+          "actor": "visitor",
+          "rev": 0,
+          "superseded": false,
+          "superseded_by": null
+        },
+        {
+          "text": "Mode toggle switches visualization between absolute temperature and deviation modes with corresponding data and legends",
+          "type": "behavioral",
+          "source": "spec",
+          "actor": "visitor",
+          "rev": 0,
+          "superseded": false,
+          "superseded_by": null
+        }
+      ]
+    }
+  }
+}

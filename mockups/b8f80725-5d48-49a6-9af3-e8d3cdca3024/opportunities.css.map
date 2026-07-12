@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/opportunities/opportunities.css"],
+  "sourcesContent": ["/* Opportunity feature \u2014 styling primarily via global utilities in styles.css. */\n:host { display: block; }\n.forecast { font-size: var(--text-2xl); font-weight: 700; color: var(--color-brand-dark); margin-top: var(--space-2); }\n"],
+  "mappings": ";AACA;AAAQ,WAAS;AAAO;AACxB,CAAC;AAAW,aAAW,IAAI;AAAa,eAAa;AAAK,SAAO,IAAI;AAAqB,cAAY,IAAI;AAAY;",
+  "names": []
+}

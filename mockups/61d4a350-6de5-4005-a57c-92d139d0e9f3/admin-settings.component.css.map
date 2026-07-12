@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/admin-settings/admin-settings.component.css"],
+  "sourcesContent": [".narrow { max-width: 640px; }\n.back-link { font-size: var(--fs-sm); font-weight: 600; width: 100%; }\n\n.service-head {\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n  gap: var(--space-3);\n  margin-bottom: var(--space-4);\n}\n.service-head h2 { font-size: var(--fs-md); margin-bottom: 2px; }\n.service-head .muted { font-size: var(--fs-sm); margin: 0; }\n\n.current {\n  font-size: var(--fs-sm);\n  color: var(--color-muted);\n  background: var(--color-surface-inset);\n  padding: var(--space-2) var(--space-3);\n  border-radius: var(--radius);\n  margin: 0 0 var(--space-1);\n  overflow-x: auto;\n}\n.ok-note { color: var(--color-success); font-size: var(--fs-sm); font-weight: 600; }\n.form-actions { display: flex; justify-content: flex-end; margin-top: var(--space-2); }\n"],
+  "mappings": ";AAAA,CAAC;AAAS,aAAW;AAAO;AAC5B,CAAC;AAAY,aAAW,IAAI;AAAU,eAAa;AAAK,SAAO;AAAM;AAErE,CAAC;AACC,WAAS;AACT,eAAa;AACb,mBAAiB;AACjB,OAAK,IAAI;AACT,iBAAe,IAAI;AACrB;AACA,CAPC,aAOa;AAAK,aAAW,IAAI;AAAU,iBAAe;AAAK;AAChE,CARC,aAQa,CAAC;AAAQ,aAAW,IAAI;AAAU,UAAQ;AAAG;AAE3D,CAAC;AACC,aAAW,IAAI;AACf,SAAO,IAAI;AACX,cAAY,IAAI;AAChB,WAAS,IAAI,WAAW,IAAI;AAC5B,iBAAe,IAAI;AACnB,UAAQ,EAAE,EAAE,IAAI;AAChB,cAAY;AACd;AACA,CAAC;AAAU,SAAO,IAAI;AAAkB,aAAW,IAAI;AAAU,eAAa;AAAK;AACnF,CAAC;AAAe,WAAS;AAAM,mBAAiB;AAAU,cAAY,IAAI;AAAY;",
+  "names": []
+}

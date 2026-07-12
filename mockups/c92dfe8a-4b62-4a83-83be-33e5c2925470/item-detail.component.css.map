@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/items/item-detail.component.css"],
+  "sourcesContent": [".back { display: inline-block; margin-bottom: var(--space-3); }\n.summary {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));\n  gap: var(--space-3);\n  margin-bottom: var(--space-5);\n}\n.stat-value { font-size: var(--font-size-xl); font-weight: 700; margin-top: var(--space-1); }\n.mt { margin-top: var(--space-6); }\nh2 { margin-top: var(--space-5); }\n"],
+  "mappings": ";AAAA,CAAC;AAAO,WAAS;AAAc,iBAAe,IAAI;AAAY;AAC9D,CAAC;AACC,WAAS;AACT,yBAAuB,OAAO,SAAS,EAAE,OAAO,KAAK,EAAE;AACvD,OAAK,IAAI;AACT,iBAAe,IAAI;AACrB;AACA,CAAC;AAAa,aAAW,IAAI;AAAiB,eAAa;AAAK,cAAY,IAAI;AAAY;AAC5F,CAAC;AAAK,cAAY,IAAI;AAAY;AAClC;AAAK,cAAY,IAAI;AAAY;",
+  "names": []
+}

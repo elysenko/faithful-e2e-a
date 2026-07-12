@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Newswire — News Aggregator</title>
+  <base href="/40fc9895-41ae-4aa7-9d4b-e09de68c0f5d/">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#12263f">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"><link rel="modulepreload" href="chunk-QZ7UG3YY.js"></head>
+<body>
+  <app-root></app-root>
+<script src="polyfills.js" type="module"></script><script src="main.js" type="module"></script>
+  <!-- Story photography: pulls a topical image into each article card once Angular has rendered it. -->
+  <script>
+  (function () {
+    function slugOf(card) {
+      var chip = card.querySelector('[class*="cat-"]');
+      if (chip) {
+        var m = chip.className.match(/cat-([a-z]+)/);
+        if (m && m[1] !== 'default') return m[1];
+      }
+      return 'news';
+    }
+    function decorate() {
+      var cards = document.querySelectorAll('li.article-card');
+      cards.forEach(function (card, i) {
+        var link = card.querySelector('.article-link');
+        if (!link || link.querySelector('.article-photo')) return;
+        var isLead = card === card.parentElement.firstElementChild;
+        var slug = slugOf(card);
+        var w = isLead ? 1120 : 800;
+        var h = isLead ? 700 : 540;
+        var img = document.createElement('img');
+        img.className = 'article-photo' + (isLead ? ' article-photo-lead' : '');
+        img.loading = 'lazy';
+        img.alt = '';
+        img.setAttribute('aria-hidden', 'true');
+        img.src = 'https://picsum.photos/seed/' + slug + '-' + i + '/' + w + '/' + h;
+        img.addEventListener('error', function () {
+          img.classList.add('article-photo-fallback');
+          img.removeAttribute('src');
+        });
+        link.insertBefore(img, link.firstChild);
+      });
+    }
+    var pending = false;
+    function schedule() {
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(function () { pending = false; decorate(); });
+    }
+    function boot() {
+      new MutationObserver(schedule).observe(document.body, { childList: true, subtree: true });
+      schedule();
+    }
+    if (document.readyState !== 'loading') boot();
+    else document.addEventListener('DOMContentLoaded', boot);
+  })();
+  </script>
+<style data-picker="injected" data-colossus-scrollguard>html,body{height:auto!important;min-height:100%!important;overflow-y:auto!important;}</style>
+<script data-picker="injected" data-colossus-widget defer src="/api/v1/teams/d06f7479-4fdc-4ee4-98fe-3eacaadf2708/overlay.js?mockup=1"></script>
+</body>
+</html>

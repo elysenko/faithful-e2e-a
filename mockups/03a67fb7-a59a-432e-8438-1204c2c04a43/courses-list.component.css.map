@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/instructor/courses-list/courses-list.component.css"],
+  "sourcesContent": [":host { display: block; }\n\n.create-form { padding: var(--space-5); margin-bottom: var(--space-5); }\n.create-form h3 { margin-bottom: var(--space-4); font-size: var(--fs-md); }\n\n.course-rows { display: flex; flex-direction: column; gap: var(--space-3); }\n.course-row {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: var(--space-4);\n  padding: var(--space-4) var(--space-5);\n  flex-wrap: wrap;\n}\n.course-info { flex: 1; min-width: 200px; }\n.course-info h3 { font-size: var(--fs-md); margin-bottom: var(--space-1); }\n.course-info p { margin-bottom: var(--space-1); }\n.meta { font-size: var(--fs-xs); }\n\n.course-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }\n"],
+  "mappings": ";AAAA;AAAQ,WAAS;AAAO;AAExB,CAAC;AAAc,WAAS,IAAI;AAAY,iBAAe,IAAI;AAAY;AACvE,CADC,YACY;AAAK,iBAAe,IAAI;AAAY,aAAW,IAAI;AAAU;AAE1E,CAAC;AAAc,WAAS;AAAM,kBAAgB;AAAQ,OAAK,IAAI;AAAY;AAC3E,CAAC;AACC,WAAS;AACT,eAAa;AACb,mBAAiB;AACjB,OAAK,IAAI;AACT,WAAS,IAAI,WAAW,IAAI;AAC5B,aAAW;AACb;AACA,CAAC;AAAc,QAAM;AAAG,aAAW;AAAO;AAC1C,CADC,YACY;AAAK,aAAW,IAAI;AAAU,iBAAe,IAAI;AAAY;AAC1E,CAFC,YAEY;AAAI,iBAAe,IAAI;AAAY;AAChD,CAAC;AAAO,aAAW,IAAI;AAAU;AAEjC,CAAC;AAAiB,WAAS;AAAM,OAAK,IAAI;AAAY,aAAW;AAAM;",
+  "names": []
+}

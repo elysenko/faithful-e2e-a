@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/shared/empty-state/empty-state.component.css"],
+  "sourcesContent": [".empty {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: var(--sp-3);\n  text-align: center;\n  padding: var(--sp-8) var(--sp-4);\n  color: var(--color-text-muted);\n}\n.empty-icon {\n  font-size: 2.75rem;\n  line-height: 1;\n}\n.empty-title {\n  font-size: var(--fs-lg);\n  font-weight: 700;\n  color: var(--color-text);\n}\n.empty-message {\n  max-width: 34ch;\n  font-size: var(--fs-sm);\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,WAAS;AACT,kBAAgB;AAChB,eAAa;AACb,mBAAiB;AACjB,OAAK,IAAI;AACT,cAAY;AACZ,WAAS,IAAI,QAAQ,IAAI;AACzB,SAAO,IAAI;AACb;AACA,CAAC;AACC,aAAW;AACX,eAAa;AACf;AACA,CAAC;AACC,aAAW,IAAI;AACf,eAAa;AACb,SAAO,IAAI;AACb;AACA,CAAC;AACC,aAAW;AACX,aAAW,IAAI;AACjB;",
+  "names": []
+}

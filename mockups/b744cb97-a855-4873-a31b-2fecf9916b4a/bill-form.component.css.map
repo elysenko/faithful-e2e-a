@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/bill-form/bill-form.component.css"],
+  "sourcesContent": [".back-link { display: inline-block; margin-bottom: var(--space-3); font-size: var(--fs-sm); }\n.form-card { max-width: 720px; margin: 0 auto; padding: var(--space-5); }\n.form-card h1 { margin: 0 0 var(--space-4); font-size: var(--fs-xl); }\n.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-3); }\n.hint { font-size: var(--fs-xs); }\n.form-foot { display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-3); }\n\n@media (max-width: 768px) {\n  .form-foot { flex-direction: column-reverse; }\n  .form-foot .btn { width: 100%; }\n}\n"],
+  "mappings": ";AAAA,CAAC;AAAY,WAAS;AAAc,iBAAe,IAAI;AAAY,aAAW,IAAI;AAAU;AAC5F,CAAC;AAAY,aAAW;AAAO,UAAQ,EAAE;AAAM,WAAS,IAAI;AAAY;AACxE,CADC,UACU;AAAK,UAAQ,EAAE,EAAE,IAAI;AAAY,aAAW,IAAI;AAAU;AACrE,CAAC;AAAY,WAAS;AAAM,yBAAuB,OAAO,QAAQ,EAAE,OAAO,KAAK,EAAE;AAAO,OAAK,IAAI;AAAY;AAC9G,CAAC;AAAO,aAAW,IAAI;AAAU;AACjC,CAAC;AAAY,WAAS;AAAM,mBAAiB;AAAU,OAAK,IAAI;AAAY,cAAY,IAAI;AAAY;AAExG,OAAO,CAAC,SAAS,EAAE;AACjB,GAHD;AAGc,oBAAgB;AAAgB;AAC7C,GAJD,UAIY,CAAC;AAAM,WAAO;AAAM;AACjC;",
+  "names": []
+}

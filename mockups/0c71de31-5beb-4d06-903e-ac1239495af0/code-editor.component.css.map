@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/workspaces/code-editor.component.css"],
+  "sourcesContent": [":host { display: block; height: 100%; min-height: 0; }\n.cm-host {\n  height: 100%;\n  min-height: 240px;\n  overflow: hidden;\n  background: var(--color-surface);\n}\n.cm-host .cm-editor { height: 100%; }\n.cm-host .cm-scroller { overscroll-behavior-y: contain; }\n"],
+  "mappings": ";AAAA;AAAQ,WAAS;AAAO,UAAQ;AAAM,cAAY;AAAG;AACrD,CAAC;AACC,UAAQ;AACR,cAAY;AACZ,YAAU;AACV,cAAY,IAAI;AAClB;AACA,CANC,QAMQ,CAAC;AAAY,UAAQ;AAAM;AACpC,CAPC,QAOQ,CAAC;AAAc,yBAAuB;AAAS;",
+  "names": []
+}

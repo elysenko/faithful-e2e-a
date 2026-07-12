@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/heatmap-canvas/heatmap-canvas.component.css"],
+  "sourcesContent": [":host {\n  display: block;\n  width: 100%;\n}\n\n.canvas-wrap {\n  position: relative;\n  width: 100%;\n  aspect-ratio: 16 / 10;\n  background: var(--color-canvas-bg);\n  border-radius: var(--radius);\n  overflow: hidden;\n}\n\n.heatmap {\n  display: block;\n  width: 100%;\n  height: 100%;\n}\n"],
+  "mappings": ";AAAA;AACE,WAAS;AACT,SAAO;AACT;AAEA,CAAC;AACC,YAAU;AACV,SAAO;AACP,gBAAc,GAAG,EAAE;AACnB,cAAY,IAAI;AAChB,iBAAe,IAAI;AACnB,YAAU;AACZ;AAEA,CAAC;AACC,WAAS;AACT,SAAO;AACP,UAAQ;AACV;",
+  "names": []
+}

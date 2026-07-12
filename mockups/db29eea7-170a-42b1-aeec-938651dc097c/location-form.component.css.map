@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/location-form/location-form.component.css"],
+  "sourcesContent": [".narrow { max-width: 640px; }\n.back-link { display: inline-block; margin-bottom: var(--space-4); font-size: var(--fs-sm); }\nh1 { font-size: var(--fs-xl); }\nh1 + .muted { margin: var(--space-1) 0 var(--space-5); }\n\n.form-card { padding: var(--space-5); }\n.form-actions { display: flex; gap: var(--space-3); margin-top: var(--space-4); }\n\n@media (max-width: 560px) {\n  .form-actions { flex-direction: column-reverse; }\n  .form-actions .btn { width: 100%; }\n}\n"],
+  "mappings": ";AAAA,CAAC;AAAS,aAAW;AAAO;AAC5B,CAAC;AAAY,WAAS;AAAc,iBAAe,IAAI;AAAY,aAAW,IAAI;AAAU;AAC5F;AAAK,aAAW,IAAI;AAAU;AAC9B,GAAG,EAAE,CAAC;AAAQ,UAAQ,IAAI,WAAW,EAAE,IAAI;AAAY;AAEvD,CAAC;AAAY,WAAS,IAAI;AAAY;AACtC,CAAC;AAAe,WAAS;AAAM,OAAK,IAAI;AAAY,cAAY,IAAI;AAAY;AAEhF,OAAO,CAAC,SAAS,EAAE;AACjB,GAHD;AAGiB,oBAAgB;AAAgB;AAChD,GAJD,aAIe,CAAC;AAAM,WAAO;AAAM;AACpC;",
+  "names": []
+}

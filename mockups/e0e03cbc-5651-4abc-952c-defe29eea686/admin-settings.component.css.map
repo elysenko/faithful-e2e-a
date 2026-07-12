@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/admin-settings/admin-settings.component.css"],
+  "sourcesContent": [":host { display: block; }\n\n.page { max-width: 640px; margin: 0 auto; }\n\n.page-head { margin-bottom: var(--space-2); }\n.page-head h1 { font-size: var(--fs-2xl); }\n.page-head p { margin-top: var(--space-1); }\n\n.service { gap: var(--space-4); }\n.service-head { align-items: center; }\n.service-name { font-size: var(--fs-lg); font-weight: 700; color: var(--color-ink); }\n\n.form-actions { align-items: center; }\n"],
+  "mappings": ";AAAA;AAAQ,WAAS;AAAO;AAExB,CAAC;AAAO,aAAW;AAAO,UAAQ,EAAE;AAAM;AAE1C,CAAC;AAAY,iBAAe,IAAI;AAAY;AAC5C,CADC,UACU;AAAK,aAAW,IAAI;AAAW;AAC1C,CAFC,UAEU;AAAI,cAAY,IAAI;AAAY;AAE3C,CAAC;AAAU,OAAK,IAAI;AAAY;AAChC,CAAC;AAAe,eAAa;AAAQ;AACrC,CAAC;AAAe,aAAW,IAAI;AAAU,eAAa;AAAK,SAAO,IAAI;AAAc;AAEpF,CAAC;AAAe,eAAa;AAAQ;",
+  "names": []
+}

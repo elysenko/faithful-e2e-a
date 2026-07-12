@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/orders/order-history.component.css"],
+  "sourcesContent": [".orders { display: flex; flex-direction: column; gap: var(--sp-3); }\n.order {\n  display: grid;\n  grid-template-columns: 1fr auto auto;\n  align-items: center;\n  gap: var(--sp-4);\n  padding: var(--sp-4);\n  color: inherit;\n  transition: box-shadow .15s;\n}\n.order:hover { box-shadow: var(--shadow); }\n.order-main { display: flex; flex-direction: column; gap: 2px; }\n.order-id { font-weight: 700; }\n.order-total { font-weight: 800; }\n\n@media (max-width: 768px) {\n  .order { grid-template-columns: 1fr auto; grid-template-areas: \"main total\" \"badge total\"; }\n  .order-main { grid-area: main; }\n  .order .badge { grid-area: badge; justify-self: start; }\n  .order-total { grid-area: total; align-self: center; }\n}\n"],
+  "mappings": ";AAAA,CAAC;AAAS,WAAS;AAAM,kBAAgB;AAAQ,OAAK,IAAI;AAAS;AACnE,CAAC;AACC,WAAS;AACT,yBAAuB,IAAI,KAAK;AAChC,eAAa;AACb,OAAK,IAAI;AACT,WAAS,IAAI;AACb,SAAO;AACP,cAAY,WAAW;AACzB;AACA,CATC,KASK;AAAS,cAAY,IAAI;AAAW;AAC1C,CAAC;AAAa,WAAS;AAAM,kBAAgB;AAAQ,OAAK;AAAK;AAC/D,CAAC;AAAW,eAAa;AAAK;AAC9B,CAAC;AAAc,eAAa;AAAK;AAEjC,OAAO,CAAC,SAAS,EAAE;AACjB,GAfD;AAeU,2BAAuB,IAAI;AAAM,yBAAqB,aAAa;AAAe;AAC3F,GAND;AAMe,eAAW;AAAM;AAC/B,GAjBD,MAiBQ,CAAC;AAAQ,eAAW;AAAO,kBAAc;AAAO;AACvD,GAND;AAMgB,eAAW;AAAO,gBAAY;AAAQ;AACvD;",
+  "names": []
+}

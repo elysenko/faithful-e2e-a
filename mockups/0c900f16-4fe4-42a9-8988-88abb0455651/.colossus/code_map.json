@@ -1,0 +1,62 @@
+{
+  "app-visualization": {
+    "component_file": "frontend/src/app/visualization/visualization.component.ts",
+    "template_file": "frontend/src/app/visualization/visualization.component.html",
+    "source": "summary_parse"
+  },
+  "app-heatmap-canvas": {
+    "component_file": "frontend/src/app/heatmap-canvas/heatmap-canvas.component.ts",
+    "template_file": "frontend/src/app/heatmap-canvas/heatmap-canvas.component.html",
+    "source": "summary_parse"
+  },
+  "app-legend": {
+    "component_file": "frontend/src/app/legend/legend.component.ts",
+    "template_file": "frontend/src/app/legend/legend.component.html",
+    "source": "summary_parse"
+  },
+  "app-date-range-picker": {
+    "component_file": "frontend/src/app/date-range-picker/date-range-picker.component.ts",
+    "template_file": "frontend/src/app/date-range-picker/date-range-picker.component.html",
+    "source": "summary_parse"
+  },
+  "app-playback-controls": {
+    "component_file": "frontend/src/app/playback-controls/playback-controls.component.ts",
+    "template_file": "frontend/src/app/playback-controls/playback-controls.component.html",
+    "source": "summary_parse"
+  },
+  "app-mode-toggle": {
+    "component_file": "frontend/src/app/mode-toggle/mode-toggle.component.ts",
+    "template_file": "frontend/src/app/mode-toggle/mode-toggle.component.html",
+    "source": "summary_parse"
+  },
+  "app-admin-login": {
+    "component_file": "frontend/src/app/admin-login/admin-login.component.ts",
+    "template_file": "frontend/src/app/admin-login/admin-login.component.html",
+    "source": "summary_parse"
+  },
+  "app-admin-shell": {
+    "component_file": "frontend/src/app/admin-shell/admin-shell.component.ts",
+    "template_file": "frontend/src/app/admin-shell/admin-shell.component.html",
+    "source": "summary_parse"
+  },
+  "app-admin-jobs": {
+    "component_file": "frontend/src/app/admin-jobs/admin-jobs.component.ts",
+    "template_file": "frontend/src/app/admin-jobs/admin-jobs.component.html",
+    "source": "summary_parse"
+  },
+  "app-admin-settings": {
+    "component_file": "frontend/src/app/admin-settings/admin-settings.component.ts",
+    "template_file": "frontend/src/app/admin-settings/admin-settings.component.html",
+    "source": "summary_parse"
+  },
+  "app-root": {
+    "component_file": "/workspace/frontend/src/app/app.component.ts",
+    "template_file": "/workspace/frontend/src/app/app.component.ts",
+    "source": "filesystem_scan"
+  },
+  "app-home": {
+    "component_file": "/workspace/frontend/src/app/home/home.component.ts",
+    "template_file": "/workspace/frontend/src/app/home/home.component.ts",
+    "source": "filesystem_scan"
+  }
+}

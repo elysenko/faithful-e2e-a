@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/accounts/accounts-list.component.css"],
+  "sourcesContent": ["/* Component-specific tweaks; shared list styles live in global styles.css */\n:host { display: block; }\n"],
+  "mappings": ";AACA;AAAQ,WAAS;AAAO;",
+  "names": []
+}

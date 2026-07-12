@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/core/services/toast.service.ts"],
+  "sourcesContent": ["import { Injectable, signal } from '@angular/core';\n\nexport interface Toast {\n  id: number;\n  kind: 'match' | 'message';\n  title: string;\n  body: string;\n}\n\n@Injectable({ providedIn: 'root' })\nexport class ToastService {\n  private seq = 1;\n  readonly toasts = signal<Toast[]>([]);\n\n  push(kind: Toast['kind'], title: string, body: string): void {\n    const toast: Toast = { id: this.seq++, kind, title, body };\n    this.toasts.update((list) => [...list, toast]);\n  }\n\n  dismiss(id: number): void {\n    this.toasts.update((list) => list.filter((t) => t.id !== id));\n  }\n}\n"],
+  "mappings": ";;;;;;AAUM,IAAO,eAAP,MAAO,cAAY;EADzB,cAAA;AAEU,SAAA,MAAM;AACL,SAAA,SAAS,OAAgB,CAAA,CAAE;;EAEpC,KAAK,MAAqB,OAAe,MAAY;AACnD,UAAM,QAAe,EAAE,IAAI,KAAK,OAAO,MAAM,OAAO,KAAI;AACxD,SAAK,OAAO,OAAO,CAAC,SAAS,CAAC,GAAG,MAAM,KAAK,CAAC;EAC/C;EAEA,QAAQ,IAAU;AAChB,SAAK,OAAO,OAAO,CAAC,SAAS,KAAK,OAAO,CAAC,MAAM,EAAE,OAAO,EAAE,CAAC;EAC9D;;;uBAXW,eAAY;IAAA;EAAA;;4EAAZ,eAAY,SAAZ,cAAY,WAAA,YADC,OAAM,CAAA;EAAA;;",
+  "names": []
+}

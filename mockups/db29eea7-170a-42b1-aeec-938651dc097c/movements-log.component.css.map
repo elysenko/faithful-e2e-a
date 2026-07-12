@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/movements-log/movements-log.component.css"],
+  "sourcesContent": [".page-head { margin-bottom: var(--space-5); }\n.page-head h1 { font-size: var(--fs-xl); }\n.page-head p { margin: var(--space-1) 0 0; }\n\n.filters {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: flex-end;\n  gap: var(--space-4);\n  padding: var(--space-4);\n  margin-bottom: var(--space-5);\n}\n.filters .field { margin-bottom: 0; flex: 1 1 180px; }\n.filter-actions { display: flex; gap: var(--space-2); }\n\n.table-wrap { overflow-x: auto; }\n.num { text-align: right; white-space: nowrap; }\n.nowrap { white-space: nowrap; }\n\n@media (max-width: 768px) {\n  .filters { flex-direction: column; align-items: stretch; }\n  .filter-actions .btn { flex: 1; }\n}\n"],
+  "mappings": ";AAAA,CAAC;AAAY,iBAAe,IAAI;AAAY;AAC5C,CADC,UACU;AAAK,aAAW,IAAI;AAAU;AACzC,CAFC,UAEU;AAAI,UAAQ,IAAI,WAAW,EAAE;AAAG;AAE3C,CAAC;AACC,WAAS;AACT,aAAW;AACX,eAAa;AACb,OAAK,IAAI;AACT,WAAS,IAAI;AACb,iBAAe,IAAI;AACrB;AACA,CARC,QAQQ,CAAC;AAAQ,iBAAe;AAAG,QAAM,EAAE,EAAE;AAAO;AACrD,CAAC;AAAiB,WAAS;AAAM,OAAK,IAAI;AAAY;AAEtD,CAAC;AAAa,cAAY;AAAM;AAChC,CAAC;AAAM,cAAY;AAAO,eAAa;AAAQ;AAC/C,CAAC;AAAS,eAAa;AAAQ;AAE/B,OAAO,CAAC,SAAS,EAAE;AACjB,GAhBD;AAgBY,oBAAgB;AAAQ,iBAAa;AAAS;AACzD,GARD,eAQiB,CAAC;AAAM,UAAM;AAAG;AAClC;",
+  "names": []
+}

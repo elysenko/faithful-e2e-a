@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/settings/settings.component.css"],
+  "sourcesContent": [".head-row { display: flex; justify-content: space-between; align-items: center; gap: var(--sp-3); }\n.sec-title { font-size: var(--fs-md); }\n\n.comm-grid { grid-template-columns: 1fr 1fr; align-items: start; }\n.form-field { margin: var(--sp-4) 0; }\n\n.role-note { margin-bottom: var(--sp-4); }\n.role-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }\n.role-label { font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-text-muted); font-weight: 600; margin: var(--sp-4) 0 6px; }\n.role-list { margin: 0; padding-left: var(--sp-5); font-size: var(--fs-sm); }\n.role-list li { margin-bottom: 4px; }\n.role-can li { color: var(--color-success); }\n.role-cannot li { color: var(--color-danger); }\n\n@media (max-width: 768px) {\n  .comm-grid { grid-template-columns: 1fr; }\n}\n"],
+  "mappings": ";AAAA,CAAC;AAAW,WAAS;AAAM,mBAAiB;AAAe,eAAa;AAAQ,OAAK,IAAI;AAAS;AAClG,CAAC;AAAY,aAAW,IAAI;AAAU;AAEtC,CAAC;AAAY,yBAAuB,IAAI;AAAK,eAAa;AAAO;AACjE,CAAC;AAAa,UAAQ,IAAI,QAAQ;AAAG;AAErC,CAAC;AAAY,iBAAe,IAAI;AAAS;AACzC,CAAC;AAAY,yBAAuB,OAAO,SAAS,EAAE,OAAO,KAAK,EAAE;AAAO;AAC3E,CAAC;AAAa,aAAW,IAAI;AAAU,kBAAgB;AAAW,kBAAgB;AAAQ,SAAO,IAAI;AAAqB,eAAa;AAAK,UAAQ,IAAI,QAAQ,EAAE;AAAK;AACvK,CAAC;AAAY,UAAQ;AAAG,gBAAc,IAAI;AAAS,aAAW,IAAI;AAAU;AAC5E,CADC,UACU;AAAK,iBAAe;AAAK;AACpC,CAAC,SAAS;AAAK,SAAO,IAAI;AAAkB;AAC5C,CAAC,YAAY;AAAK,SAAO,IAAI;AAAiB;AAE9C,OAAO,CAAC,SAAS,EAAE;AACjB,GAZD;AAYc,2BAAuB;AAAK;AAC3C;",
+  "names": []
+}

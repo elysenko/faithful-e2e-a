@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/feed/components/empty-state/empty-state.component.css"],
+  "sourcesContent": [".empty {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n  padding: var(--space-8) var(--space-4);\n  background: var(--color-surface);\n  border: 1px dashed var(--color-border-strong);\n  border-radius: var(--radius-lg);\n}\n\n.empty-icon {\n  font-size: 3rem;\n  line-height: 1;\n  margin-bottom: var(--space-4);\n}\n\n.empty-title {\n  font-size: var(--text-xl);\n  font-weight: var(--font-bold);\n  margin-bottom: var(--space-2);\n}\n\n.empty-message {\n  margin: 0;\n  max-width: 32ch;\n  color: var(--color-text-muted);\n  font-size: var(--text-sm);\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,WAAS;AACT,kBAAgB;AAChB,eAAa;AACb,mBAAiB;AACjB,cAAY;AACZ,WAAS,IAAI,WAAW,IAAI;AAC5B,cAAY,IAAI;AAChB,UAAQ,IAAI,OAAO,IAAI;AACvB,iBAAe,IAAI;AACrB;AAEA,CAAC;AACC,aAAW;AACX,eAAa;AACb,iBAAe,IAAI;AACrB;AAEA,CAAC;AACC,aAAW,IAAI;AACf,eAAa,IAAI;AACjB,iBAAe,IAAI;AACrB;AAEA,CAAC;AACC,UAAQ;AACR,aAAW;AACX,SAAO,IAAI;AACX,aAAW,IAAI;AACjB;",
+  "names": []
+}

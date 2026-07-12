@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/low-stock-report/low-stock-report.component.css"],
+  "sourcesContent": [".page-head {\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n  gap: var(--space-4);\n  margin-bottom: var(--space-5);\n}\n.page-head h1 { font-size: var(--fs-xl); }\n.page-head p { margin: var(--space-1) 0 0; }\n.count-badge { flex-shrink: 0; }\n\n.table-wrap { overflow-x: auto; }\n.num { text-align: right; white-space: nowrap; }\n.unit { font-size: var(--fs-xs); }\n.actions-col { text-align: right; }\n\n@media (max-width: 768px) {\n  .page-head { flex-direction: column; }\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,WAAS;AACT,eAAa;AACb,mBAAiB;AACjB,OAAK,IAAI;AACT,iBAAe,IAAI;AACrB;AACA,CAPC,UAOU;AAAK,aAAW,IAAI;AAAU;AACzC,CARC,UAQU;AAAI,UAAQ,IAAI,WAAW,EAAE;AAAG;AAC3C,CAAC;AAAc,eAAa;AAAG;AAE/B,CAAC;AAAa,cAAY;AAAM;AAChC,CAAC;AAAM,cAAY;AAAO,eAAa;AAAQ;AAC/C,CAAC;AAAO,aAAW,IAAI;AAAU;AACjC,CAAC;AAAc,cAAY;AAAO;AAElC,OAAO,CAAC,SAAS,EAAE;AACjB,GAjBD;AAiBc,oBAAgB;AAAQ;AACvC;",
+  "names": []
+}

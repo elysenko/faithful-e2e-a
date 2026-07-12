@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/locations-list/locations-list.component.css"],
+  "sourcesContent": [".page-head {\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n  gap: var(--space-4);\n  margin-bottom: var(--space-5);\n}\n.page-head h1 { font-size: var(--fs-xl); }\n.page-head p { margin: var(--space-1) 0 0; }\n\n.table-wrap { overflow-x: auto; }\n.actions-col { text-align: right; }\n\n@media (max-width: 768px) {\n  .page-head { flex-direction: column; }\n  .page-head .btn { width: 100%; }\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,WAAS;AACT,eAAa;AACb,mBAAiB;AACjB,OAAK,IAAI;AACT,iBAAe,IAAI;AACrB;AACA,CAPC,UAOU;AAAK,aAAW,IAAI;AAAU;AACzC,CARC,UAQU;AAAI,UAAQ,IAAI,WAAW,EAAE;AAAG;AAE3C,CAAC;AAAa,cAAY;AAAM;AAChC,CAAC;AAAc,cAAY;AAAO;AAElC,OAAO,CAAC,SAAS,EAAE;AACjB,GAdD;AAcc,oBAAgB;AAAQ;AACrC,GAfD,UAeY,CAAC;AAAM,WAAO;AAAM;AACjC;",
+  "names": []
+}

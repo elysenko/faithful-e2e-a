@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/dashboard/dashboard.component.css"],
+  "sourcesContent": [".stat { text-decoration: none; color: inherit; transition: box-shadow .15s, transform .05s; }\n.stat:hover { box-shadow: var(--shadow); text-decoration: none; }\n.stat:active { transform: scale(.99); }\n"],
+  "mappings": ";AAAA,CAAC;AAAO,mBAAiB;AAAM,SAAO;AAAS,cAAY,WAAW,IAAI,EAAE,UAAU;AAAM;AAC5F,CADC,IACI;AAAS,cAAY,IAAI;AAAW,mBAAiB;AAAM;AAChE,CAFC,IAEI;AAAU,aAAW,MAAM;AAAM;",
+  "names": []
+}

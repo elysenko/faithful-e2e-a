@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/admin/admin-settings.component.css"],
+  "sourcesContent": [".page-head { margin-bottom: var(--space-5); }\n.page-head h1 { font-size: var(--fs-xl); }\n\n.svc-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));\n  gap: var(--space-4);\n}\n\n.svc { padding: var(--space-5); }\n.svc-head {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: var(--space-2);\n}\n.svc-head h2 { font-size: var(--fs-lg); }\n.svc-key { font-family: var(--font-mono); font-size: var(--fs-xs); margin-bottom: var(--space-4); }\n\n.field { margin-bottom: var(--space-4); }\n.field-row { display: flex; gap: var(--space-2); align-items: stretch; }\n.field-row input { flex: 1; }\n.btn.sm { min-height: 44px; padding: 0 var(--space-3); font-size: var(--fs-xs); white-space: nowrap; }\n"],
+  "mappings": ";AAAA,CAAC;AAAY,iBAAe,IAAI;AAAY;AAC5C,CADC,UACU;AAAK,aAAW,IAAI;AAAU;AAEzC,CAAC;AACC,WAAS;AACT,yBAAuB,OAAO,SAAS,EAAE,OAAO,KAAK,EAAE;AACvD,OAAK,IAAI;AACX;AAEA,CAAC;AAAM,WAAS,IAAI;AAAY;AAChC,CAAC;AACC,WAAS;AACT,eAAa;AACb,mBAAiB;AACjB,OAAK,IAAI;AACX;AACA,CANC,SAMS;AAAK,aAAW,IAAI;AAAU;AACxC,CAAC;AAAU,eAAa,IAAI;AAAc,aAAW,IAAI;AAAU,iBAAe,IAAI;AAAY;AAElG,CAAC;AAAQ,iBAAe,IAAI;AAAY;AACxC,CAAC;AAAY,WAAS;AAAM,OAAK,IAAI;AAAY,eAAa;AAAS;AACvE,CADC,UACU;AAAQ,QAAM;AAAG;AAC5B,CAAC,GAAG,CAAC;AAAK,cAAY;AAAM,WAAS,EAAE,IAAI;AAAY,aAAW,IAAI;AAAU,eAAa;AAAQ;",
+  "names": []
+}

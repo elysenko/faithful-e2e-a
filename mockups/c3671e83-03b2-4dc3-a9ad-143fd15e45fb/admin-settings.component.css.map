@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/admin/admin-settings.component.css"],
+  "sourcesContent": [".service { padding: var(--sp-4); margin-bottom: var(--sp-4); max-width: 640px; }\n.service-head { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--sp-3); margin-bottom: var(--sp-4); }\n.service-head h2 { font-size: var(--fs-md); margin: 0 0 var(--sp-1); }\n.service-head .muted { margin: 0; font-size: var(--fs-sm); }\n.service-actions { display: flex; align-items: center; justify-content: flex-end; gap: var(--sp-3); margin-top: var(--sp-2); }\n.saved { color: var(--color-success); font-weight: 600; font-size: var(--fs-sm); }\n"],
+  "mappings": ";AAAA,CAAC;AAAU,WAAS,IAAI;AAAS,iBAAe,IAAI;AAAS,aAAW;AAAO;AAC/E,CAAC;AAAe,WAAS;AAAM,mBAAiB;AAAe,eAAa;AAAY,OAAK,IAAI;AAAS,iBAAe,IAAI;AAAS;AACtI,CADC,aACa;AAAK,aAAW,IAAI;AAAU,UAAQ,EAAE,EAAE,IAAI;AAAS;AACrE,CAFC,aAEa,CAAC;AAAQ,UAAQ;AAAG,aAAW,IAAI;AAAU;AAC3D,CAAC;AAAkB,WAAS;AAAM,eAAa;AAAQ,mBAAiB;AAAU,OAAK,IAAI;AAAS,cAAY,IAAI;AAAS;AAC7H,CAAC;AAAQ,SAAO,IAAI;AAAkB,eAAa;AAAK,aAAW,IAAI;AAAU;",
+  "names": []
+}

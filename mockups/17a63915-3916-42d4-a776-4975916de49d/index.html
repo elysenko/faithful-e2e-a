@@ -1,0 +1,4420 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Cloudline CRM</title>
+    <base href="/17a63915-3916-42d4-a776-4975916de49d/"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+  <link rel="stylesheet" href="styles-3OWEMOE2.css"></head>
+  <body>
+    <app-root></app-root>
+    <!-- Colossus feedback widget (host-agnostic; ships with every scaffolded app).
+         deploymentId + public ingest token substituted at build/deploy; icon gated live by the
+         Widget Mode toggle in Colossus. Works on any host; self-deduplicates with edge injection. -->
+    <script>window.__COLOSSUS_FEEDBACK__={d:"__COLOSSUS_DEPLOYMENT_ID__",token:"__COLOSSUS_FEEDBACK_TOKEN__"};</script>
+    <script src="https://colossus.athenconsult.com/ingest/v1/loader.js" defer=""></script>
+  <link rel="modulepreload" href="chunk-BBUAWB6P.js"><link rel="modulepreload" href="chunk-YZTMZEBD.js"><link rel="modulepreload" href="chunk-CXVND5PM.js"><script src="polyfills-5CFQRCPP.js" type="module"></script><script src="main-2XL4EOUK.js" type="module"></script><script data-picker="injected">
+window.__COLOSSUS_CFG__={"mockupId": "17a63915-3916-42d4-a776-4975916de49d", "annotateUrl": "https://mockups.athenconsult.com/annotate", "widgetMode": "all"};
+"use strict";
+(() => {
+  var __defProp = Object.defineProperty;
+  var __defProps = Object.defineProperties;
+  var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+  var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __propIsEnum = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+  var __spreadValues = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    if (__getOwnPropSymbols)
+      for (var prop of __getOwnPropSymbols(b)) {
+        if (__propIsEnum.call(b, prop))
+          __defNormalProp(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+  var __objRest = (source, exclude) => {
+    var target = {};
+    for (var prop in source)
+      if (__hasOwnProp.call(source, prop) && exclude.indexOf(prop) < 0)
+        target[prop] = source[prop];
+    if (source != null && __getOwnPropSymbols)
+      for (var prop of __getOwnPropSymbols(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum.call(source, prop))
+          target[prop] = source[prop];
+      }
+    return target;
+  };
+
+  // src/config/config.ts
+  var RT = typeof globalThis !== "undefined" && globalThis.__COLOSSUS_CFG__ || {};
+  function resolve(rt, token, sentinel) {
+    if (rt !== void 0 && rt !== null) return rt;
+    return token !== sentinel ? token : "";
+  }
+  var MOCKUP_ID = resolve(RT.mockupId, "17a63915-3916-42d4-a776-4975916de49d", "17a63915-3916-42d4-a776-4975916de49d");
+  var ANNOTATE_URL = resolve(RT.annotateUrl, "https://mockups.athenconsult.com/annotate", "https://mockups.athenconsult.com/annotate");
+  var ANNOTATE_TOKEN = resolve(RT.annotateToken, "__ANNOTATE_TOKEN__", "__ANNOTATE_TOKEN__");
+  var FEEDBACK_URL = resolve(RT.feedbackUrl, "__FEEDBACK_URL__", "__FEEDBACK_URL__");
+  var FEEDBACK_TOKEN = resolve(RT.feedbackToken, "__FEEDBACK_TOKEN__", "__FEEDBACK_TOKEN__");
+  function resolveStatusUrl() {
+    const s = resolve(RT.statusUrl, "__STATUS_URL__", "__STATUS_URL__");
+    if (s) return s;
+    return ANNOTATE_URL.replace("/annotate", "/status") + "?id=" + MOCKUP_ID;
+  }
+  function resolveWidgetMode() {
+    const m = resolve(RT.widgetMode, "__WIDGET_MODE__", "__WIDGET_MODE__");
+    return m || "all";
+  }
+  function hasFeedbackUrl() {
+    return !!FEEDBACK_URL;
+  }
+  function hasFeedbackToken() {
+    return !!FEEDBACK_TOKEN;
+  }
+  function isMockupMode() {
+    return !ANNOTATE_TOKEN && !FEEDBACK_TOKEN;
+  }
+  var STATUS_URL = resolveStatusUrl();
+
+  // src/dom/picker-ui.ts
+  var PICKER_UI_ATTR = "data-picker-ui";
+  function isPickerUi(el2) {
+    let cur = el2;
+    while (cur) {
+      if (cur.getAttribute && cur.getAttribute(PICKER_UI_ATTR) === "true") return true;
+      cur = cur.parentElement;
+    }
+    return false;
+  }
+  function markPickerUi(el2) {
+    el2.setAttribute(PICKER_UI_ATTR, "true");
+  }
+
+  // src/dom/styles.ts
+  var SHAKE_KEYFRAMES = "@keyframes pk-shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}";
+  var ANNOTATE_BTN_CSS = [
+    "position:fixed",
+    "bottom:16px",
+    "right:16px",
+    "z-index:99999",
+    "padding:9px 18px",
+    "background:#6366f1",
+    "color:#fff",
+    "border:none",
+    "border-radius:24px",
+    "font:600 13px/1 system-ui,sans-serif",
+    "cursor:grab",
+    "box-shadow:0 4px 14px rgba(99,102,241,.45)",
+    "touch-action:none"
+    // required: tells browser we own this touch, prevents scroll interference
+  ].join(";");
+  var FEEDBACK_BTN_CSS = [
+    "position:fixed",
+    "bottom:72px",
+    "right:16px",
+    "z-index:99999",
+    "padding:9px 18px",
+    "background:#10b981",
+    "color:#fff",
+    "border:none",
+    "border-radius:24px",
+    "font:600 13px/1 system-ui,sans-serif",
+    "cursor:grab",
+    "box-shadow:0 4px 14px rgba(16,185,129,.45)",
+    "touch-action:none"
+    // required: tells browser we own this touch, prevents scroll interference
+  ].join(";");
+  var OVERLAY_CSS = [
+    "position:fixed",
+    "bottom:80px",
+    "right:16px",
+    "width:340px",
+    "max-height:calc(100vh - 120px)",
+    "overflow:hidden",
+    "display:flex",
+    "flex-direction:column",
+    "z-index:99999",
+    "background:#1e1e2e",
+    "color:#f5f5f7",
+    "border:1px solid #333",
+    "border-radius:12px",
+    "padding:0 16px 16px 16px",
+    "font-family:system-ui,sans-serif",
+    "font-size:13px",
+    "box-shadow:0 8px 32px rgba(0,0,0,.5)",
+    "display:none"
+  ].join(";");
+  var SELECTING_HINT_CSS = "font-size:11px;color:#64748b;margin-bottom:10px";
+  var SEL_LIST_CSS = "flex:1;min-height:0;overflow-y:auto;";
+  var BROWSE_BTN_CSS = "width:100%;background:#334155;color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:13px;cursor:pointer;margin-bottom:8px;flex-shrink:0;";
+  var SELECTING_BTN_ROW_CSS = "margin-top:10px;display:flex;gap:8px;flex-shrink:0;";
+  var ADD_FEEDBACK_BTN_CSS = "padding:7px 14px;background:#6366f1;color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer;";
+  var GENERAL_NOTE_BTN_CSS = "padding:7px 14px;background:#334155;color:#f5f5f7;border:none;border-radius:8px;font-size:13px;cursor:pointer;";
+  var SEL_CANCEL_BTN_CSS = "padding:7px 14px;background:#475569;color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer;";
+  var PAUSE_NAV_BTN_CSS = "width:100%;background:#1e3a5f;color:#93c5fd;border:1px solid #2d5a8e;border-radius:8px;padding:7px 14px;font-size:13px;cursor:pointer;margin-bottom:8px;flex-shrink:0;";
+  var STACK_NAV_TITLE_CSS = "font-size:11px;color:#64748b;margin-bottom:6px";
+  var STACK_LIST_CSS = "list-style:none;margin:0 0 8px 0;padding:0;";
+  var STACK_BACK_BTN_CSS = "padding:7px 14px;background:#475569;color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer;";
+  var FEEDBACK_SUMMARY_CSS = "font-size:11px;color:#94a3b8;margin-bottom:8px";
+  var FEEDBACK_TEXTAREA_CSS = [
+    "width:100%",
+    "box-sizing:border-box",
+    "height:80px",
+    "background:#2a2a3e",
+    "color:#f5f5f7",
+    "border:1px solid #444",
+    "border-radius:8px",
+    "padding:8px 10px",
+    "font-size:13px",
+    "font-family:system-ui,sans-serif",
+    "resize:vertical",
+    "margin-bottom:10px"
+  ].join(";");
+  var RESEARCH_ROW_CSS = "display:flex;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;";
+  var RESEARCH_CHECKBOX_CSS = "width:14px;height:14px;cursor:pointer;accent-color:#6366f1;";
+  var ATTACH_CHIPS_CONTAINER_CSS = "display:none;margin-bottom:6px;";
+  var ATTACH_DROP_ZONE_CSS = [
+    "border:1px dashed #475569",
+    "border-radius:8px",
+    "padding:8px 10px",
+    "margin-bottom:8px",
+    "font-size:12px",
+    "color:#94a3b8",
+    "cursor:pointer",
+    "text-align:center",
+    "user-select:none",
+    "transition:border-color .15s,color .15s"
+  ].join(";");
+  var FEEDBACK_BTN_ROW_CSS = "display:flex;gap:8px";
+  var FEEDBACK_BACK_BTN_CSS = "padding:7px 14px;background:#475569;color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer;";
+  var ADD_TO_BATCH_BTN_CSS = "padding:7px 14px;background:#6366f1;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;";
+  var BATCH_TITLE_CSS = "font-size:11px;color:#64748b;margin-bottom:6px";
+  var BATCH_LIST_DIV_CSS = "max-height:160px;overflow-y:auto;";
+  var BATCH_BTN_COL_CSS = "margin-top:10px;display:flex;flex-direction:column;gap:8px";
+  var ADD_MORE_BTN_CSS = "padding:7px 14px;background:#475569;color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer;width:100%";
+  var SEND_ALL_BTN_CSS = "padding:7px 14px;background:#6366f1;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;width:100%";
+  var CANCEL_ALL_BTN_CSS = "padding:7px 14px;background:rgba(239,68,68,0.12);color:#f87171;border:1px solid rgba(239,68,68,0.3);border-radius:8px;font-size:13px;cursor:pointer;width:100%";
+  var MINIMIZE_BTN_CSS = "padding:7px 14px;background:#334155;color:#cbd5e1;border:none;border-radius:8px;font-size:13px;cursor:pointer;width:100%";
+  var STATUS_MSG_CSS = "margin-top:8px;font-size:12px;color:#86efac;display:none";
+  var BROWSE_FILTER_ROW_CSS = "display:flex;align-items:center;gap:8px;margin-bottom:8px";
+  var BROWSE_FILTER_CSS = "flex:1;background:#2a2a3e;color:#f5f5f7;border:1px solid #444;border-radius:8px;padding:6px 8px;font-size:12px;font-family:system-ui,sans-serif";
+  var BROWSE_LIST_DIV_CSS = "max-height:280px;overflow-y:auto;font-family:monospace;font-size:11px";
+  var BROWSE_BACK_BTN_CSS = "margin-top:8px;padding:6px 14px;background:#475569;color:#fff;border:none;border-radius:8px;font-size:12px;cursor:pointer";
+  var PANEL_DRAG_HANDLE_CSS = [
+    "margin:0 -16px 10px -16px",
+    "padding:7px 0 6px",
+    "text-align:center",
+    "cursor:grab",
+    "border-bottom:1px solid #2d2d3d",
+    "border-radius:12px 12px 0 0",
+    "color:#4a4a6a",
+    "font-size:18px",
+    "line-height:1",
+    "user-select:none",
+    "-webkit-user-select:none",
+    "touch-action:none",
+    // required: tells browser we own this touch, prevents scroll interference
+    "flex-shrink:0"
+  ].join(";");
+
+  // src/dom/sections.ts
+  function el(tag, opts = {}) {
+    const node = document.createElement(tag);
+    markPickerUi(node);
+    if (opts.id) node.id = opts.id;
+    if (opts.text !== void 0) node.textContent = opts.text;
+    if (opts.css !== void 0) node.style.cssText = opts.css;
+    if (opts.display !== void 0) node.style.display = opts.display;
+    return node;
+  }
+  function buildSelecting() {
+    const selectingSection = el("div", { id: "pk-selecting-section", display: "none" });
+    const selectingHint = el("div", {
+      css: SELECTING_HINT_CSS,
+      text: "Click elements to select. Click again to remove."
+    });
+    const selList = el("div", { id: "pk-sel-list", css: SEL_LIST_CSS });
+    const browseBtn = el("button", {
+      id: "pk-browse-btn",
+      text: "Browse all elements",
+      css: BROWSE_BTN_CSS
+    });
+    const selectingBtnRow = el("div", { css: SELECTING_BTN_ROW_CSS });
+    const addFeedbackBtn = el("button", {
+      id: "pk-add-feedback-btn",
+      text: "Add feedback \u2192",
+      css: ADD_FEEDBACK_BTN_CSS
+    });
+    const generalNoteBtn = el("button", {
+      id: "pk-general-note-btn",
+      text: "\uFF0B General note",
+      css: GENERAL_NOTE_BTN_CSS
+    });
+    const selCancelBtn = el("button", {
+      id: "pk-sel-cancel-btn",
+      text: "Cancel",
+      css: SEL_CANCEL_BTN_CSS
+    });
+    const pauseNavBtn = el("button", {
+      id: "pk-pause-nav-btn",
+      text: "\u23F8 Pause \u2014 navigate to another page",
+      css: PAUSE_NAV_BTN_CSS
+    });
+    selectingBtnRow.appendChild(addFeedbackBtn);
+    selectingBtnRow.appendChild(generalNoteBtn);
+    selectingBtnRow.appendChild(selCancelBtn);
+    selectingSection.appendChild(selectingHint);
+    selectingSection.appendChild(selList);
+    selectingSection.appendChild(browseBtn);
+    selectingSection.appendChild(pauseNavBtn);
+    selectingSection.appendChild(selectingBtnRow);
+    return {
+      selectingSection,
+      selectingHint,
+      selList,
+      browseBtn,
+      addFeedbackBtn,
+      generalNoteBtn,
+      selCancelBtn,
+      pauseNavBtn
+    };
+  }
+  function buildStackNav() {
+    const stackNavSection = el("div", { id: "pk-stacknav-section", display: "none" });
+    const stackNavTitle = el("div", { css: STACK_NAV_TITLE_CSS });
+    const stackList = el("ul", { id: "pk-stack-list", css: STACK_LIST_CSS });
+    const stackBackBtn = el("button", {
+      id: "pk-stack-back-btn",
+      text: "\u2190 Back",
+      css: STACK_BACK_BTN_CSS
+    });
+    stackNavSection.appendChild(stackNavTitle);
+    stackNavSection.appendChild(stackList);
+    stackNavSection.appendChild(stackBackBtn);
+    return { stackNavSection, stackNavTitle, stackList, stackBackBtn };
+  }
+  function buildFeedback() {
+    const feedbackSection = el("div", { id: "pk-feedback-section", display: "none" });
+    const feedbackSummary = el("div", { id: "pk-feedback-summary", css: FEEDBACK_SUMMARY_CSS });
+    const feedbackTextarea = el("textarea", {
+      id: "pk-feedback-textarea",
+      css: FEEDBACK_TEXTAREA_CSS
+    });
+    feedbackTextarea.placeholder = "What should change about these elements?";
+    const researchRow = el("div", { css: RESEARCH_ROW_CSS });
+    const researchCheckbox = el("input", {
+      id: "pk-research-checkbox",
+      css: RESEARCH_CHECKBOX_CSS
+    });
+    researchCheckbox.type = "checkbox";
+    const researchLabel = el("label", {
+      text: "\u{1F50D} Research this feedback before applying",
+      css: "font-size:12px;color:#94a3b8;cursor:pointer;user-select:none;"
+    });
+    researchLabel.setAttribute("for", "pk-research-checkbox");
+    researchRow.appendChild(researchCheckbox);
+    researchRow.appendChild(researchLabel);
+    const attachChipsContainer = el("div", {
+      id: "pk-attach-list",
+      css: ATTACH_CHIPS_CONTAINER_CSS
+    });
+    const attachDropZone = el("div", {
+      text: "\u{1F4CE} Drop files or click to attach (max 10 MB)",
+      css: ATTACH_DROP_ZONE_CSS
+    });
+    const attachFileInput = el("input", { display: "none" });
+    attachFileInput.type = "file";
+    attachFileInput.multiple = true;
+    attachFileInput.accept = "image/*,application/pdf,text/*";
+    const feedbackBtnRow = el("div", { css: FEEDBACK_BTN_ROW_CSS });
+    const feedbackBackBtn = el("button", {
+      id: "pk-feedback-back-btn",
+      text: "\u2190 Back",
+      css: FEEDBACK_BACK_BTN_CSS
+    });
+    const addToBatchBtn = el("button", {
+      id: "pk-add-to-batch-btn",
+      text: "Add to batch",
+      css: ADD_TO_BATCH_BTN_CSS
+    });
+    feedbackBtnRow.appendChild(feedbackBackBtn);
+    feedbackBtnRow.appendChild(addToBatchBtn);
+    feedbackSection.appendChild(feedbackSummary);
+    feedbackSection.appendChild(feedbackTextarea);
+    feedbackSection.appendChild(researchRow);
+    feedbackSection.appendChild(attachChipsContainer);
+    feedbackSection.appendChild(attachDropZone);
+    feedbackSection.appendChild(attachFileInput);
+    feedbackSection.appendChild(feedbackBtnRow);
+    return {
+      feedbackSection,
+      feedbackSummary,
+      feedbackTextarea,
+      researchRow,
+      researchCheckbox,
+      attachChipsContainer,
+      attachDropZone,
+      attachFileInput,
+      feedbackBackBtn,
+      addToBatchBtn
+    };
+  }
+  function buildBatchReview() {
+    const batchReviewSection = el("div", { id: "pk-batchreview-section", display: "none" });
+    const batchTitle = el("div", { css: BATCH_TITLE_CSS });
+    const batchListDiv = el("div", { id: "pk-batch-list", css: BATCH_LIST_DIV_CSS });
+    const batchBtnCol = el("div", { css: BATCH_BTN_COL_CSS });
+    const addMoreBtn = el("button", {
+      id: "pk-add-more-btn",
+      text: "\uFF0B Add more",
+      css: ADD_MORE_BTN_CSS
+    });
+    const sendAllBtn = el("button", {
+      id: "pk-send-all-btn",
+      text: "Send All (0)",
+      css: SEND_ALL_BTN_CSS
+    });
+    const cancelAllBtn = el("button", {
+      id: "pk-cancel-all-btn",
+      text: "Cancel all",
+      css: CANCEL_ALL_BTN_CSS
+    });
+    const minimizeBtn = el("button", {
+      id: "pk-minimize-btn",
+      text: "\u25BE Minimize \u2014 keep drafts",
+      css: MINIMIZE_BTN_CSS
+    });
+    batchBtnCol.appendChild(addMoreBtn);
+    batchBtnCol.appendChild(sendAllBtn);
+    batchBtnCol.appendChild(minimizeBtn);
+    batchBtnCol.appendChild(cancelAllBtn);
+    const statusMsg = el("div", { id: "pk-status-msg", css: STATUS_MSG_CSS });
+    batchReviewSection.appendChild(batchTitle);
+    batchReviewSection.appendChild(batchListDiv);
+    batchReviewSection.appendChild(batchBtnCol);
+    batchReviewSection.appendChild(statusMsg);
+    return {
+      batchReviewSection,
+      batchTitle,
+      batchListDiv,
+      addMoreBtn,
+      sendAllBtn,
+      cancelAllBtn,
+      minimizeBtn,
+      statusMsg
+    };
+  }
+  function buildBrowse() {
+    const browseSection = el("div", { id: "pk-browse-section", display: "none" });
+    const browseFilterRow = el("div", { css: BROWSE_FILTER_ROW_CSS });
+    const browseFilter = el("input", { id: "pk-browse-filter", css: BROWSE_FILTER_CSS });
+    browseFilter.type = "text";
+    browseFilter.placeholder = "Filter by tag, id, class...";
+    const browseListDiv = el("div", { id: "pk-browse-list", css: BROWSE_LIST_DIV_CSS });
+    const browseBackBtn = el("button", {
+      id: "pk-browse-back-btn",
+      text: "\u2190 Back",
+      css: BROWSE_BACK_BTN_CSS
+    });
+    browseFilterRow.appendChild(browseFilter);
+    browseSection.appendChild(browseFilterRow);
+    browseSection.appendChild(browseListDiv);
+    browseSection.appendChild(browseBackBtn);
+    return { browseSection, browseFilter, browseListDiv, browseBackBtn };
+  }
+  function buildSections(overlay) {
+    const selecting = buildSelecting();
+    const stackNav = buildStackNav();
+    const feedback = buildFeedback();
+    const batchReview = buildBatchReview();
+    const browse = buildBrowse();
+    overlay.appendChild(selecting.selectingSection);
+    overlay.appendChild(stackNav.stackNavSection);
+    overlay.appendChild(feedback.feedbackSection);
+    overlay.appendChild(batchReview.batchReviewSection);
+    overlay.appendChild(browse.browseSection);
+    return __spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues({}, selecting), stackNav), feedback), batchReview), browse);
+  }
+
+  // src/dom/build.ts
+  function buildWidgetDom(opts = {}) {
+    const nativeAnnotate = !!opts.nativeAnnotate;
+    const shakeStyle = document.createElement("style");
+    shakeStyle.textContent = SHAKE_KEYFRAMES;
+    document.head.appendChild(shakeStyle);
+    const annotateBtn = document.createElement("button");
+    markPickerUi(annotateBtn);
+    annotateBtn.textContent = "\u270F\uFE0F Annotate";
+    annotateBtn.style.cssText = ANNOTATE_BTN_CSS;
+    document.body.appendChild(annotateBtn);
+    const feedbackBtn = document.createElement("button");
+    markPickerUi(feedbackBtn);
+    feedbackBtn.textContent = "\u{1F4AC} Feedback";
+    feedbackBtn.style.cssText = FEEDBACK_BTN_CSS;
+    document.body.appendChild(feedbackBtn);
+    const resolvedMode = resolveWidgetMode();
+    if (resolvedMode === "feedback-only" || nativeAnnotate) {
+      annotateBtn.style.display = "none";
+    }
+    if (resolvedMode === "fix-only" || !hasFeedbackUrl()) {
+      feedbackBtn.style.display = "none";
+    }
+    const overlay = document.createElement("div");
+    markPickerUi(overlay);
+    overlay.style.cssText = OVERLAY_CSS;
+    document.body.appendChild(overlay);
+    const sections = buildSections(overlay);
+    const panelDragHandle = document.createElement("div");
+    markPickerUi(panelDragHandle);
+    panelDragHandle.style.cssText = PANEL_DRAG_HANDLE_CSS;
+    panelDragHandle.textContent = "\u2630";
+    overlay.insertBefore(panelDragHandle, overlay.firstChild);
+    return __spreadValues({
+      annotateBtn,
+      feedbackBtn,
+      overlay,
+      panelDragHandle
+    }, sections);
+  }
+
+  // src/state/widget-state.ts
+  function createWidgetState() {
+    return {
+      phase: "IDLE",
+      sessionKind: "annotate",
+      pendingSelections: [],
+      pendingAttachments: [],
+      batchItems: [],
+      editingOriginal: null,
+      feedbackIsGeneral: false,
+      feedbackResearch: false,
+      feedbackKind: "",
+      feedbackMustContain: "",
+      feedbackMustNotContain: ""
+    };
+  }
+  function cloneBatchItem(item) {
+    return {
+      feedback: item.feedback,
+      type: item.type,
+      research: item.research,
+      elements: item.elements.map((el2) => __spreadValues({}, el2)),
+      attachments: item.attachments.map((att) => __spreadValues({}, att)),
+      route: item.route,
+      kind: item.kind,
+      mustContain: item.mustContain,
+      mustNotContain: item.mustNotContain
+    };
+  }
+
+  // src/picking/runtime.ts
+  function createPickingRuntime() {
+    return {
+      hoveredEl: null,
+      stackElements: [],
+      stackHighlightedEl: null,
+      clickCount: 0,
+      lastClickPoint: null,
+      clickTimer: null,
+      previewEl: null,
+      longPressTimer: null,
+      longPressPoint: null,
+      longPressFired: false,
+      browseCache: null,
+      browseHoverEl: null
+    };
+  }
+  var OUTLINE_SELECTED = "2px solid #10b981";
+  var OUTLINE_PREVIEW = "2px dashed #6366f1";
+  var OUTLINE_HIGHLIGHT = "2px solid #6366f1";
+  var CLICK_DEBOUNCE_MS = 400;
+  var LONG_PRESS_MS = 400;
+  var LONG_PRESS_CANCEL_PX = 5;
+
+  // src/capture/capture.ts
+  function buildSelector(el2) {
+    let selector = el2.tagName.toLowerCase();
+    if (el2.id) {
+      selector += "#" + el2.id;
+    } else if (el2.classList && el2.classList.length > 0) {
+      selector += "." + el2.classList[0];
+    }
+    return selector;
+  }
+  function getXPath(el2) {
+    if (el2.id) return '//*[@id="' + el2.id + '"]';
+    const parts = [];
+    let current = el2;
+    while (current && current.nodeType === 1) {
+      const tag = current.tagName.toLowerCase();
+      const parent = current.parentElement;
+      if (!parent) {
+        parts.unshift(tag);
+        break;
+      }
+      const siblings = parent.children;
+      let sameTagCount = 0;
+      let posAmongSame = 1;
+      for (let i = 0; i < siblings.length; i++) {
+        if (siblings[i].tagName.toLowerCase() === tag) {
+          sameTagCount++;
+          if (siblings[i] === current) posAmongSame = sameTagCount;
+        }
+      }
+      parts.unshift(sameTagCount > 1 ? tag + "[" + posAmongSame + "]" : tag);
+      current = parent;
+    }
+    return "/" + parts.join("/");
+  }
+  function getComputedProp(el2, prop) {
+    try {
+      return window.getComputedStyle(el2).getPropertyValue(prop) || "";
+    } catch (e) {
+      return "";
+    }
+  }
+  function getCssVars(el2) {
+    const vars = [];
+    const seen = {};
+    try {
+      const sheets = document.styleSheets;
+      for (let si = 0; si < sheets.length; si++) {
+        let rules;
+        try {
+          rules = sheets[si].cssRules;
+        } catch (e) {
+          continue;
+        }
+        if (!rules) continue;
+        for (let ri = 0; ri < rules.length; ri++) {
+          const rule = rules[ri];
+          if (!rule.selectorText) continue;
+          try {
+            if (!el2.matches(rule.selectorText)) continue;
+          } catch (e) {
+            continue;
+          }
+          const cssText = rule.style ? rule.style.cssText : "";
+          const matches = cssText.match(/var\((--[a-z0-9-]+)/g) || [];
+          for (let mi = 0; mi < matches.length; mi++) {
+            const name = matches[mi].slice(4);
+            if (!seen[name]) {
+              seen[name] = true;
+              vars.push(name);
+            }
+          }
+        }
+      }
+    } catch (e) {
+    }
+    return vars;
+  }
+  function stackItemLabel(el2) {
+    const tag = el2.tagName.toLowerCase();
+    if (el2.id) return tag + "#" + el2.id;
+    if (el2.classList && el2.classList.length > 0) return tag + "." + el2.classList[0];
+    return tag;
+  }
+  function captureEnrichedMetadata(el2, data) {
+    try {
+      const testid = el2.getAttribute("data-testid") || el2.getAttribute("data-test") || "";
+      if (testid) data.data_testid = testid;
+      const ariaLabel = el2.getAttribute("aria-label") || "";
+      if (ariaLabel) data.aria_label = ariaLabel;
+      const titleAttr = el2.getAttribute("title") || "";
+      if (titleAttr) data.title_attr = titleAttr;
+      const text = (el2.textContent || "").trim().replace(/\s+/g, " ").slice(0, 120);
+      if (text) data.text = text;
+      const ancestors = [];
+      let node = el2;
+      while (node && node.tagName && ancestors.length < 6) {
+        const t = node.tagName.toLowerCase();
+        if (/^app-/.test(t)) ancestors.push(t);
+        node = node.parentElement;
+      }
+      if (ancestors.length) data.ancestor_selectors = ancestors;
+      const sourceLocEl = el2.closest && el2.closest("[data-source-loc]");
+      if (sourceLocEl) {
+        const loc = sourceLocEl.getAttribute("data-source-loc");
+        if (loc) data.data_source_loc = loc;
+      }
+    } catch (e) {
+    }
+  }
+  function captureElement(el2) {
+    const rect = el2.getBoundingClientRect();
+    const classes = el2.classList ? Array.from(el2.classList) : [];
+    const data = {
+      tag: el2.tagName.toLowerCase(),
+      id: el2.id || "",
+      classes,
+      selector: buildSelector(el2),
+      xpath: getXPath(el2),
+      outerHTML: (el2.outerHTML || "").substring(0, 600),
+      transform: getComputedProp(el2, "transform"),
+      position: getComputedProp(el2, "position"),
+      color: getComputedProp(el2, "color"),
+      background: getComputedProp(el2, "background"),
+      css_vars: getCssVars(el2),
+      rect: {
+        x: Math.round(rect.x),
+        y: Math.round(rect.y),
+        w: Math.round(rect.width),
+        h: Math.round(rect.height)
+      }
+    };
+    captureEnrichedMetadata(el2, data);
+    return data;
+  }
+
+  // src/picking/crosshair.ts
+  function clearHover(rt) {
+    if (rt.hoveredEl) {
+      rt.hoveredEl.style.outline = "";
+      rt.hoveredEl = null;
+    }
+  }
+  function clearStackHighlight(rt) {
+    if (rt.stackHighlightedEl) {
+      rt.stackHighlightedEl.style.outline = "";
+      rt.stackHighlightedEl = null;
+    }
+  }
+  function enterCrosshair() {
+    document.body.style.cursor = "crosshair";
+    document.body.setAttribute("data-picker-active", "true");
+  }
+  function exitCrosshair(rt) {
+    document.body.style.cursor = "";
+    document.body.removeAttribute("data-picker-active");
+    clearHover(rt);
+  }
+  function clearSelectionOutlines(state) {
+    for (let i = 0; i < state.pendingSelections.length; i++) {
+      const el2 = state.pendingSelections[i]._el;
+      if (el2) el2.style.outline = "";
+    }
+  }
+  function clearPreview(state, rt) {
+    if (rt.previewEl) {
+      const isSelected = state.pendingSelections.some((p) => p._el === rt.previewEl);
+      rt.previewEl.style.outline = isSelected ? OUTLINE_SELECTED : "";
+      rt.previewEl = null;
+    }
+  }
+  function setPreview(state, rt, el2) {
+    clearPreview(state, rt);
+    if (el2) {
+      rt.previewEl = el2;
+      el2.style.outline = OUTLINE_PREVIEW;
+    }
+  }
+  function installHoverHandlers(doc, state, rt) {
+    const onOver = (e) => {
+      if (state.phase !== "SELECTING") return;
+      const target = e.target;
+      if (isPickerUi(target)) return;
+      if (state.pendingSelections.some((p) => p._el === target)) return;
+      clearHover(rt);
+      rt.hoveredEl = target;
+      target.style.outline = OUTLINE_HIGHLIGHT;
+    };
+    const onOut = (e) => {
+      if (state.phase !== "SELECTING") return;
+      if (isPickerUi(e.target)) return;
+      if (rt.hoveredEl === e.target) clearHover(rt);
+    };
+    doc.addEventListener("mouseover", onOver, true);
+    doc.addEventListener("mouseout", onOut, true);
+    return () => {
+      doc.removeEventListener("mouseover", onOver, true);
+      doc.removeEventListener("mouseout", onOut, true);
+    };
+  }
+
+  // node_modules/modern-screenshot/dist/index.mjs
+  function changeJpegDpi(uint8Array, dpi) {
+    uint8Array[13] = 1;
+    uint8Array[14] = dpi >> 8;
+    uint8Array[15] = dpi & 255;
+    uint8Array[16] = dpi >> 8;
+    uint8Array[17] = dpi & 255;
+    return uint8Array;
+  }
+  var _P = "p".charCodeAt(0);
+  var _H = "H".charCodeAt(0);
+  var _Y = "Y".charCodeAt(0);
+  var _S = "s".charCodeAt(0);
+  var pngDataTable;
+  function createPngDataTable() {
+    const crcTable = new Int32Array(256);
+    for (let n = 0; n < 256; n++) {
+      let c = n;
+      for (let k = 0; k < 8; k++) {
+        c = c & 1 ? 3988292384 ^ c >>> 1 : c >>> 1;
+      }
+      crcTable[n] = c;
+    }
+    return crcTable;
+  }
+  function calcCrc(uint8Array) {
+    let c = -1;
+    if (!pngDataTable)
+      pngDataTable = createPngDataTable();
+    for (let n = 0; n < uint8Array.length; n++) {
+      c = pngDataTable[(c ^ uint8Array[n]) & 255] ^ c >>> 8;
+    }
+    return c ^ -1;
+  }
+  function searchStartOfPhys(uint8Array) {
+    const length = uint8Array.length - 1;
+    for (let i = length; i >= 4; i--) {
+      if (uint8Array[i - 4] === 9 && uint8Array[i - 3] === _P && uint8Array[i - 2] === _H && uint8Array[i - 1] === _Y && uint8Array[i] === _S) {
+        return i - 3;
+      }
+    }
+    return 0;
+  }
+  function changePngDpi(uint8Array, dpi, overwritepHYs = false) {
+    const physChunk = new Uint8Array(13);
+    dpi *= 39.3701;
+    physChunk[0] = _P;
+    physChunk[1] = _H;
+    physChunk[2] = _Y;
+    physChunk[3] = _S;
+    physChunk[4] = dpi >>> 24;
+    physChunk[5] = dpi >>> 16;
+    physChunk[6] = dpi >>> 8;
+    physChunk[7] = dpi & 255;
+    physChunk[8] = physChunk[4];
+    physChunk[9] = physChunk[5];
+    physChunk[10] = physChunk[6];
+    physChunk[11] = physChunk[7];
+    physChunk[12] = 1;
+    const crc = calcCrc(physChunk);
+    const crcChunk = new Uint8Array(4);
+    crcChunk[0] = crc >>> 24;
+    crcChunk[1] = crc >>> 16;
+    crcChunk[2] = crc >>> 8;
+    crcChunk[3] = crc & 255;
+    if (overwritepHYs) {
+      const startingIndex = searchStartOfPhys(uint8Array);
+      uint8Array.set(physChunk, startingIndex);
+      uint8Array.set(crcChunk, startingIndex + 13);
+      return uint8Array;
+    } else {
+      const chunkLength = new Uint8Array(4);
+      chunkLength[0] = 0;
+      chunkLength[1] = 0;
+      chunkLength[2] = 0;
+      chunkLength[3] = 9;
+      const finalHeader = new Uint8Array(54);
+      finalHeader.set(uint8Array, 0);
+      finalHeader.set(chunkLength, 33);
+      finalHeader.set(physChunk, 37);
+      finalHeader.set(crcChunk, 50);
+      return finalHeader;
+    }
+  }
+  var PREFIX = "[modern-screenshot]";
+  var IN_BROWSER = typeof window !== "undefined";
+  var SUPPORT_WEB_WORKER = IN_BROWSER && "Worker" in window;
+  var SUPPORT_ATOB = IN_BROWSER && "atob" in window;
+  var SUPPORT_BTOA = IN_BROWSER && "btoa" in window;
+  var _a;
+  var USER_AGENT = IN_BROWSER ? (_a = window.navigator) == null ? void 0 : _a.userAgent : "";
+  var IN_CHROME = USER_AGENT.includes("Chrome");
+  var IN_SAFARI = USER_AGENT.includes("AppleWebKit") && !IN_CHROME;
+  var IN_FIREFOX = USER_AGENT.includes("Firefox");
+  var isContext = (value) => value && "__CONTEXT__" in value;
+  var isCssFontFaceRule = (rule) => rule.constructor.name === "CSSFontFaceRule";
+  var isCSSImportRule = (rule) => rule.constructor.name === "CSSImportRule";
+  var isLayerBlockRule = (rule) => rule.constructor.name === "CSSLayerBlockRule";
+  var isElementNode = (node) => node.nodeType === 1;
+  var isSVGElementNode = (node) => typeof node.className === "object";
+  var isSVGImageElementNode = (node) => node.tagName === "image";
+  var isSVGUseElementNode = (node) => node.tagName === "use";
+  var isHTMLElementNode = (node) => isElementNode(node) && typeof node.style !== "undefined" && !isSVGElementNode(node);
+  var isCommentNode = (node) => node.nodeType === 8;
+  var isTextNode = (node) => node.nodeType === 3;
+  var isImageElement = (node) => node.tagName === "IMG";
+  var isVideoElement = (node) => node.tagName === "VIDEO";
+  var isCanvasElement = (node) => node.tagName === "CANVAS";
+  var isTextareaElement = (node) => node.tagName === "TEXTAREA";
+  var isInputElement = (node) => node.tagName === "INPUT";
+  var isStyleElement = (node) => node.tagName === "STYLE";
+  var isScriptElement = (node) => node.tagName === "SCRIPT";
+  var isSelectElement = (node) => node.tagName === "SELECT";
+  var isSlotElement = (node) => node.tagName === "SLOT";
+  var isIFrameElement = (node) => node.tagName === "IFRAME";
+  var consoleWarn = (...args) => console.warn(PREFIX, ...args);
+  function supportWebp(ownerDocument) {
+    var _a2;
+    const canvas = (_a2 = ownerDocument == null ? void 0 : ownerDocument.createElement) == null ? void 0 : _a2.call(ownerDocument, "canvas");
+    if (canvas) {
+      canvas.height = canvas.width = 1;
+    }
+    return Boolean(canvas) && "toDataURL" in canvas && Boolean(canvas.toDataURL("image/webp").includes("image/webp"));
+  }
+  var isDataUrl = (url) => url.startsWith("data:");
+  function resolveUrl(url, baseUrl) {
+    if (url.match(/^[a-z]+:\/\//i))
+      return url;
+    if (IN_BROWSER && url.match(/^\/\//))
+      return window.location.protocol + url;
+    if (url.match(/^[a-z]+:/i))
+      return url;
+    if (!IN_BROWSER)
+      return url;
+    const doc = getDocument().implementation.createHTMLDocument();
+    const base = doc.createElement("base");
+    const a = doc.createElement("a");
+    doc.head.appendChild(base);
+    doc.body.appendChild(a);
+    if (baseUrl)
+      base.href = baseUrl;
+    a.href = url;
+    return a.href;
+  }
+  function getDocument(target) {
+    var _a2;
+    return (_a2 = target && isElementNode(target) ? target == null ? void 0 : target.ownerDocument : target) != null ? _a2 : window.document;
+  }
+  var XMLNS = "http://www.w3.org/2000/svg";
+  function createSvg(width, height, ownerDocument) {
+    const svg = getDocument(ownerDocument).createElementNS(XMLNS, "svg");
+    svg.setAttributeNS(null, "width", width.toString());
+    svg.setAttributeNS(null, "height", height.toString());
+    svg.setAttributeNS(null, "viewBox", `0 0 ${width} ${height}`);
+    return svg;
+  }
+  function svgToDataUrl(svg, removeControlCharacter) {
+    let xhtml = new XMLSerializer().serializeToString(svg);
+    if (removeControlCharacter) {
+      xhtml = xhtml.replace(/[\u0000-\u0008\v\f\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]/gu, "");
+    }
+    return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(xhtml)}`;
+  }
+  async function canvasToBlob(canvas, type = "image/png", quality = 1) {
+    try {
+      return await new Promise((resolve2, reject) => {
+        canvas.toBlob((blob) => {
+          if (blob) {
+            resolve2(blob);
+          } else {
+            reject(new Error("Blob is null"));
+          }
+        }, type, quality);
+      });
+    } catch (error) {
+      if (SUPPORT_ATOB) {
+        return dataUrlToBlob(canvas.toDataURL(type, quality));
+      }
+      throw error;
+    }
+  }
+  function dataUrlToBlob(dataUrl) {
+    var _a2, _b;
+    const [header, base64] = dataUrl.split(",");
+    const type = (_b = (_a2 = header.match(/data:(.+);/)) == null ? void 0 : _a2[1]) != null ? _b : void 0;
+    const decoded = window.atob(base64);
+    const length = decoded.length;
+    const buffer2 = new Uint8Array(length);
+    for (let i = 0; i < length; i += 1) {
+      buffer2[i] = decoded.charCodeAt(i);
+    }
+    return new Blob([buffer2], { type });
+  }
+  function readBlob(blob, type) {
+    return new Promise((resolve2, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve2(reader.result);
+      reader.onerror = () => reject(reader.error);
+      reader.onabort = () => reject(new Error(`Failed read blob to ${type}`));
+      if (type === "dataUrl") {
+        reader.readAsDataURL(blob);
+      } else if (type === "arrayBuffer") {
+        reader.readAsArrayBuffer(blob);
+      }
+    });
+  }
+  var blobToDataUrl = (blob) => readBlob(blob, "dataUrl");
+  var blobToArrayBuffer = (blob) => readBlob(blob, "arrayBuffer");
+  function createImage(url, ownerDocument) {
+    const img = getDocument(ownerDocument).createElement("img");
+    img.decoding = "sync";
+    img.loading = "eager";
+    img.src = url;
+    return img;
+  }
+  function loadMedia(media, options) {
+    return new Promise((resolve2) => {
+      const { timeout, ownerDocument, onError: userOnError, onWarn } = options != null ? options : {};
+      const node = typeof media === "string" ? createImage(media, getDocument(ownerDocument)) : media;
+      let timer2 = null;
+      let removeEventListeners = null;
+      function onResolve() {
+        resolve2(node);
+        timer2 && clearTimeout(timer2);
+        removeEventListeners == null ? void 0 : removeEventListeners();
+      }
+      if (timeout) {
+        timer2 = setTimeout(onResolve, timeout);
+      }
+      if (isVideoElement(node)) {
+        const currentSrc = node.currentSrc || node.src;
+        if (!currentSrc) {
+          if (node.poster) {
+            return loadMedia(node.poster, options).then(resolve2);
+          }
+          return onResolve();
+        }
+        if (node.readyState >= 2) {
+          return onResolve();
+        }
+        const onLoadeddata = onResolve;
+        const onError = (error) => {
+          onWarn == null ? void 0 : onWarn(
+            "Failed video load",
+            currentSrc,
+            error
+          );
+          userOnError == null ? void 0 : userOnError(error);
+          onResolve();
+        };
+        removeEventListeners = () => {
+          node.removeEventListener("loadeddata", onLoadeddata);
+          node.removeEventListener("error", onError);
+        };
+        node.addEventListener("loadeddata", onLoadeddata, { once: true });
+        node.addEventListener("error", onError, { once: true });
+      } else {
+        const currentSrc = isSVGImageElementNode(node) ? node.href.baseVal : node.currentSrc || node.src;
+        if (!currentSrc) {
+          return onResolve();
+        }
+        const onLoad = async () => {
+          if (isImageElement(node) && "decode" in node) {
+            try {
+              await node.decode();
+            } catch (error) {
+              onWarn == null ? void 0 : onWarn(
+                "Failed to decode image, trying to render anyway",
+                node.dataset.originalSrc || currentSrc,
+                error
+              );
+            }
+          }
+          onResolve();
+        };
+        const onError = (error) => {
+          onWarn == null ? void 0 : onWarn(
+            "Failed image load",
+            node.dataset.originalSrc || currentSrc,
+            error
+          );
+          onResolve();
+        };
+        if (isImageElement(node) && node.complete) {
+          return onLoad();
+        }
+        removeEventListeners = () => {
+          node.removeEventListener("load", onLoad);
+          node.removeEventListener("error", onError);
+        };
+        node.addEventListener("load", onLoad, { once: true });
+        node.addEventListener("error", onError, { once: true });
+      }
+    });
+  }
+  async function waitUntilLoad(node, options) {
+    if (isHTMLElementNode(node)) {
+      if (isImageElement(node) || isVideoElement(node)) {
+        await loadMedia(node, options);
+      } else {
+        await Promise.all(
+          ["img", "video"].flatMap((selectors) => {
+            return Array.from(node.querySelectorAll(selectors)).map((el2) => loadMedia(el2, options));
+          })
+        );
+      }
+    }
+  }
+  var uuid = /* @__PURE__ */ (function uuid2() {
+    let counter = 0;
+    const random = () => `0000${(Math.random() * 36 ** 4 << 0).toString(36)}`.slice(-4);
+    return () => {
+      counter += 1;
+      return `u${random()}${counter}`;
+    };
+  })();
+  function splitFontFamily(fontFamily) {
+    return fontFamily == null ? void 0 : fontFamily.split(",").map((val) => val.trim().replace(/"|'/g, "").toLowerCase()).filter(Boolean);
+  }
+  var uid = 0;
+  function createLogger(debug) {
+    const prefix = `${PREFIX}[#${uid}]`;
+    uid++;
+    return {
+      // eslint-disable-next-line no-console
+      time: (label) => debug && console.time(`${prefix} ${label}`),
+      // eslint-disable-next-line no-console
+      timeEnd: (label) => debug && console.timeEnd(`${prefix} ${label}`),
+      warn: (...args) => debug && consoleWarn(...args)
+    };
+  }
+  function getDefaultRequestInit(bypassingCache) {
+    return {
+      cache: bypassingCache ? "no-cache" : "force-cache"
+    };
+  }
+  async function orCreateContext(node, options) {
+    return isContext(node) ? node : createContext(node, __spreadProps(__spreadValues({}, options), { autoDestruct: true }));
+  }
+  async function createContext(node, options) {
+    var _a2, _b, _c, _d, _e;
+    const { scale = 1, workerUrl, workerNumber = 1 } = options || {};
+    const debug = Boolean(options == null ? void 0 : options.debug);
+    const features = (_a2 = options == null ? void 0 : options.features) != null ? _a2 : true;
+    const ownerDocument = (_b = node.ownerDocument) != null ? _b : IN_BROWSER ? window.document : void 0;
+    const ownerWindow = (_d = (_c = node.ownerDocument) == null ? void 0 : _c.defaultView) != null ? _d : IN_BROWSER ? window : void 0;
+    const requests = /* @__PURE__ */ new Map();
+    const context = __spreadProps(__spreadValues({
+      // Options
+      width: 0,
+      height: 0,
+      quality: 1,
+      type: "image/png",
+      scale,
+      backgroundColor: null,
+      style: null,
+      filter: null,
+      maximumCanvasSize: 0,
+      timeout: 3e4,
+      progress: null,
+      debug,
+      fetch: __spreadValues({
+        requestInit: getDefaultRequestInit((_e = options == null ? void 0 : options.fetch) == null ? void 0 : _e.bypassingCache),
+        placeholderImage: "data:image/png;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+        bypassingCache: false
+      }, options == null ? void 0 : options.fetch),
+      fetchFn: null,
+      font: {},
+      drawImageInterval: 100,
+      workerUrl: null,
+      workerNumber,
+      onCloneEachNode: null,
+      onCloneNode: null,
+      onEmbedNode: null,
+      onCreateForeignObjectSvg: null,
+      includeStyleProperties: null,
+      autoDestruct: false
+    }, options), {
+      // InternalContext
+      __CONTEXT__: true,
+      log: createLogger(debug),
+      node,
+      ownerDocument,
+      ownerWindow,
+      dpi: scale === 1 ? null : 96 * scale,
+      svgStyleElement: createStyleElement(ownerDocument),
+      svgDefsElement: ownerDocument == null ? void 0 : ownerDocument.createElementNS(XMLNS, "defs"),
+      svgStyles: /* @__PURE__ */ new Map(),
+      defaultComputedStyles: /* @__PURE__ */ new Map(),
+      workers: [
+        ...Array.from({
+          length: SUPPORT_WEB_WORKER && workerUrl && workerNumber ? workerNumber : 0
+        })
+      ].map(() => {
+        try {
+          const worker = new Worker(workerUrl);
+          worker.onmessage = async (event) => {
+            var _a3, _b2, _c2, _d2;
+            const { url, result } = event.data;
+            if (result) {
+              (_b2 = (_a3 = requests.get(url)) == null ? void 0 : _a3.resolve) == null ? void 0 : _b2.call(_a3, result);
+            } else {
+              (_d2 = (_c2 = requests.get(url)) == null ? void 0 : _c2.reject) == null ? void 0 : _d2.call(_c2, new Error(`Error receiving message from worker: ${url}`));
+            }
+          };
+          worker.onmessageerror = (event) => {
+            var _a3, _b2;
+            const { url } = event.data;
+            (_b2 = (_a3 = requests.get(url)) == null ? void 0 : _a3.reject) == null ? void 0 : _b2.call(_a3, new Error(`Error receiving message from worker: ${url}`));
+          };
+          return worker;
+        } catch (error) {
+          context.log.warn("Failed to new Worker", error);
+          return null;
+        }
+      }).filter(Boolean),
+      fontFamilies: /* @__PURE__ */ new Map(),
+      fontCssTexts: /* @__PURE__ */ new Map(),
+      acceptOfImage: `${[
+        supportWebp(ownerDocument) && "image/webp",
+        "image/svg+xml",
+        "image/*",
+        "*/*"
+      ].filter(Boolean).join(",")};q=0.8`,
+      requests,
+      drawImageCount: 0,
+      tasks: [],
+      features,
+      isEnable: (key) => {
+        var _a3, _b2;
+        if (key === "restoreScrollPosition") {
+          return typeof features === "boolean" ? false : (_a3 = features[key]) != null ? _a3 : false;
+        }
+        if (typeof features === "boolean") {
+          return features;
+        }
+        return (_b2 = features[key]) != null ? _b2 : true;
+      },
+      shadowRoots: []
+    });
+    context.log.time("wait until load");
+    await waitUntilLoad(node, { timeout: context.timeout, onWarn: context.log.warn });
+    context.log.timeEnd("wait until load");
+    const { width, height } = resolveBoundingBox(node, context);
+    context.width = width;
+    context.height = height;
+    return context;
+  }
+  function createStyleElement(ownerDocument) {
+    if (!ownerDocument)
+      return void 0;
+    const style = ownerDocument.createElement("style");
+    const cssText = style.ownerDocument.createTextNode(`
+.______background-clip--text {
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+`);
+    style.appendChild(cssText);
+    return style;
+  }
+  function resolveBoundingBox(node, context) {
+    let { width, height } = context;
+    if (isElementNode(node) && (!width || !height)) {
+      const box = node.getBoundingClientRect();
+      width = width || box.width || Number(node.getAttribute("width")) || 0;
+      height = height || box.height || Number(node.getAttribute("height")) || 0;
+    }
+    return { width, height };
+  }
+  async function imageToCanvas(image, context) {
+    const {
+      log,
+      timeout,
+      drawImageCount,
+      drawImageInterval
+    } = context;
+    log.time("image to canvas");
+    const loaded = await loadMedia(image, { timeout, onWarn: context.log.warn });
+    const { canvas, context2d } = createCanvas(image.ownerDocument, context);
+    const drawImage = () => {
+      try {
+        context2d == null ? void 0 : context2d.drawImage(loaded, 0, 0, canvas.width, canvas.height);
+      } catch (error) {
+        context.log.warn("Failed to drawImage", error);
+      }
+    };
+    drawImage();
+    if (context.isEnable("fixSvgXmlDecode")) {
+      for (let i = 0; i < drawImageCount; i++) {
+        await new Promise((resolve2) => {
+          setTimeout(() => {
+            context2d == null ? void 0 : context2d.clearRect(0, 0, canvas.width, canvas.height);
+            drawImage();
+            resolve2();
+          }, i + drawImageInterval);
+        });
+      }
+    }
+    context.drawImageCount = 0;
+    log.timeEnd("image to canvas");
+    return canvas;
+  }
+  function createCanvas(ownerDocument, context) {
+    const { width, height, scale, backgroundColor, maximumCanvasSize: max } = context;
+    const canvas = ownerDocument.createElement("canvas");
+    canvas.width = Math.floor(width * scale);
+    canvas.height = Math.floor(height * scale);
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    if (max) {
+      if (canvas.width > max || canvas.height > max) {
+        if (canvas.width > max && canvas.height > max) {
+          if (canvas.width > canvas.height) {
+            canvas.height *= max / canvas.width;
+            canvas.width = max;
+          } else {
+            canvas.width *= max / canvas.height;
+            canvas.height = max;
+          }
+        } else if (canvas.width > max) {
+          canvas.height *= max / canvas.width;
+          canvas.width = max;
+        } else {
+          canvas.width *= max / canvas.height;
+          canvas.height = max;
+        }
+      }
+    }
+    const context2d = canvas.getContext("2d");
+    if (context2d && backgroundColor) {
+      context2d.fillStyle = backgroundColor;
+      context2d.fillRect(0, 0, canvas.width, canvas.height);
+    }
+    return { canvas, context2d };
+  }
+  function cloneCanvas(canvas, context) {
+    if (canvas.ownerDocument) {
+      try {
+        const dataURL = canvas.toDataURL();
+        if (dataURL !== "data:,") {
+          return createImage(dataURL, canvas.ownerDocument);
+        }
+      } catch (error) {
+        context.log.warn("Failed to clone canvas", error);
+      }
+    }
+    const cloned = canvas.cloneNode(false);
+    const ctx = canvas.getContext("2d");
+    const clonedCtx = cloned.getContext("2d");
+    try {
+      if (ctx && clonedCtx) {
+        clonedCtx.putImageData(
+          ctx.getImageData(0, 0, canvas.width, canvas.height),
+          0,
+          0
+        );
+      }
+      return cloned;
+    } catch (error) {
+      context.log.warn("Failed to clone canvas", error);
+    }
+    return cloned;
+  }
+  function cloneIframe(iframe, context) {
+    var _a2;
+    try {
+      if ((_a2 = iframe == null ? void 0 : iframe.contentDocument) == null ? void 0 : _a2.documentElement) {
+        return cloneNode(iframe.contentDocument.documentElement, context);
+      }
+    } catch (error) {
+      context.log.warn("Failed to clone iframe", error);
+    }
+    return iframe.cloneNode(false);
+  }
+  function cloneImage(image) {
+    const cloned = image.cloneNode(false);
+    if (image.currentSrc && image.currentSrc !== image.src) {
+      cloned.src = image.currentSrc;
+      cloned.srcset = "";
+    }
+    if (cloned.loading === "lazy") {
+      cloned.loading = "eager";
+    }
+    return cloned;
+  }
+  async function cloneVideo(video, context) {
+    if (video.ownerDocument && !video.currentSrc && video.poster) {
+      return createImage(video.poster, video.ownerDocument);
+    }
+    const cloned = video.cloneNode(false);
+    cloned.crossOrigin = "anonymous";
+    if (video.currentSrc && video.currentSrc !== video.src) {
+      cloned.src = video.currentSrc;
+    }
+    const ownerDocument = cloned.ownerDocument;
+    if (ownerDocument) {
+      let canPlay = true;
+      await loadMedia(cloned, { onError: () => canPlay = false, onWarn: context.log.warn });
+      if (!canPlay) {
+        if (video.poster) {
+          return createImage(video.poster, video.ownerDocument);
+        }
+        return cloned;
+      }
+      cloned.currentTime = video.currentTime;
+      await new Promise((resolve2) => {
+        cloned.addEventListener("seeked", resolve2, { once: true });
+      });
+      const canvas = ownerDocument.createElement("canvas");
+      canvas.width = video.offsetWidth;
+      canvas.height = video.offsetHeight;
+      try {
+        const ctx = canvas.getContext("2d");
+        if (ctx)
+          ctx.drawImage(cloned, 0, 0, canvas.width, canvas.height);
+      } catch (error) {
+        context.log.warn("Failed to clone video", error);
+        if (video.poster) {
+          return createImage(video.poster, video.ownerDocument);
+        }
+        return cloned;
+      }
+      return cloneCanvas(canvas, context);
+    }
+    return cloned;
+  }
+  function cloneElement(node, context) {
+    if (isCanvasElement(node)) {
+      return cloneCanvas(node, context);
+    }
+    if (isIFrameElement(node)) {
+      return cloneIframe(node, context);
+    }
+    if (isImageElement(node)) {
+      return cloneImage(node);
+    }
+    if (isVideoElement(node)) {
+      return cloneVideo(node, context);
+    }
+    return node.cloneNode(false);
+  }
+  function getSandBox(context) {
+    let sandbox = context.sandbox;
+    if (!sandbox) {
+      const { ownerDocument } = context;
+      try {
+        if (ownerDocument) {
+          sandbox = ownerDocument.createElement("iframe");
+          sandbox.id = `__SANDBOX__${uuid()}`;
+          sandbox.width = "0";
+          sandbox.height = "0";
+          sandbox.style.visibility = "hidden";
+          sandbox.style.position = "fixed";
+          ownerDocument.body.appendChild(sandbox);
+          sandbox.srcdoc = '<!DOCTYPE html><meta charset="UTF-8"><title></title><body>';
+          context.sandbox = sandbox;
+        }
+      } catch (error) {
+        context.log.warn("Failed to getSandBox", error);
+      }
+    }
+    return sandbox;
+  }
+  var ignoredStyles = [
+    "width",
+    "height",
+    "-webkit-text-fill-color"
+  ];
+  var includedAttributes = [
+    "stroke",
+    "fill"
+  ];
+  function getDefaultStyle(node, pseudoElement, context) {
+    const { defaultComputedStyles } = context;
+    const nodeName = node.nodeName.toLowerCase();
+    const isSvgNode = isSVGElementNode(node) && nodeName !== "svg";
+    const attributes = isSvgNode ? includedAttributes.map((name) => [name, node.getAttribute(name)]).filter(([, value]) => value !== null) : [];
+    const key = [
+      isSvgNode && "svg",
+      nodeName,
+      attributes.map((name, value) => `${name}=${value}`).join(","),
+      pseudoElement
+    ].filter(Boolean).join(":");
+    if (defaultComputedStyles.has(key))
+      return defaultComputedStyles.get(key);
+    const sandbox = getSandBox(context);
+    const sandboxWindow = sandbox == null ? void 0 : sandbox.contentWindow;
+    if (!sandboxWindow)
+      return /* @__PURE__ */ new Map();
+    const sandboxDocument = sandboxWindow == null ? void 0 : sandboxWindow.document;
+    let root;
+    let el2;
+    if (isSvgNode) {
+      root = sandboxDocument.createElementNS(XMLNS, "svg");
+      el2 = root.ownerDocument.createElementNS(root.namespaceURI, nodeName);
+      attributes.forEach(([name, value]) => {
+        el2.setAttributeNS(null, name, value);
+      });
+      root.appendChild(el2);
+    } else {
+      root = el2 = sandboxDocument.createElement(nodeName);
+    }
+    el2.textContent = " ";
+    sandboxDocument.body.appendChild(root);
+    const computedStyle = sandboxWindow.getComputedStyle(el2, pseudoElement);
+    const styles = /* @__PURE__ */ new Map();
+    for (let len = computedStyle.length, i = 0; i < len; i++) {
+      const name = computedStyle.item(i);
+      if (ignoredStyles.includes(name))
+        continue;
+      styles.set(name, computedStyle.getPropertyValue(name));
+    }
+    sandboxDocument.body.removeChild(root);
+    defaultComputedStyles.set(key, styles);
+    return styles;
+  }
+  function getDiffStyle(style, defaultStyle, includeStyleProperties) {
+    var _a2;
+    const diffStyle = /* @__PURE__ */ new Map();
+    const prefixs = [];
+    const prefixTree = /* @__PURE__ */ new Map();
+    if (includeStyleProperties) {
+      for (const name of includeStyleProperties) {
+        applyTo(name);
+      }
+    } else {
+      for (let len = style.length, i = 0; i < len; i++) {
+        const name = style.item(i);
+        applyTo(name);
+      }
+    }
+    for (let len = prefixs.length, i = 0; i < len; i++) {
+      (_a2 = prefixTree.get(prefixs[i])) == null ? void 0 : _a2.forEach((value, name) => diffStyle.set(name, value));
+    }
+    function applyTo(name) {
+      const value = style.getPropertyValue(name);
+      const priority = style.getPropertyPriority(name);
+      const subIndex = name.lastIndexOf("-");
+      const prefix = subIndex > -1 ? name.substring(0, subIndex) : void 0;
+      if (prefix) {
+        let map = prefixTree.get(prefix);
+        if (!map) {
+          map = /* @__PURE__ */ new Map();
+          prefixTree.set(prefix, map);
+        }
+        map.set(name, [value, priority]);
+      }
+      if (defaultStyle.get(name) === value && !priority)
+        return;
+      if (prefix) {
+        prefixs.push(prefix);
+      } else {
+        diffStyle.set(name, [value, priority]);
+      }
+    }
+    return diffStyle;
+  }
+  function copyCssStyles(node, cloned, isRoot, context) {
+    var _a2, _b, _c, _d;
+    const { ownerWindow, includeStyleProperties, currentParentNodeStyle } = context;
+    const clonedStyle = cloned.style;
+    const computedStyle = ownerWindow.getComputedStyle(node);
+    const defaultStyle = getDefaultStyle(node, null, context);
+    currentParentNodeStyle == null ? void 0 : currentParentNodeStyle.forEach((_, key) => {
+      defaultStyle.delete(key);
+    });
+    const style = getDiffStyle(computedStyle, defaultStyle, includeStyleProperties);
+    style.delete("transition-property");
+    style.delete("all");
+    style.delete("d");
+    style.delete("content");
+    if (isRoot) {
+      style.delete("position");
+      style.delete("margin-top");
+      style.delete("margin-right");
+      style.delete("margin-bottom");
+      style.delete("margin-left");
+      style.delete("margin-block-start");
+      style.delete("margin-block-end");
+      style.delete("margin-inline-start");
+      style.delete("margin-inline-end");
+      style.set("box-sizing", ["border-box", ""]);
+    }
+    if (((_a2 = style.get("background-clip")) == null ? void 0 : _a2[0]) === "text") {
+      cloned.classList.add("______background-clip--text");
+    }
+    if (IN_CHROME) {
+      if (!style.has("font-kerning"))
+        style.set("font-kerning", ["normal", ""]);
+      if ((((_b = style.get("overflow-x")) == null ? void 0 : _b[0]) === "hidden" || ((_c = style.get("overflow-y")) == null ? void 0 : _c[0]) === "hidden") && ((_d = style.get("text-overflow")) == null ? void 0 : _d[0]) === "ellipsis" && node.scrollWidth === node.clientWidth) {
+        style.set("text-overflow", ["clip", ""]);
+      }
+    }
+    for (let len = clonedStyle.length, i = 0; i < len; i++) {
+      clonedStyle.removeProperty(clonedStyle.item(i));
+    }
+    style.forEach(([value, priority], name) => {
+      clonedStyle.setProperty(name, value, priority);
+    });
+    return style;
+  }
+  function copyInputValue(node, cloned) {
+    if (isTextareaElement(node) || isInputElement(node) || isSelectElement(node)) {
+      cloned.setAttribute("value", node.value);
+    }
+  }
+  var pseudoClasses = [
+    "::before",
+    "::after"
+    // '::placeholder', TODO
+  ];
+  var scrollbarPseudoClasses = [
+    "::-webkit-scrollbar",
+    "::-webkit-scrollbar-button",
+    // '::-webkit-scrollbar:horizontal', TODO
+    "::-webkit-scrollbar-thumb",
+    "::-webkit-scrollbar-track",
+    "::-webkit-scrollbar-track-piece",
+    // '::-webkit-scrollbar:vertical', TODO
+    "::-webkit-scrollbar-corner",
+    "::-webkit-resizer"
+  ];
+  function copyPseudoClass(node, cloned, copyScrollbar, context, addWordToFontFamilies) {
+    const { ownerWindow, svgStyleElement, svgStyles, currentNodeStyle } = context;
+    if (!svgStyleElement || !ownerWindow)
+      return;
+    function copyBy(pseudoClass) {
+      var _a2;
+      const computedStyle = ownerWindow.getComputedStyle(node, pseudoClass);
+      let content = computedStyle.getPropertyValue("content");
+      if (!content || content === "none")
+        return;
+      addWordToFontFamilies == null ? void 0 : addWordToFontFamilies(content);
+      content = content.replace(/(')|(")|(counter\(.+\))/g, "");
+      const klasses = [uuid()];
+      const defaultStyle = getDefaultStyle(node, pseudoClass, context);
+      currentNodeStyle == null ? void 0 : currentNodeStyle.forEach((_, key) => {
+        defaultStyle.delete(key);
+      });
+      const style = getDiffStyle(computedStyle, defaultStyle, context.includeStyleProperties);
+      style.delete("content");
+      style.delete("-webkit-locale");
+      if (((_a2 = style.get("background-clip")) == null ? void 0 : _a2[0]) === "text") {
+        cloned.classList.add("______background-clip--text");
+      }
+      const cloneStyle = [
+        `content: '${content}';`
+      ];
+      style.forEach(([value, priority], name) => {
+        cloneStyle.push(`${name}: ${value}${priority ? " !important" : ""};`);
+      });
+      if (cloneStyle.length === 1)
+        return;
+      try {
+        cloned.className = [cloned.className, ...klasses].join(" ");
+      } catch (err) {
+        context.log.warn("Failed to copyPseudoClass", err);
+        return;
+      }
+      const cssText = cloneStyle.join("\n  ");
+      let allClasses = svgStyles.get(cssText);
+      if (!allClasses) {
+        allClasses = [];
+        svgStyles.set(cssText, allClasses);
+      }
+      allClasses.push(`.${klasses[0]}${pseudoClass}`);
+    }
+    pseudoClasses.forEach(copyBy);
+    if (copyScrollbar)
+      scrollbarPseudoClasses.forEach(copyBy);
+  }
+  var excludeParentNodes = /* @__PURE__ */ new Set([
+    "symbol"
+    // test/fixtures/svg.symbol.html
+  ]);
+  async function appendChildNode(node, cloned, child, context, addWordToFontFamilies) {
+    if (isElementNode(child) && (isStyleElement(child) || isScriptElement(child)))
+      return;
+    if (context.filter && !context.filter(child))
+      return;
+    if (excludeParentNodes.has(cloned.nodeName) || excludeParentNodes.has(child.nodeName)) {
+      context.currentParentNodeStyle = void 0;
+    } else {
+      context.currentParentNodeStyle = context.currentNodeStyle;
+    }
+    const childCloned = await cloneNode(child, context, false, addWordToFontFamilies);
+    if (context.isEnable("restoreScrollPosition")) {
+      restoreScrollPosition(node, childCloned);
+    }
+    cloned.appendChild(childCloned);
+  }
+  async function cloneChildNodes(node, cloned, context, addWordToFontFamilies) {
+    var _a2;
+    let firstChild = node.firstChild;
+    if (isElementNode(node)) {
+      if (node.shadowRoot) {
+        firstChild = (_a2 = node.shadowRoot) == null ? void 0 : _a2.firstChild;
+        context.shadowRoots.push(node.shadowRoot);
+      }
+    }
+    for (let child = firstChild; child; child = child.nextSibling) {
+      if (isCommentNode(child))
+        continue;
+      if (isElementNode(child) && isSlotElement(child) && typeof child.assignedNodes === "function") {
+        const nodes = child.assignedNodes();
+        for (let i = 0; i < nodes.length; i++) {
+          await appendChildNode(node, cloned, nodes[i], context, addWordToFontFamilies);
+        }
+      } else {
+        await appendChildNode(node, cloned, child, context, addWordToFontFamilies);
+      }
+    }
+  }
+  function restoreScrollPosition(node, chlidCloned) {
+    if (!isHTMLElementNode(node) || !isHTMLElementNode(chlidCloned))
+      return;
+    const { scrollTop, scrollLeft } = node;
+    if (!scrollTop && !scrollLeft) {
+      return;
+    }
+    const { transform } = chlidCloned.style;
+    const matrix = new DOMMatrix(transform);
+    const { a, b, c, d } = matrix;
+    matrix.a = 1;
+    matrix.b = 0;
+    matrix.c = 0;
+    matrix.d = 1;
+    matrix.translateSelf(-scrollLeft, -scrollTop);
+    matrix.a = a;
+    matrix.b = b;
+    matrix.c = c;
+    matrix.d = d;
+    chlidCloned.style.transform = matrix.toString();
+  }
+  function applyCssStyleWithOptions(cloned, context) {
+    const { backgroundColor, width, height, style: styles } = context;
+    const clonedStyle = cloned.style;
+    if (backgroundColor)
+      clonedStyle.setProperty("background-color", backgroundColor, "important");
+    if (width)
+      clonedStyle.setProperty("width", `${width}px`, "important");
+    if (height)
+      clonedStyle.setProperty("height", `${height}px`, "important");
+    if (styles) {
+      for (const name in styles) clonedStyle[name] = styles[name];
+    }
+  }
+  var NORMAL_ATTRIBUTE_RE = /^[\w-:]+$/;
+  async function cloneNode(node, context, isRoot = false, addWordToFontFamilies) {
+    var _a2, _b, _c, _d;
+    const { ownerDocument, ownerWindow, fontFamilies, onCloneEachNode } = context;
+    if (ownerDocument && isTextNode(node)) {
+      if (addWordToFontFamilies && /\S/.test(node.data)) {
+        addWordToFontFamilies(node.data);
+      }
+      return ownerDocument.createTextNode(node.data);
+    }
+    if (ownerDocument && ownerWindow && isElementNode(node) && (isHTMLElementNode(node) || isSVGElementNode(node))) {
+      const cloned2 = await cloneElement(node, context);
+      if (context.isEnable("removeAbnormalAttributes")) {
+        const names = cloned2.getAttributeNames();
+        for (let len = names.length, i = 0; i < len; i++) {
+          const name = names[i];
+          if (!NORMAL_ATTRIBUTE_RE.test(name)) {
+            cloned2.removeAttribute(name);
+          }
+        }
+      }
+      const style = context.currentNodeStyle = copyCssStyles(node, cloned2, isRoot, context);
+      if (isRoot)
+        applyCssStyleWithOptions(cloned2, context);
+      let copyScrollbar = false;
+      if (context.isEnable("copyScrollbar")) {
+        const overflow = [
+          (_a2 = style.get("overflow-x")) == null ? void 0 : _a2[0],
+          (_b = style.get("overflow-y")) == null ? void 0 : _b[0]
+        ];
+        copyScrollbar = overflow.includes("scroll") || (overflow.includes("auto") || overflow.includes("overlay")) && (node.scrollHeight > node.clientHeight || node.scrollWidth > node.clientWidth);
+      }
+      const textTransform = (_c = style.get("text-transform")) == null ? void 0 : _c[0];
+      const families = splitFontFamily((_d = style.get("font-family")) == null ? void 0 : _d[0]);
+      const addWordToFontFamilies2 = families ? (word) => {
+        if (textTransform === "uppercase") {
+          word = word.toUpperCase();
+        } else if (textTransform === "lowercase") {
+          word = word.toLowerCase();
+        } else if (textTransform === "capitalize") {
+          word = word[0].toUpperCase() + word.substring(1);
+        }
+        families.forEach((family) => {
+          let fontFamily = fontFamilies.get(family);
+          if (!fontFamily) {
+            fontFamilies.set(family, fontFamily = /* @__PURE__ */ new Set());
+          }
+          word.split("").forEach((text) => fontFamily.add(text));
+        });
+      } : void 0;
+      copyPseudoClass(
+        node,
+        cloned2,
+        copyScrollbar,
+        context,
+        addWordToFontFamilies2
+      );
+      copyInputValue(node, cloned2);
+      if (!isVideoElement(node)) {
+        await cloneChildNodes(
+          node,
+          cloned2,
+          context,
+          addWordToFontFamilies2
+        );
+      }
+      await (onCloneEachNode == null ? void 0 : onCloneEachNode(cloned2));
+      return cloned2;
+    }
+    const cloned = node.cloneNode(false);
+    await cloneChildNodes(node, cloned, context);
+    await (onCloneEachNode == null ? void 0 : onCloneEachNode(cloned));
+    return cloned;
+  }
+  function destroyContext(context) {
+    context.ownerDocument = void 0;
+    context.ownerWindow = void 0;
+    context.svgStyleElement = void 0;
+    context.svgDefsElement = void 0;
+    context.svgStyles.clear();
+    context.defaultComputedStyles.clear();
+    if (context.sandbox) {
+      try {
+        context.sandbox.remove();
+      } catch (err) {
+        context.log.warn("Failed to destroyContext", err);
+      }
+      context.sandbox = void 0;
+    }
+    context.workers = [];
+    context.fontFamilies.clear();
+    context.fontCssTexts.clear();
+    context.requests.clear();
+    context.tasks = [];
+    context.shadowRoots = [];
+  }
+  function baseFetch(options) {
+    const _a2 = options, { url, timeout, responseType } = _a2, requestInit = __objRest(_a2, ["url", "timeout", "responseType"]);
+    const controller = new AbortController();
+    const timer2 = timeout ? setTimeout(() => controller.abort(), timeout) : void 0;
+    return fetch(url, __spreadValues({ signal: controller.signal }, requestInit)).then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed fetch, not 2xx response", { cause: response });
+      }
+      switch (responseType) {
+        case "arrayBuffer":
+          return response.arrayBuffer();
+        case "dataUrl":
+          return response.blob().then(blobToDataUrl);
+        case "text":
+        default:
+          return response.text();
+      }
+    }).finally(() => clearTimeout(timer2));
+  }
+  function contextFetch(context, options) {
+    const { url: rawUrl, requestType = "text", responseType = "text", imageDom } = options;
+    let url = rawUrl;
+    const {
+      timeout,
+      acceptOfImage,
+      requests,
+      fetchFn,
+      fetch: {
+        requestInit,
+        bypassingCache,
+        placeholderImage
+      },
+      font,
+      workers,
+      fontFamilies
+    } = context;
+    if (requestType === "image" && (IN_SAFARI || IN_FIREFOX)) {
+      context.drawImageCount++;
+    }
+    let request = requests.get(rawUrl);
+    if (!request) {
+      if (bypassingCache) {
+        if (bypassingCache instanceof RegExp && bypassingCache.test(url)) {
+          url += (/\?/.test(url) ? "&" : "?") + (/* @__PURE__ */ new Date()).getTime();
+        }
+      }
+      const canFontMinify = requestType.startsWith("font") && font && font.minify;
+      const fontTexts = /* @__PURE__ */ new Set();
+      if (canFontMinify) {
+        const families = requestType.split(";")[1].split(",");
+        families.forEach((family) => {
+          if (!fontFamilies.has(family))
+            return;
+          fontFamilies.get(family).forEach((text) => fontTexts.add(text));
+        });
+      }
+      const needFontMinify = canFontMinify && fontTexts.size;
+      const baseFetchOptions = __spreadValues({
+        url,
+        timeout,
+        responseType: needFontMinify ? "arrayBuffer" : responseType,
+        headers: requestType === "image" ? { accept: acceptOfImage } : void 0
+      }, requestInit);
+      request = {
+        type: requestType,
+        resolve: void 0,
+        reject: void 0,
+        response: null
+      };
+      request.response = (async () => {
+        if (fetchFn && requestType === "image") {
+          const result = await fetchFn(rawUrl);
+          if (result)
+            return result;
+        }
+        if (!IN_SAFARI && rawUrl.startsWith("http") && workers.length) {
+          return new Promise((resolve2, reject) => {
+            const worker = workers[requests.size & workers.length - 1];
+            worker.postMessage(__spreadValues({ rawUrl }, baseFetchOptions));
+            request.resolve = resolve2;
+            request.reject = reject;
+          });
+        }
+        return baseFetch(baseFetchOptions);
+      })().catch((error) => {
+        requests.delete(rawUrl);
+        if (requestType === "image" && placeholderImage) {
+          context.log.warn("Failed to fetch image base64, trying to use placeholder image", url);
+          return typeof placeholderImage === "string" ? placeholderImage : placeholderImage(imageDom);
+        }
+        throw error;
+      });
+      requests.set(rawUrl, request);
+    }
+    return request.response;
+  }
+  async function replaceCssUrlToDataUrl(cssText, baseUrl, context, isImage) {
+    if (!hasCssUrl(cssText))
+      return cssText;
+    for (const [rawUrl, url] of parseCssUrls(cssText, baseUrl)) {
+      try {
+        const dataUrl = await contextFetch(
+          context,
+          {
+            url,
+            requestType: isImage ? "image" : "text",
+            responseType: "dataUrl"
+          }
+        );
+        cssText = cssText.replace(toRE(rawUrl), `$1${dataUrl}$3`);
+      } catch (error) {
+        context.log.warn("Failed to fetch css data url", rawUrl, error);
+      }
+    }
+    return cssText;
+  }
+  function hasCssUrl(cssText) {
+    return /url\((['"]?)([^'"]+?)\1\)/.test(cssText);
+  }
+  var URL_RE = /url\((['"]?)([^'"]+?)\1\)/g;
+  function parseCssUrls(cssText, baseUrl) {
+    const result = [];
+    cssText.replace(URL_RE, (raw, quotation, url) => {
+      result.push([url, resolveUrl(url, baseUrl)]);
+      return raw;
+    });
+    return result.filter(([url]) => !isDataUrl(url));
+  }
+  function toRE(url) {
+    const escaped = url.replace(/([.*+?^${}()|\[\]\/\\])/g, "\\$1");
+    return new RegExp(`(url\\(['"]?)(${escaped})(['"]?\\))`, "g");
+  }
+  var properties = [
+    "background-image",
+    "border-image-source",
+    "-webkit-border-image",
+    "-webkit-mask-image",
+    "list-style-image"
+  ];
+  function embedCssStyleImage(style, context) {
+    return properties.map((property) => {
+      const value = style.getPropertyValue(property);
+      if (!value || value === "none") {
+        return null;
+      }
+      if (IN_SAFARI || IN_FIREFOX) {
+        context.drawImageCount++;
+      }
+      return replaceCssUrlToDataUrl(value, null, context, true).then((newValue) => {
+        if (!newValue || value === newValue)
+          return;
+        style.setProperty(
+          property,
+          newValue,
+          style.getPropertyPriority(property)
+        );
+      });
+    }).filter(Boolean);
+  }
+  function embedImageElement(cloned, context) {
+    if (isImageElement(cloned)) {
+      const originalSrc = cloned.currentSrc || cloned.src;
+      if (!isDataUrl(originalSrc)) {
+        return [
+          contextFetch(context, {
+            url: originalSrc,
+            imageDom: cloned,
+            requestType: "image",
+            responseType: "dataUrl"
+          }).then((url) => {
+            if (!url)
+              return;
+            cloned.srcset = "";
+            cloned.dataset.originalSrc = originalSrc;
+            cloned.src = url || "";
+          })
+        ];
+      }
+      if (IN_SAFARI || IN_FIREFOX) {
+        context.drawImageCount++;
+      }
+    } else if (isSVGElementNode(cloned) && !isDataUrl(cloned.href.baseVal)) {
+      const originalSrc = cloned.href.baseVal;
+      return [
+        contextFetch(context, {
+          url: originalSrc,
+          imageDom: cloned,
+          requestType: "image",
+          responseType: "dataUrl"
+        }).then((url) => {
+          if (!url)
+            return;
+          cloned.dataset.originalSrc = originalSrc;
+          cloned.href.baseVal = url || "";
+        })
+      ];
+    }
+    return [];
+  }
+  function embedSvgUse(cloned, context) {
+    var _a2;
+    const { ownerDocument, svgDefsElement } = context;
+    const href = (_a2 = cloned.getAttribute("href")) != null ? _a2 : cloned.getAttribute("xlink:href");
+    if (!href)
+      return [];
+    const [svgUrl, id] = href.split("#");
+    if (id) {
+      const query = `#${id}`;
+      const definition = context.shadowRoots.reduce(
+        (res, root) => {
+          return res != null ? res : root.querySelector(`svg ${query}`);
+        },
+        ownerDocument == null ? void 0 : ownerDocument.querySelector(`svg ${query}`)
+      );
+      if (svgUrl) {
+        cloned.setAttribute("href", query);
+      }
+      if (svgDefsElement == null ? void 0 : svgDefsElement.querySelector(query))
+        return [];
+      if (definition) {
+        svgDefsElement == null ? void 0 : svgDefsElement.appendChild(definition.cloneNode(true));
+        return [];
+      } else if (svgUrl) {
+        return [
+          contextFetch(context, {
+            url: svgUrl,
+            responseType: "text"
+          }).then((svgData) => {
+            svgDefsElement == null ? void 0 : svgDefsElement.insertAdjacentHTML("beforeend", svgData);
+          })
+        ];
+      }
+    }
+    return [];
+  }
+  function embedNode(cloned, context) {
+    const { tasks } = context;
+    if (isElementNode(cloned)) {
+      if (isImageElement(cloned) || isSVGImageElementNode(cloned)) {
+        tasks.push(...embedImageElement(cloned, context));
+      }
+      if (isSVGUseElementNode(cloned)) {
+        tasks.push(...embedSvgUse(cloned, context));
+      }
+    }
+    if (isHTMLElementNode(cloned)) {
+      tasks.push(...embedCssStyleImage(cloned.style, context));
+    }
+    cloned.childNodes.forEach((child) => {
+      embedNode(child, context);
+    });
+  }
+  async function embedWebFont(clone, context) {
+    const {
+      ownerDocument,
+      svgStyleElement,
+      fontFamilies,
+      fontCssTexts,
+      tasks,
+      font
+    } = context;
+    if (!ownerDocument || !svgStyleElement || !fontFamilies.size) {
+      return;
+    }
+    if (font && font.cssText) {
+      const cssText = filterPreferredFormat(font.cssText, context);
+      svgStyleElement.appendChild(ownerDocument.createTextNode(`${cssText}
+`));
+    } else {
+      const styleSheets = Array.from(ownerDocument.styleSheets).filter((styleSheet) => {
+        try {
+          return "cssRules" in styleSheet && Boolean(styleSheet.cssRules.length);
+        } catch (error) {
+          context.log.warn(`Error while reading CSS rules from ${styleSheet.href}`, error);
+          return false;
+        }
+      });
+      const tempDoc = ownerDocument.implementation.createHTMLDocument("");
+      const tempStyleEl = tempDoc.createElement("style");
+      tempDoc.head.appendChild(tempStyleEl);
+      const tempStyleSheet = tempStyleEl.sheet;
+      await Promise.all(
+        styleSheets.flatMap((styleSheet) => {
+          return Array.from(styleSheet.cssRules).map(async (cssRule) => {
+            if (isCSSImportRule(cssRule)) {
+              const baseUrl = cssRule.href;
+              let cssText = "";
+              try {
+                cssText = await contextFetch(context, {
+                  url: baseUrl,
+                  requestType: "text",
+                  responseType: "text"
+                });
+              } catch (error) {
+                context.log.warn(`Error fetch remote css import from ${baseUrl}`, error);
+              }
+              const replacedCssText = cssText.replace(
+                URL_RE,
+                (raw, quotation, url) => raw.replace(url, resolveUrl(url, baseUrl))
+              );
+              for (const rule of parseCss(replacedCssText)) {
+                try {
+                  tempStyleSheet.insertRule(rule, tempStyleSheet.cssRules.length);
+                } catch (error) {
+                  context.log.warn("Error inserting rule from remote css import", { rule, error });
+                }
+              }
+            }
+          });
+        })
+      );
+      if (tempStyleSheet.cssRules.length)
+        styleSheets.push(tempStyleSheet);
+      const cssRules = [];
+      styleSheets.forEach((sheet) => {
+        unwrapCssLayers(sheet.cssRules, cssRules);
+      });
+      cssRules.filter((cssRule) => {
+        var _a2;
+        return isCssFontFaceRule(cssRule) && hasCssUrl(cssRule.style.getPropertyValue("src")) && ((_a2 = splitFontFamily(cssRule.style.getPropertyValue("font-family"))) == null ? void 0 : _a2.some((val) => fontFamilies.has(val)));
+      }).forEach((value) => {
+        const rule = value;
+        const cssText = fontCssTexts.get(rule.cssText);
+        if (cssText) {
+          svgStyleElement.appendChild(ownerDocument.createTextNode(`${cssText}
+`));
+        } else {
+          tasks.push(
+            replaceCssUrlToDataUrl(
+              rule.cssText,
+              rule.parentStyleSheet ? rule.parentStyleSheet.href : null,
+              context
+            ).then((cssText2) => {
+              cssText2 = filterPreferredFormat(cssText2, context);
+              fontCssTexts.set(rule.cssText, cssText2);
+              svgStyleElement.appendChild(ownerDocument.createTextNode(`${cssText2}
+`));
+            })
+          );
+        }
+      });
+    }
+  }
+  var COMMENTS_RE = /(\/\*[\s\S]*?\*\/)/g;
+  var KEYFRAMES_RE = /((@.*?keyframes [\s\S]*?){([\s\S]*?}\s*?)})/gi;
+  function parseCss(source) {
+    if (source == null)
+      return [];
+    const result = [];
+    let cssText = source.replace(COMMENTS_RE, "");
+    while (true) {
+      const matches = KEYFRAMES_RE.exec(cssText);
+      if (!matches)
+        break;
+      result.push(matches[0]);
+    }
+    cssText = cssText.replace(KEYFRAMES_RE, "");
+    const IMPORT_RE = /@import[\s\S]*?url\([^)]*\)[\s\S]*?;/gi;
+    const UNIFIED_RE = new RegExp(
+      // eslint-disable-next-line
+      "((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})",
+      "gi"
+    );
+    while (true) {
+      let matches = IMPORT_RE.exec(cssText);
+      if (!matches) {
+        matches = UNIFIED_RE.exec(cssText);
+        if (!matches) {
+          break;
+        } else {
+          IMPORT_RE.lastIndex = UNIFIED_RE.lastIndex;
+        }
+      } else {
+        UNIFIED_RE.lastIndex = IMPORT_RE.lastIndex;
+      }
+      result.push(matches[0]);
+    }
+    return result;
+  }
+  var URL_WITH_FORMAT_RE = /url\([^)]+\)\s*format\((["']?)([^"']+)\1\)/g;
+  var FONT_SRC_RE = /src:\s*(?:url\([^)]+\)\s*format\([^)]+\)[,;]\s*)+/g;
+  function filterPreferredFormat(str, context) {
+    const { font } = context;
+    const preferredFormat = font ? font == null ? void 0 : font.preferredFormat : void 0;
+    return preferredFormat ? str.replace(FONT_SRC_RE, (match) => {
+      while (true) {
+        const [src, , format] = URL_WITH_FORMAT_RE.exec(match) || [];
+        if (!format)
+          return "";
+        if (format === preferredFormat)
+          return `src: ${src};`;
+      }
+    }) : str;
+  }
+  function unwrapCssLayers(rules, out = []) {
+    for (const rule of Array.from(rules)) {
+      if (isLayerBlockRule(rule)) {
+        out.push(...unwrapCssLayers(rule.cssRules));
+      } else if ("cssRules" in rule) {
+        unwrapCssLayers(rule.cssRules, out);
+      } else {
+        out.push(rule);
+      }
+    }
+    return out;
+  }
+  var SVG_EXTERNAL_RESOURCE_REGEX = /\bx?link:?href\s*=\s*["'](?!data:)[^"']+["']/i;
+  function svgHasExternalResources(svg) {
+    return SVG_EXTERNAL_RESOURCE_REGEX.test(svg.innerHTML);
+  }
+  async function domToForeignObjectSvg(node, options) {
+    const context = await orCreateContext(node, options);
+    if (isElementNode(context.node) && isSVGElementNode(context.node) && !svgHasExternalResources(context.node))
+      return context.node;
+    const {
+      ownerDocument,
+      log,
+      tasks,
+      svgStyleElement,
+      svgDefsElement,
+      svgStyles,
+      font,
+      progress,
+      autoDestruct,
+      onCloneNode,
+      onEmbedNode,
+      onCreateForeignObjectSvg
+    } = context;
+    log.time("clone node");
+    const clone = await cloneNode(context.node, context, true);
+    if (svgStyleElement && ownerDocument) {
+      let allCssText = "";
+      svgStyles.forEach((klasses, cssText) => {
+        allCssText += `${klasses.join(",\n")} {
+  ${cssText}
+}
+`;
+      });
+      svgStyleElement.appendChild(ownerDocument.createTextNode(allCssText));
+    }
+    log.timeEnd("clone node");
+    await (onCloneNode == null ? void 0 : onCloneNode(clone));
+    if (font !== false && isElementNode(clone)) {
+      log.time("embed web font");
+      await embedWebFont(clone, context);
+      log.timeEnd("embed web font");
+    }
+    log.time("embed node");
+    embedNode(clone, context);
+    const count = tasks.length;
+    let current = 0;
+    const runTask = async () => {
+      while (true) {
+        const task = tasks.pop();
+        if (!task)
+          break;
+        try {
+          await task;
+        } catch (error) {
+          context.log.warn("Failed to run task", error);
+        }
+        progress == null ? void 0 : progress(++current, count);
+      }
+    };
+    progress == null ? void 0 : progress(current, count);
+    await Promise.all([...Array.from({ length: 4 })].map(runTask));
+    log.timeEnd("embed node");
+    await (onEmbedNode == null ? void 0 : onEmbedNode(clone));
+    const svg = createForeignObjectSvg(clone, context);
+    svgDefsElement && svg.insertBefore(svgDefsElement, svg.children[0]);
+    svgStyleElement && svg.insertBefore(svgStyleElement, svg.children[0]);
+    autoDestruct && destroyContext(context);
+    await (onCreateForeignObjectSvg == null ? void 0 : onCreateForeignObjectSvg(svg));
+    return svg;
+  }
+  function createForeignObjectSvg(clone, context) {
+    const { width, height } = context;
+    const svg = createSvg(width, height, clone.ownerDocument);
+    const foreignObject = svg.ownerDocument.createElementNS(svg.namespaceURI, "foreignObject");
+    foreignObject.setAttributeNS(null, "x", "0%");
+    foreignObject.setAttributeNS(null, "y", "0%");
+    foreignObject.setAttributeNS(null, "width", "100%");
+    foreignObject.setAttributeNS(null, "height", "100%");
+    foreignObject.append(clone);
+    svg.appendChild(foreignObject);
+    return svg;
+  }
+  async function domToCanvas(node, options) {
+    var _a2;
+    const context = await orCreateContext(node, options);
+    const svg = await domToForeignObjectSvg(context);
+    const dataUrl = svgToDataUrl(svg, context.isEnable("removeControlCharacter"));
+    if (!context.autoDestruct) {
+      context.svgStyleElement = createStyleElement(context.ownerDocument);
+      context.svgDefsElement = (_a2 = context.ownerDocument) == null ? void 0 : _a2.createElementNS(XMLNS, "defs");
+      context.svgStyles.clear();
+    }
+    const image = createImage(dataUrl, svg.ownerDocument);
+    return await imageToCanvas(image, context);
+  }
+  async function domToBlob(node, options) {
+    const context = await orCreateContext(node, options);
+    const { log, type, quality, dpi } = context;
+    const canvas = await domToCanvas(context);
+    log.time("canvas to blob");
+    const blob = await canvasToBlob(canvas, type, quality);
+    if (["image/png", "image/jpeg"].includes(type) && dpi) {
+      const arrayBuffer = await blobToArrayBuffer(blob.slice(0, 33));
+      let uint8Array = new Uint8Array(arrayBuffer);
+      if (type === "image/png") {
+        uint8Array = changePngDpi(uint8Array, dpi);
+      } else if (type === "image/jpeg") {
+        uint8Array = changeJpegDpi(uint8Array, dpi);
+      }
+      log.timeEnd("canvas to blob");
+      return new Blob([uint8Array, blob.slice(33)], { type });
+    }
+    log.timeEnd("canvas to blob");
+    return blob;
+  }
+
+  // src/feedback/unwrap.ts
+  function unwrapData(json) {
+    if (json && typeof json === "object" && "data" in json) {
+      return json.data;
+    }
+    return json;
+  }
+
+  // src/feedback/upload.ts
+  function feedbackUploadUrl() {
+    if (isMockupMode()) return ANNOTATE_URL.replace(/\/annotate$/, "/upload");
+    if (hasFeedbackToken()) return FEEDBACK_URL.replace("/ingest/v1/feedback", "/ingest/v1/upload");
+    return FEEDBACK_URL + "/upload";
+  }
+  async function uploadFeedbackFile(file, filename) {
+    const fd = new FormData();
+    fd.append("file", file, filename);
+    const headers = {};
+    if (isMockupMode()) fd.append("mockup_id", MOCKUP_ID);
+    else if (hasFeedbackToken()) headers["x-feedback-token"] = FEEDBACK_TOKEN;
+    else fd.append("annotateToken", ANNOTATE_TOKEN);
+    const r = await fetch(feedbackUploadUrl(), { method: "POST", body: fd, headers });
+    if (!r.ok) {
+      const message = await r.json().then((e) => e == null ? void 0 : e.message).catch(() => null);
+      throw new Error(message || "HTTP " + r.status);
+    }
+    return unwrapData(await r.json());
+  }
+
+  // src/capture/screenshots.ts
+  var CAPTURE_DEBOUNCE_MS = 350;
+  var buffer = /* @__PURE__ */ new Map();
+  var lastShotHash = /* @__PURE__ */ new Map();
+  var timer = null;
+  var capturing = false;
+  var latestState = null;
+  function currentRouteKey(loc = window.location) {
+    const hash = loc.hash || "";
+    if (hash.length > 1) return hash;
+    return loc.pathname || "/";
+  }
+  function routeSelectionHash(state, route) {
+    return state.pendingSelections.filter((s) => (s.route || "") === route).map((s) => s.selector || s.xpath || "").sort().join("|");
+  }
+  function keepNode(node) {
+    if (node.nodeType !== 1) return true;
+    const el2 = node;
+    return !(el2.getAttribute && el2.getAttribute(PICKER_UI_ATTR) === "true");
+  }
+  async function captureNow() {
+    const state = latestState;
+    if (!state) return;
+    const route = currentRouteKey();
+    const hash = routeSelectionHash(state, route);
+    if (!hash) {
+      buffer.delete(route);
+      lastShotHash.delete(route);
+      return;
+    }
+    if (lastShotHash.get(route) === hash) return;
+    if (capturing) {
+      scheduleRouteCapture(state);
+      return;
+    }
+    capturing = true;
+    try {
+      const blob = await domToBlob(document.body, { filter: keepNode, backgroundColor: "#ffffff", scale: 1 });
+      if (blob && currentRouteKey() === route && routeSelectionHash(state, route) === hash) {
+        buffer.set(route, blob);
+        lastShotHash.set(route, hash);
+      }
+    } catch (e) {
+    } finally {
+      capturing = false;
+    }
+  }
+  function scheduleRouteCapture(state) {
+    if (typeof document === "undefined") return;
+    latestState = state;
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      timer = null;
+      void captureNow();
+    }, CAPTURE_DEBOUNCE_MS);
+  }
+  function noteSelectionsChanged(state) {
+    latestState = state;
+    const route = currentRouteKey();
+    if (!routeSelectionHash(state, route)) {
+      buffer.delete(route);
+      lastShotHash.delete(route);
+      return;
+    }
+    scheduleRouteCapture(state);
+  }
+  async function flushRouteCapture(state) {
+    if (state) latestState = state;
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+    }
+    await captureNow();
+  }
+  function resetNoteBuffer() {
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+    }
+    buffer.clear();
+    lastShotHash.clear();
+    latestState = null;
+  }
+  async function freezeNoteScreenshots(state) {
+    await flushRouteCapture(state);
+    if (!hasFeedbackUrl() || buffer.size === 0) {
+      resetNoteBuffer();
+      return [];
+    }
+    const out = [];
+    for (const [route, blob] of buffer) {
+      try {
+        const safe = route.replace(/[^\w.-]/g, "_").slice(0, 40) || "root";
+        const att = await uploadFeedbackFile(blob, `route-screenshot-${safe}.png`);
+        att.route = route;
+        att.kind = "selection-screenshot";
+        out.push(att);
+      } catch (e) {
+      }
+    }
+    resetNoteBuffer();
+    return out;
+  }
+
+  // src/picking/dom-walk.ts
+  var SKIP_TAGS = ["script", "style", "head", "meta", "link", "noscript"];
+  function pickableAtPoint(stack) {
+    return stack.filter((el2) => {
+      const tag = (el2.tagName || "").toLowerCase();
+      return !isPickerUi(el2) && tag !== "html" && tag !== "body" && !!tag;
+    });
+  }
+  function stackIndexForClick(clickCount, stackLength) {
+    if (stackLength <= 0) return -1;
+    return Math.min(clickCount - 1, stackLength - 1);
+  }
+  function walkDOM(el2, depth, results) {
+    if (!el2 || !el2.tagName) return;
+    const tag = el2.tagName.toLowerCase();
+    if (SKIP_TAGS.indexOf(tag) !== -1) return;
+    if (isPickerUi(el2)) return;
+    if (tag !== "html" && tag !== "body") {
+      results.push({ el: el2, depth, tag });
+    }
+    const children = el2.children;
+    for (let i = 0; i < children.length; i++) {
+      walkDOM(children[i], depth + 1, results);
+    }
+  }
+  function browseLabel(el2) {
+    let label = el2.tagName.toLowerCase();
+    if (el2.id) label += "#" + el2.id;
+    else if (el2.classList && el2.classList.length > 0) label += "." + el2.classList[0];
+    return label;
+  }
+  function browseTextHint(el2) {
+    if (el2.id || el2.classList && el2.classList.length > 0) return "";
+    const rawText = el2.textContent ? el2.textContent.trim() : "";
+    return rawText ? rawText.substring(0, 25) : "";
+  }
+
+  // src/picking/stack-nav.ts
+  function buildStackNav2(dom, state, rt, deps, filtered) {
+    dom.stackNavTitle.textContent = filtered.length + " elements here \u2014 pick one:";
+    dom.stackList.innerHTML = "";
+    rt.stackElements = filtered;
+    filtered.forEach((el2, idx) => {
+      const li = document.createElement("li");
+      markPickerUi(li);
+      li.style.cssText = [
+        "cursor:pointer",
+        "padding:6px 8px",
+        "border-radius:4px",
+        "font-family:monospace",
+        "font-size:11px",
+        "color:#cbd5e1",
+        "border-left:3px solid transparent"
+      ].join(";");
+      const labelText = stackItemLabel(el2) + " ";
+      const dimSpan = document.createElement("span");
+      markPickerUi(dimSpan);
+      dimSpan.style.cssText = "color:#475569;";
+      dimSpan.textContent = "(" + (idx + 1) + " of " + filtered.length + ")";
+      li.appendChild(document.createTextNode(labelText));
+      li.appendChild(dimSpan);
+      li.addEventListener("mouseover", (e) => {
+        e.stopPropagation();
+        const items = dom.stackList.querySelectorAll("li");
+        for (let k = 0; k < items.length; k++) {
+          items[k].style.borderLeftColor = "transparent";
+          items[k].style.background = "";
+        }
+        li.style.borderLeftColor = "#6366f1";
+        li.style.background = "rgba(255,255,255,0.07)";
+        clearStackHighlight(rt);
+        rt.stackHighlightedEl = el2;
+        el2.style.outline = OUTLINE_HIGHLIGHT;
+      });
+      li.addEventListener("mouseout", (e) => {
+        e.stopPropagation();
+      });
+      li.addEventListener("click", (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        clearStackHighlight(rt);
+        addSelection(state, deps, el2);
+        deps.transitionTo("SELECTING_from_STACK");
+      });
+      dom.stackList.appendChild(li);
+    });
+    if (filtered.length > 0) {
+      rt.stackHighlightedEl = filtered[0];
+      filtered[0].style.outline = OUTLINE_HIGHLIGHT;
+      const firstLi = dom.stackList.querySelector("li");
+      if (firstLi) firstLi.style.borderLeftColor = "#6366f1";
+    }
+  }
+  function triggerStackNav(dom, state, rt, deps, x, y) {
+    const filtered = pickableAtPoint(document.elementsFromPoint(x, y));
+    if (filtered.length <= 1) return;
+    rt.longPressFired = true;
+    if (rt.clickTimer) {
+      clearTimeout(rt.clickTimer);
+      rt.clickTimer = null;
+    }
+    rt.clickCount = 0;
+    clearPreview(state, rt);
+    deps.transitionTo("STACK_NAV");
+    buildStackNav2(dom, state, rt, deps, filtered);
+  }
+
+  // src/picking/click.ts
+  function addSelection(state, deps, el2) {
+    const data = captureElement(el2);
+    state.pendingSelections.push(__spreadProps(__spreadValues({}, data), { _el: el2, route: currentRouteKey() }));
+    el2.style.outline = OUTLINE_SELECTED;
+    deps.rebuildSelList();
+    deps.updateAddFeedbackBtn();
+    if (state.sessionKind === "feedback") noteSelectionsChanged(state);
+  }
+  function commitClick(state, rt, deps) {
+    if (!rt.lastClickPoint) {
+      rt.clickCount = 0;
+      rt.clickTimer = null;
+      return;
+    }
+    const stack = document.elementsFromPoint(rt.lastClickPoint.x, rt.lastClickPoint.y);
+    const filtered = pickableAtPoint(stack);
+    clearPreview(state, rt);
+    const idx = stackIndexForClick(rt.clickCount, filtered.length);
+    const targetEl = idx >= 0 ? filtered[idx] : void 0;
+    rt.clickCount = 0;
+    rt.clickTimer = null;
+    if (!targetEl) return;
+    let existingIdx = -1;
+    for (let ii = 0; ii < state.pendingSelections.length; ii++) {
+      if (state.pendingSelections[ii]._el === targetEl) {
+        existingIdx = ii;
+        break;
+      }
+    }
+    if (existingIdx !== -1) {
+      const removedEl = state.pendingSelections[existingIdx]._el;
+      if (removedEl) removedEl.style.outline = "";
+      state.pendingSelections.splice(existingIdx, 1);
+      deps.rebuildSelList();
+      deps.updateAddFeedbackBtn();
+      if (state.sessionKind === "feedback") noteSelectionsChanged(state);
+    } else {
+      addSelection(state, deps, targetEl);
+    }
+  }
+  function isSelecting(state) {
+    return state.phase === "SELECTING";
+  }
+  function installClickHandlers(doc, dom, state, rt, deps) {
+    const onClick = (e) => {
+      if (!isSelecting(state)) return;
+      if (isPickerUi(e.target)) return;
+      if (rt.longPressTimer) {
+        clearTimeout(rt.longPressTimer);
+        rt.longPressTimer = null;
+      }
+      if (rt.longPressFired) {
+        rt.longPressFired = false;
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+      e.preventDefault();
+      e.stopPropagation();
+      clearHover(rt);
+      rt.clickCount++;
+      rt.lastClickPoint = { x: e.clientX, y: e.clientY };
+      const filtered = pickableAtPoint(doc.elementsFromPoint(e.clientX, e.clientY));
+      const previewIdx = stackIndexForClick(rt.clickCount, filtered.length);
+      if (previewIdx >= 0 && filtered[previewIdx]) {
+        setPreview(state, rt, filtered[previewIdx]);
+      }
+      if (rt.clickTimer) clearTimeout(rt.clickTimer);
+      rt.clickTimer = setTimeout(() => commitClick(state, rt, deps), CLICK_DEBOUNCE_MS);
+    };
+    const onDblClick = (e) => {
+      if (isSelecting(state)) e.preventDefault();
+    };
+    const onMouseDown = (e) => {
+      if (!isSelecting(state)) return;
+      if (isPickerUi(e.target)) return;
+      rt.longPressPoint = { x: e.clientX, y: e.clientY };
+      rt.longPressTimer = setTimeout(() => {
+        if (rt.longPressPoint) triggerStackNav(dom, state, rt, deps, rt.longPressPoint.x, rt.longPressPoint.y);
+      }, LONG_PRESS_MS);
+    };
+    const onMouseMove = (e) => {
+      if (!rt.longPressTimer || !rt.longPressPoint) return;
+      const dx = e.clientX - rt.longPressPoint.x;
+      const dy = e.clientY - rt.longPressPoint.y;
+      if (Math.sqrt(dx * dx + dy * dy) > LONG_PRESS_CANCEL_PX) {
+        clearTimeout(rt.longPressTimer);
+        rt.longPressTimer = null;
+      }
+    };
+    const onMouseUp = () => {
+      if (rt.longPressTimer) {
+        clearTimeout(rt.longPressTimer);
+        rt.longPressTimer = null;
+      }
+    };
+    const onTouchStart = (e) => {
+      if (!isSelecting(state)) return;
+      if (isPickerUi(e.target)) return;
+      const t = e.touches[0];
+      rt.longPressPoint = { x: t.clientX, y: t.clientY };
+      rt.longPressTimer = setTimeout(() => {
+        if (rt.longPressPoint) triggerStackNav(dom, state, rt, deps, rt.longPressPoint.x, rt.longPressPoint.y);
+      }, LONG_PRESS_MS);
+    };
+    const onTouchMove = (e) => {
+      if (!rt.longPressTimer || !rt.longPressPoint) return;
+      const t = e.touches[0];
+      const dx = t.clientX - rt.longPressPoint.x;
+      const dy = t.clientY - rt.longPressPoint.y;
+      if (Math.sqrt(dx * dx + dy * dy) > LONG_PRESS_CANCEL_PX) {
+        clearTimeout(rt.longPressTimer);
+        rt.longPressTimer = null;
+      }
+    };
+    const onTouchEnd = () => {
+      if (rt.longPressTimer) {
+        clearTimeout(rt.longPressTimer);
+        rt.longPressTimer = null;
+      }
+    };
+    doc.addEventListener("click", onClick, true);
+    doc.addEventListener("dblclick", onDblClick, true);
+    doc.addEventListener("mousedown", onMouseDown, true);
+    doc.addEventListener("mousemove", onMouseMove);
+    doc.addEventListener("mouseup", onMouseUp, true);
+    doc.addEventListener("touchstart", onTouchStart, { passive: true });
+    doc.addEventListener("touchmove", onTouchMove, { passive: true });
+    doc.addEventListener("touchend", onTouchEnd, true);
+    return () => {
+      doc.removeEventListener("click", onClick, true);
+      doc.removeEventListener("dblclick", onDblClick, true);
+      doc.removeEventListener("mousedown", onMouseDown, true);
+      doc.removeEventListener("mousemove", onMouseMove);
+      doc.removeEventListener("mouseup", onMouseUp, true);
+      doc.removeEventListener("touchstart", onTouchStart);
+      doc.removeEventListener("touchmove", onTouchMove);
+      doc.removeEventListener("touchend", onTouchEnd, true);
+    };
+  }
+
+  // src/picking/browse.ts
+  function clearBrowseHover(state, rt) {
+    if (rt.browseHoverEl) {
+      const isSelected = state.pendingSelections.some((p) => p._el === rt.browseHoverEl);
+      rt.browseHoverEl.style.outline = isSelected ? OUTLINE_SELECTED : "";
+      rt.browseHoverEl = null;
+    }
+  }
+  function buildBrowseList(dom, state, rt, deps, filterText) {
+    if (!rt.browseCache) {
+      rt.browseCache = [];
+      walkDOM(document.body, 0, rt.browseCache);
+    }
+    const lowerFilter = filterText ? filterText.toLowerCase() : "";
+    dom.browseListDiv.innerHTML = "";
+    for (let i = 0; i < rt.browseCache.length; i++) {
+      const entry = rt.browseCache[i];
+      const el2 = entry.el;
+      const depth = entry.depth;
+      const label = browseLabel(el2);
+      const textHint = browseTextHint(el2);
+      const searchStr = (label + " " + textHint).toLowerCase();
+      if (lowerFilter && searchStr.indexOf(lowerFilter) === -1) continue;
+      const cs = window.getComputedStyle(el2);
+      const isHidden = cs.display === "none" || cs.visibility === "hidden" || cs.opacity === "0";
+      const isSelected = state.pendingSelections.some((p) => p._el === el2);
+      const row = document.createElement("div");
+      markPickerUi(row);
+      row.style.cssText = "padding:3px 4px;cursor:pointer;padding-left:" + depth * 10 + "px;border-radius:3px;";
+      let rowLabel = "";
+      if (isSelected) rowLabel += "\u2713 ";
+      rowLabel += label;
+      const rowEl = document.createElement("span");
+      markPickerUi(rowEl);
+      rowEl.textContent = rowLabel;
+      if (isSelected) {
+        rowEl.style.color = "#86efac";
+      } else if (isHidden) {
+        rowEl.style.cssText = "color:#475569;font-style:italic";
+      } else {
+        rowEl.style.color = "#cbd5e1";
+      }
+      row.appendChild(rowEl);
+      if (textHint) {
+        const hintSpan = document.createElement("span");
+        markPickerUi(hintSpan);
+        hintSpan.textContent = " " + textHint;
+        hintSpan.style.cssText = "color:#475569;margin-left:4px";
+        row.appendChild(hintSpan);
+      }
+      if (isHidden) {
+        const eyeSpan = document.createElement("span");
+        markPickerUi(eyeSpan);
+        eyeSpan.textContent = " \u{1F441}";
+        row.appendChild(eyeSpan);
+      }
+      row.addEventListener("mouseover", (e) => {
+        e.stopPropagation();
+        clearBrowseHover(state, rt);
+        rt.browseHoverEl = el2;
+        el2.style.outline = OUTLINE_HIGHLIGHT;
+        row.style.background = "rgba(255,255,255,0.05)";
+        el2.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      });
+      row.addEventListener("mouseout", (e) => {
+        e.stopPropagation();
+        if (rt.browseHoverEl === el2) {
+          clearBrowseHover(state, rt);
+        }
+        row.style.background = "";
+      });
+      row.addEventListener("click", (e) => {
+        e.stopPropagation();
+        let selIdx = -1;
+        for (let ii = 0; ii < state.pendingSelections.length; ii++) {
+          if (state.pendingSelections[ii]._el === el2) {
+            selIdx = ii;
+            break;
+          }
+        }
+        if (selIdx !== -1) {
+          const removedEl = state.pendingSelections[selIdx]._el;
+          if (removedEl) removedEl.style.outline = "";
+          state.pendingSelections.splice(selIdx, 1);
+          deps.rebuildSelList();
+          deps.updateAddFeedbackBtn();
+        } else {
+          addSelection(state, deps, el2);
+        }
+        buildBrowseList(dom, state, rt, deps, filterText);
+      });
+      dom.browseListDiv.appendChild(row);
+    }
+  }
+
+  // src/feedback/attachments.ts
+  function canUploadAttachments() {
+    return hasFeedbackUrl() || isMockupMode();
+  }
+  var MAX_ATTACH_BYTES = 10 * 1024 * 1024;
+  var DROPZONE_IDLE = "\u{1F4CE} Drop, paste, or click to attach (max 10 MB)";
+  function createAttachmentRuntime() {
+    return { uploading: false };
+  }
+  function humanAttachSize(bytes) {
+    if (bytes < 1024) return bytes + " B";
+    if (bytes < 1024 * 1024) return Math.round(bytes / 1024) + " KB";
+    return (bytes / (1024 * 1024)).toFixed(1) + " MB";
+  }
+  function renderAttachChips(dom, state) {
+    const container = dom.attachChipsContainer;
+    container.innerHTML = "";
+    if (state.pendingAttachments.length === 0) {
+      container.style.display = "none";
+      return;
+    }
+    container.style.display = "block";
+    const header = document.createElement("div");
+    header.setAttribute(PICKER_UI_ATTR, "true");
+    header.style.cssText = "font-size:11px;color:#64748b;margin-bottom:4px;user-select:none;";
+    header.textContent = "\u{1F4CE} Attached (" + state.pendingAttachments.length + "):";
+    container.appendChild(header);
+    state.pendingAttachments.forEach((att, i) => {
+      const row = document.createElement("div");
+      row.setAttribute(PICKER_UI_ATTR, "true");
+      row.setAttribute("data-attach-name", att.name);
+      row.style.cssText = [
+        "display:flex",
+        "align-items:center",
+        "gap:6px",
+        "background:rgba(99,102,241,.1)",
+        "border:1px solid rgba(99,102,241,.3)",
+        "border-radius:6px",
+        "padding:4px 8px",
+        "margin-bottom:3px",
+        "font-size:12px",
+        "color:#c4c4d4"
+      ].join(";");
+      const icon = document.createElement("span");
+      icon.setAttribute(PICKER_UI_ATTR, "true");
+      icon.textContent = "\u{1F4C4}";
+      icon.style.cssText = "flex-shrink:0;font-size:13px;";
+      const nameSpan = document.createElement("span");
+      nameSpan.setAttribute(PICKER_UI_ATTR, "true");
+      nameSpan.textContent = att.name.length > 28 ? att.name.slice(0, 28) + "\u2026" : att.name;
+      nameSpan.style.cssText = "flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;";
+      nameSpan.title = att.name;
+      const sizeSpan = document.createElement("span");
+      sizeSpan.setAttribute(PICKER_UI_ATTR, "true");
+      sizeSpan.textContent = humanAttachSize(att.size);
+      sizeSpan.style.cssText = "flex-shrink:0;font-size:11px;color:#64748b;";
+      const removeBtn = document.createElement("button");
+      removeBtn.setAttribute(PICKER_UI_ATTR, "true");
+      removeBtn.setAttribute("aria-label", "Remove " + att.name);
+      removeBtn.textContent = "\xD7";
+      removeBtn.style.cssText = [
+        "background:none",
+        "border:none",
+        "color:#64748b",
+        "cursor:pointer",
+        "font-size:16px",
+        "line-height:1",
+        "padding:0",
+        "flex-shrink:0"
+      ].join(";");
+      removeBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        state.pendingAttachments.splice(i, 1);
+        renderAttachChips(dom, state);
+      });
+      row.appendChild(icon);
+      row.appendChild(nameSpan);
+      row.appendChild(sizeSpan);
+      row.appendChild(removeBtn);
+      container.appendChild(row);
+    });
+  }
+  function updateAttachDropZone(dom, rt) {
+    const zone = dom.attachDropZone;
+    if (rt.uploading) {
+      zone.textContent = "\u23F3 Uploading\u2026";
+      zone.style.borderColor = "#6366f1";
+      zone.style.color = "#6366f1";
+      zone.style.cursor = "not-allowed";
+    } else {
+      zone.textContent = DROPZONE_IDLE;
+      zone.style.borderColor = "#475569";
+      zone.style.color = "#94a3b8";
+      zone.style.cursor = "pointer";
+    }
+    dom.attachFileInput.value = "";
+  }
+  function showAttachError(dom, msg) {
+    const zone = dom.attachDropZone;
+    const prev = zone.textContent;
+    zone.textContent = "\u26A0\uFE0F " + msg;
+    zone.style.color = "#ef4444";
+    setTimeout(() => {
+      zone.style.color = "#94a3b8";
+      zone.textContent = prev !== zone.textContent ? DROPZONE_IDLE : prev;
+    }, 3e3);
+  }
+  function doUploadAttachment(dom, state, rt, file) {
+    if (!canUploadAttachments()) return Promise.resolve();
+    if (file.size > MAX_ATTACH_BYTES) {
+      const shortName = file.name.length > 20 ? file.name.slice(0, 20) + "\u2026" : file.name;
+      showAttachError(dom, '"' + shortName + '" exceeds 10 MB');
+      return Promise.resolve();
+    }
+    rt.uploading = true;
+    updateAttachDropZone(dom, rt);
+    return uploadFeedbackFile(file, file.name).then((att) => {
+      state.pendingAttachments.push(att);
+      renderAttachChips(dom, state);
+    }).catch((err) => {
+      showAttachError(dom, "Upload failed: " + err.message);
+    }).then(() => {
+      rt.uploading = false;
+      updateAttachDropZone(dom, rt);
+    });
+  }
+  function doUploadFiles(dom, state, rt, files) {
+    return Array.prototype.slice.call(files).reduce(
+      (chain, file) => chain.then(() => doUploadAttachment(dom, state, rt, file)),
+      Promise.resolve()
+    );
+  }
+  function extractImageFiles(data, now = Date.now()) {
+    if (!data || !data.items) return [];
+    const out = [];
+    Array.prototype.slice.call(data.items).forEach((item) => {
+      if (item.kind !== "file" || !item.type.startsWith("image/")) return;
+      const file = item.getAsFile();
+      if (!file) return;
+      const generic = !file.name || file.name === "image.png";
+      if (!generic) {
+        out.push(file);
+        return;
+      }
+      const ext = item.type.split("/")[1] || "png";
+      const suffix = out.length ? "-" + out.length : "";
+      out.push(new File([file], `screenshot-${now}${suffix}.${ext}`, { type: item.type }));
+    });
+    return out;
+  }
+  function installAttachmentHandlers(dom, state, rt) {
+    const zone = dom.attachDropZone;
+    const input = dom.attachFileInput;
+    dom.researchCheckbox.addEventListener("change", function() {
+      state.feedbackResearch = this.checked;
+    });
+    dom.researchRow.addEventListener("click", (e) => {
+      if (e.target !== dom.researchCheckbox) {
+        dom.researchCheckbox.checked = !dom.researchCheckbox.checked;
+        dom.researchCheckbox.dispatchEvent(new Event("change"));
+      }
+    });
+    zone.addEventListener("click", () => {
+      if (rt.uploading) return;
+      input.click();
+    });
+    input.addEventListener("change", function() {
+      if (this.files && this.files.length) doUploadFiles(dom, state, rt, this.files);
+      this.value = "";
+    });
+    document.addEventListener("paste", (e) => {
+      if (!dom.overlay.isConnected || dom.overlay.style.display === "none") return;
+      if (rt.uploading) return;
+      const files = extractImageFiles(e.clipboardData);
+      if (!files.length) return;
+      e.preventDefault();
+      void doUploadFiles(dom, state, rt, files);
+    });
+    zone.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (!rt.uploading) {
+        zone.style.borderColor = "#6366f1";
+        zone.style.color = "#6366f1";
+      }
+    });
+    zone.addEventListener("dragleave", (e) => {
+      e.stopPropagation();
+      if (!rt.uploading) {
+        zone.style.borderColor = "#475569";
+        zone.style.color = "#94a3b8";
+      }
+    });
+    zone.addEventListener("drop", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (!rt.uploading) {
+        zone.style.borderColor = "#475569";
+        zone.style.color = "#94a3b8";
+      }
+      if (rt.uploading) return;
+      const files = e.dataTransfer && e.dataTransfer.files;
+      if (files && files.length) doUploadFiles(dom, state, rt, files);
+    });
+  }
+
+  // src/state/batch-edit.ts
+  function beginEdit(state, index) {
+    if (index < 0 || index >= state.batchItems.length) return null;
+    const original = state.batchItems[index];
+    state.editingOriginal = { item: cloneBatchItem(original), index };
+    state.batchItems.splice(index, 1);
+    return cloneBatchItem(original);
+  }
+  function cancelEdit(state) {
+    const snapshot = state.editingOriginal;
+    if (!snapshot) return;
+    const insertAt = Math.min(snapshot.index, state.batchItems.length);
+    state.batchItems.splice(insertAt, 0, snapshot.item);
+    state.editingOriginal = null;
+  }
+  function commitEdit(state, edited) {
+    const snapshot = state.editingOriginal;
+    if (snapshot) {
+      const insertAt = Math.min(snapshot.index, state.batchItems.length);
+      state.batchItems.splice(insertAt, 0, edited);
+      state.editingOriginal = null;
+    } else {
+      state.batchItems.push(edited);
+    }
+  }
+  function discardEditSnapshot(state) {
+    state.editingOriginal = null;
+  }
+
+  // src/state/draft.ts
+  var DRAFT_STORAGE_KEY = "pk-draft-queue";
+  var DRAFT_SCHEMA_VERSION = 1;
+  var DRAFT_TTL_MS = 30 * 24 * 60 * 60 * 1e3;
+  var SAVE_DEBOUNCE_MS = 500;
+  function serializeDraft(state, mockupId, now) {
+    return {
+      v: DRAFT_SCHEMA_VERSION,
+      mockupId,
+      savedAt: now,
+      items: state.batchItems
+    };
+  }
+  function parseDraftRecord(raw, mockupId, now) {
+    if (!raw) return null;
+    let parsed;
+    try {
+      parsed = JSON.parse(raw);
+    } catch (e) {
+      return null;
+    }
+    if (!parsed || parsed.v !== DRAFT_SCHEMA_VERSION) return null;
+    if (parsed.mockupId !== mockupId) return null;
+    if (typeof parsed.savedAt !== "number" || now - parsed.savedAt > DRAFT_TTL_MS) return null;
+    if (!Array.isArray(parsed.items) || parsed.items.length === 0) return null;
+    return parsed.items;
+  }
+  var deploymentId = "";
+  var saveTimer = null;
+  var pendingState = null;
+  function initDraftStore(mockupId) {
+    deploymentId = mockupId;
+  }
+  function storageKey() {
+    return DRAFT_STORAGE_KEY + ":" + deploymentId;
+  }
+  function flushPending() {
+    if (saveTimer !== null) {
+      clearTimeout(saveTimer);
+      saveTimer = null;
+    }
+    const state = pendingState;
+    pendingState = null;
+    if (!state) return;
+    try {
+      if (state.batchItems.length === 0) {
+        localStorage.removeItem(storageKey());
+        return;
+      }
+      const record = serializeDraft(state, deploymentId, Date.now());
+      localStorage.setItem(storageKey(), JSON.stringify(record));
+    } catch (e) {
+    }
+  }
+  function saveDraft(state) {
+    pendingState = state;
+    if (saveTimer !== null) clearTimeout(saveTimer);
+    saveTimer = setTimeout(flushPending, SAVE_DEBOUNCE_MS);
+  }
+  function flushDraft() {
+    if (pendingState !== null) flushPending();
+  }
+  function clearDraft() {
+    if (saveTimer !== null) {
+      clearTimeout(saveTimer);
+      saveTimer = null;
+    }
+    pendingState = null;
+    try {
+      localStorage.removeItem(storageKey());
+    } catch (e) {
+    }
+  }
+  function loadDraft() {
+    try {
+      return parseDraftRecord(localStorage.getItem(storageKey()), deploymentId, Date.now());
+    } catch (e) {
+      return null;
+    }
+  }
+
+  // src/feedback/render.ts
+  var OUTLINE_SELECTED2 = "2px solid #10b981";
+  var CIRCLED = ["\u2460", "\u2461", "\u2462", "\u2463", "\u2464", "\u2465", "\u2466", "\u2467", "\u2468"];
+  var ALL_SECTIONS = [
+    "pk-selecting-section",
+    "pk-stacknav-section",
+    "pk-feedback-section",
+    "pk-batchreview-section",
+    "pk-browse-section"
+  ];
+  function circledNum(n) {
+    return n <= CIRCLED.length ? CIRCLED[n - 1] : "(" + n + ")";
+  }
+  function showSection(id) {
+    for (let i = 0; i < ALL_SECTIONS.length; i++) {
+      const sec = document.getElementById(ALL_SECTIONS[i]);
+      if (!sec) continue;
+      if (ALL_SECTIONS[i] !== id) {
+        sec.style.display = "none";
+      } else if (ALL_SECTIONS[i] === "pk-selecting-section") {
+        sec.style.display = "flex";
+        sec.style.flexDirection = "column";
+        sec.style.flex = "1";
+        sec.style.minHeight = "0";
+        sec.style.overflow = "hidden";
+      } else {
+        sec.style.display = "block";
+      }
+    }
+  }
+  function rebuildSelList(dom, state) {
+    dom.selList.innerHTML = "";
+    for (let i = 0; i < state.pendingSelections.length; i++) {
+      const idx = i;
+      const item = state.pendingSelections[idx];
+      const row = document.createElement("div");
+      row.setAttribute(PICKER_UI_ATTR, "true");
+      row.style.cssText = "display:flex;align-items:center;justify-content:space-between;font-family:monospace;font-size:11px;color:#86efac;margin-bottom:4px;";
+      const unresolved = !item._el;
+      const label = document.createElement("span");
+      label.setAttribute(PICKER_UI_ATTR, "true");
+      label.textContent = circledNum(idx + 1) + " " + item.selector + (unresolved ? "  \u26A0 open original page to edit" : "");
+      if (unresolved) label.title = "This element is on another route \u2014 open that page to re-pick it.";
+      label.style.cssText = "flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:6px;" + (unresolved ? "color:#94a3b8;font-style:italic;" : "");
+      const rmBtn = document.createElement("button");
+      rmBtn.setAttribute(PICKER_UI_ATTR, "true");
+      rmBtn.textContent = "\u2715";
+      rmBtn.style.cssText = "background:none;border:none;color:#64748b;cursor:pointer;font-size:11px;padding:0 2px;flex-shrink:0;";
+      rmBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const el2 = state.pendingSelections[idx]._el;
+        if (el2) el2.style.outline = "";
+        state.pendingSelections.splice(idx, 1);
+        rebuildSelList(dom, state);
+        updateAddFeedbackBtn(dom, state);
+      });
+      row.appendChild(label);
+      row.appendChild(rmBtn);
+      dom.selList.appendChild(row);
+    }
+  }
+  function updateAddFeedbackBtn(dom, state) {
+    const empty = state.pendingSelections.length === 0;
+    dom.addFeedbackBtn.disabled = empty;
+    dom.addFeedbackBtn.style.opacity = empty ? "0.5" : "1";
+  }
+  function updateFeedbackSummary(dom, state) {
+    if (state.feedbackIsGeneral || state.pendingSelections.length === 0) {
+      dom.feedbackSummary.textContent = "General note \u2014 not tied to a specific element";
+      dom.feedbackSummary.style.color = "#94a3b8";
+    } else {
+      const labels = state.pendingSelections.map((p) => p.selector).join(", ");
+      dom.feedbackSummary.textContent = state.pendingSelections.length + " element(s) selected: " + labels;
+      dom.feedbackSummary.style.color = "#94a3b8";
+    }
+  }
+  function restoreAndEditBatchItem(dom, state, deps, idx) {
+    const edited = beginEdit(state, idx);
+    if (!edited) return;
+    state.pendingSelections = (edited.elements || []).map((cap) => {
+      let el2 = null;
+      if (cap.id) el2 = document.getElementById(cap.id);
+      if (!el2 && cap.selector) {
+        try {
+          el2 = document.querySelector(cap.selector);
+        } catch (e) {
+        }
+      }
+      if (el2) el2.style.outline = OUTLINE_SELECTED2;
+      return __spreadProps(__spreadValues({}, cap), { _el: el2 });
+    });
+    state.feedbackIsGeneral = edited.type === "general";
+    state.feedbackResearch = !!edited.research;
+    dom.researchCheckbox.checked = !!edited.research;
+    state.pendingAttachments = (edited.attachments || []).slice();
+    renderAttachChips(dom, state);
+    dom.feedbackTextarea.value = edited.feedback;
+    const hasElements = edited.type !== "general" && (edited.elements || []).length > 0;
+    deps.transitionTo(hasElements ? "SELECTING_for_EDIT" : "FEEDBACK");
+  }
+  function rebuildBatchList(dom, state, deps) {
+    dom.batchListDiv.innerHTML = "";
+    const n = state.batchItems.length;
+    dom.batchTitle.textContent = "Batch \u2014 " + n + " item" + (n !== 1 ? "s" : "") + ":";
+    dom.sendAllBtn.textContent = "Send All (" + n + ")";
+    dom.sendAllBtn.disabled = n === 0;
+    dom.addMoreBtn.disabled = false;
+    dom.cancelAllBtn.disabled = false;
+    for (let i = 0; i < n; i++) {
+      const idx = i;
+      const item = state.batchItems[idx];
+      const isGeneral = item.type === "general" || !item.elements || item.elements.length === 0;
+      const elCount = item.elements ? item.elements.length : 0;
+      const snippet = item.feedback.length > 40 ? item.feedback.substring(0, 40) + "..." : item.feedback;
+      const row = document.createElement("div");
+      row.setAttribute(PICKER_UI_ATTR, "true");
+      row.style.cssText = "display:flex;align-items:center;justify-content:space-between;font-size:11px;color:#94a3b8;margin-bottom:4px;border-radius:4px;padding:2px 4px;cursor:pointer;";
+      row.addEventListener("mouseover", () => {
+        row.style.background = "rgba(255,255,255,0.05)";
+      });
+      row.addEventListener("mouseout", () => {
+        row.style.background = "";
+      });
+      row.addEventListener("click", () => restoreAndEditBatchItem(dom, state, deps, idx));
+      const label = document.createElement("span");
+      label.setAttribute(PICKER_UI_ATTR, "true");
+      const researchBadge = item.research ? "\u{1F50D} " : "";
+      if (isGeneral) {
+        label.textContent = researchBadge + '\u{1F4DD} General \u2014 "' + snippet + '"';
+      } else {
+        const firstSel = elCount > 0 ? item.elements[0].selector : "?";
+        label.textContent = researchBadge + "\u25CF " + (elCount > 1 ? elCount + " elements" : firstSel) + ' \u2014 "' + snippet + '"';
+      }
+      label.style.cssText = "flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:6px;";
+      const editBtn = document.createElement("button");
+      editBtn.setAttribute(PICKER_UI_ATTR, "true");
+      editBtn.textContent = "\u270E";
+      editBtn.title = "Edit";
+      editBtn.style.cssText = "background:none;border:none;color:#94a3b8;cursor:pointer;font-size:11px;padding:0 3px;flex-shrink:0;";
+      editBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        restoreAndEditBatchItem(dom, state, deps, idx);
+      });
+      const rmBtn = document.createElement("button");
+      rmBtn.setAttribute(PICKER_UI_ATTR, "true");
+      rmBtn.textContent = "\u2715";
+      rmBtn.style.cssText = "background:none;border:none;color:#64748b;cursor:pointer;font-size:11px;padding:0 2px;flex-shrink:0;";
+      rmBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        state.batchItems.splice(idx, 1);
+        rebuildBatchList(dom, state, deps);
+      });
+      row.appendChild(label);
+      row.appendChild(editBtn);
+      row.appendChild(rmBtn);
+      dom.batchListDiv.appendChild(row);
+    }
+    saveDraft(state);
+  }
+
+  // src/feedback/send.ts
+  function stripEl(p) {
+    const copy = {};
+    for (const k in p) {
+      if (k !== "_el") copy[k] = p[k];
+    }
+    return copy;
+  }
+  function composeInProgressItem(dom, state) {
+    let raw = dom.feedbackTextarea.value.trim();
+    if (!raw) return null;
+    let research = state.feedbackResearch;
+    if (raw.toLowerCase().startsWith("/qr ")) {
+      research = true;
+      raw = raw.slice(4).trim();
+    }
+    if (!raw) return null;
+    return {
+      feedback: raw,
+      elements: state.feedbackIsGeneral ? [] : state.pendingSelections.map((p) => stripEl(p)),
+      type: state.feedbackIsGeneral ? "general" : "elements",
+      research,
+      attachments: state.pendingAttachments.slice(),
+      // Route where these elements were selected (same key the selection screenshot is
+      // tagged with), so the server attaches each route screenshot only to its own card.
+      route: currentRouteKey(),
+      // T6: KIND + must-contain/must-not-contain oracle hints
+      kind: state.feedbackKind || void 0,
+      mustContain: state.feedbackMustContain || void 0,
+      mustNotContain: state.feedbackMustNotContain || void 0
+    };
+  }
+  function sanitizeBatches(items) {
+    return items.map((item) => __spreadProps(__spreadValues({}, item), {
+      elements: (item.elements || []).map((el2) => stripEl(el2))
+    }));
+  }
+  function buildSendRequest(state, loc = window.location) {
+    const batches = sanitizeBatches(state.batchItems);
+    if (state.sessionKind === "feedback") {
+      if (hasFeedbackToken()) {
+        return {
+          url: FEEDBACK_URL,
+          headers: { "x-feedback-token": FEEDBACK_TOKEN },
+          payload: { batches, pageUrl: loc.href, route: loc.pathname }
+        };
+      }
+      return {
+        url: FEEDBACK_URL,
+        payload: { annotateToken: ANNOTATE_TOKEN, batches, pageUrl: loc.href, route: loc.pathname }
+      };
+    }
+    if (isMockupMode()) {
+      return {
+        url: ANNOTATE_URL,
+        payload: { mockup_id: MOCKUP_ID, batches, page_url: loc.href }
+      };
+    }
+    return {
+      url: ANNOTATE_URL,
+      payload: { batches, annotateToken: ANNOTATE_TOKEN, page_url: loc.href }
+    };
+  }
+  async function refreshAnnotateToken() {
+    try {
+      const overlayUrl = ANNOTATE_URL.replace(/\/annotate$/, "/overlay.js");
+      if (overlayUrl === ANNOTATE_URL) return null;
+      const txt = await fetch(overlayUrl, { cache: "no-store" }).then((r) => r.text());
+      const m = txt.match(/annotateToken"\s*:\s*"([^"]+)"/);
+      return m ? m[1] : null;
+    } catch (e) {
+      return null;
+    }
+  }
+  function postSend(url, payload, extraHeaders) {
+    return fetch(url, {
+      method: "POST",
+      headers: __spreadValues({ "Content-Type": "application/json" }, extraHeaders != null ? extraHeaders : {}),
+      body: JSON.stringify(payload)
+    });
+  }
+  async function sendAll(dom, state, deps) {
+    state.phase = "SENDING";
+    dom.sendAllBtn.disabled = true;
+    dom.addMoreBtn.disabled = true;
+    dom.cancelAllBtn.disabled = true;
+    dom.statusMsg.style.display = "block";
+    dom.statusMsg.textContent = "\u23F3 Sending...";
+    const sendSelectors = [];
+    state.batchItems.forEach((b) => {
+      (b.elements || []).forEach((e) => {
+        if (e.selector) sendSelectors.push(e.selector);
+      });
+    });
+    const isFeedback = state.sessionKind === "feedback";
+    const { url, payload, headers } = buildSendRequest(state);
+    try {
+      let res = await postSend(url, payload, headers);
+      if (res.status === 401 && "annotateToken" in payload) {
+        const fresh = await refreshAnnotateToken();
+        if (fresh && fresh !== payload.annotateToken) {
+          payload.annotateToken = fresh;
+          res = await postSend(url, payload);
+        }
+      }
+      if (!res.ok) {
+        throw new Error(
+          res.status === 401 ? "authentication expired \u2014 reload the page and try again" : `submit failed (HTTP ${res.status})`
+        );
+      }
+      await res.json().catch(() => void 0);
+      state.batchItems = [];
+      state.pendingAttachments = [];
+      discardEditSnapshot(state);
+      clearDraft();
+      resetNoteBuffer();
+      renderAttachChips(dom, state);
+      if (isFeedback || sendSelectors.length === 0) {
+        dom.statusMsg.textContent = isFeedback ? "\u{1F4AC} Feedback noted! Keep browsing and send more anytime." : "\u2705 Submitted! Keep browsing and send more anytime.";
+        dom.statusMsg.style.display = "block";
+        dom.sendAllBtn.disabled = true;
+        dom.addMoreBtn.disabled = true;
+        dom.cancelAllBtn.disabled = true;
+        setTimeout(() => deps.transitionTo("IDLE"), 1500);
+      } else {
+        deps.startBlurFlow(sendSelectors);
+      }
+    } catch (err) {
+      dom.statusMsg.textContent = "\u26A0\uFE0F Error: " + err.message;
+      dom.sendAllBtn.disabled = false;
+      dom.addMoreBtn.disabled = false;
+      dom.cancelAllBtn.disabled = false;
+      state.phase = "BATCH_REVIEW";
+    }
+  }
+
+  // src/blurlock/runtime.ts
+  function createBlurLockRuntime() {
+    return {
+      overlays: [],
+      pollTimer: null,
+      timeoutTimer: null,
+      reapplyTimer: null,
+      repositionRAF: null,
+      revisionAtSubmit: 0
+    };
+  }
+
+  // src/blurlock/storage.ts
+  var BLUR_LOCK_KEY = "pk-blur-lock-" + MOCKUP_ID;
+  function readBlurLock() {
+    try {
+      const raw = sessionStorage.getItem(BLUR_LOCK_KEY);
+      if (!raw) return null;
+      const rec = JSON.parse(raw);
+      if (!rec || !rec.selectors || !rec.selectors.length) return null;
+      return rec;
+    } catch (e) {
+      return null;
+    }
+  }
+  function writeBlurLock(selectors, revision) {
+    try {
+      const rec = {
+        selectors: selectors || [],
+        revisionAtSubmit: typeof revision === "number" ? revision : 0,
+        ts: Date.now()
+      };
+      sessionStorage.setItem(BLUR_LOCK_KEY, JSON.stringify(rec));
+    } catch (e) {
+    }
+  }
+  function clearBlurLock() {
+    try {
+      sessionStorage.removeItem(BLUR_LOCK_KEY);
+    } catch (e) {
+    }
+  }
+
+  // src/blurlock/overlay.ts
+  function makeBlurOverlay() {
+    const ov = document.createElement("div");
+    ov.setAttribute(PICKER_UI_ATTR, "true");
+    ov.style.cssText = [
+      "position:absolute",
+      "backdrop-filter:blur(6px)",
+      "-webkit-backdrop-filter:blur(6px)",
+      "background:rgba(255,255,255,.45)",
+      "border:2px dashed #6366f1",
+      "border-radius:6px",
+      "z-index:99998",
+      "pointer-events:auto",
+      "display:flex",
+      "align-items:center",
+      "justify-content:center",
+      "font:600 12px/1 system-ui,sans-serif",
+      "color:#6366f1"
+    ].join(";");
+    ov.textContent = "\u{1F916} updating\u2026";
+    return ov;
+  }
+  function positionBlurOverlay(ov, target) {
+    try {
+      const rect = target.getBoundingClientRect();
+      ov.style.left = rect.left + window.scrollX + "px";
+      ov.style.top = rect.top + window.scrollY + "px";
+      ov.style.width = rect.width + "px";
+      ov.style.height = rect.height + "px";
+    } catch (e) {
+    }
+  }
+  function removeAllOverlays(rt) {
+    for (const ov of rt.overlays) {
+      try {
+        if (ov.parentNode) ov.parentNode.removeChild(ov);
+      } catch (e) {
+      }
+    }
+    rt.overlays = [];
+  }
+  function reapplyLockOverlays(rt) {
+    const rec = readBlurLock();
+    removeAllOverlays(rt);
+    if (!rec) return;
+    if (typeof rec.revisionAtSubmit === "number") rt.revisionAtSubmit = rec.revisionAtSubmit;
+    for (const sel of rec.selectors) {
+      let target;
+      try {
+        target = document.querySelector(sel);
+      } catch (e) {
+        target = null;
+      }
+      if (!target) continue;
+      const ov = makeBlurOverlay();
+      positionBlurOverlay(ov, target);
+      ov._blurTarget = target;
+      try {
+        document.body.appendChild(ov);
+      } catch (e) {
+        continue;
+      }
+      rt.overlays.push(ov);
+    }
+  }
+  function repositionLockOverlays(rt) {
+    for (const ov of rt.overlays) {
+      if (ov && ov._blurTarget && document.contains(ov._blurTarget)) {
+        positionBlurOverlay(ov, ov._blurTarget);
+      }
+    }
+  }
+  function clearLockOverlays(rt) {
+    removeAllOverlays(rt);
+    clearBlurLock();
+  }
+  function scheduleReposition(rt) {
+    if (!rt.overlays.length) return;
+    if (rt.repositionRAF) return;
+    rt.repositionRAF = requestAnimationFrame(() => {
+      rt.repositionRAF = null;
+      repositionLockOverlays(rt);
+    });
+  }
+  function installBlurNavListeners(rt) {
+    try {
+      const emit = () => {
+        try {
+          window.dispatchEvent(new Event("pk-locationchange"));
+        } catch (e) {
+        }
+      };
+      const origPush = history.pushState;
+      const origReplace = history.replaceState;
+      history.pushState = function(...args) {
+        const r = origPush.apply(this, args);
+        emit();
+        return r;
+      };
+      history.replaceState = function(...args) {
+        const r = origReplace.apply(this, args);
+        emit();
+        return r;
+      };
+      window.addEventListener("popstate", emit);
+      window.addEventListener("pk-locationchange", () => reapplyLockOverlays(rt));
+    } catch (e) {
+    }
+    try {
+      new MutationObserver(() => {
+        if (!readBlurLock()) return;
+        if (rt.reapplyTimer) clearTimeout(rt.reapplyTimer);
+        rt.reapplyTimer = setTimeout(() => reapplyLockOverlays(rt), 200);
+      }).observe(document.body, { childList: true, subtree: true });
+    } catch (e) {
+    }
+    window.addEventListener("scroll", () => scheduleReposition(rt), true);
+    window.addEventListener("resize", () => scheduleReposition(rt));
+  }
+
+  // src/blurlock/poll.ts
+  var POLL_INTERVAL_MS = 2e3;
+  var SLOW_NOTICE_MS = 9e4;
+  var HARD_CAP_MS = 3e5;
+  var HARD_CAP_GUARD_MS = 299e3;
+  var MANUAL_RELOAD_BTN_ID = "pk-manual-reload-btn";
+  function stopBlurPoll(rt) {
+    if (rt.pollTimer) {
+      clearInterval(rt.pollTimer);
+      rt.pollTimer = null;
+    }
+    if (rt.timeoutTimer) {
+      clearTimeout(rt.timeoutTimer);
+      rt.timeoutTimer = null;
+    }
+  }
+  function ensureManualReloadBtn(deps) {
+    if (document.getElementById(MANUAL_RELOAD_BTN_ID)) return;
+    const btn = document.createElement("button");
+    btn.id = MANUAL_RELOAD_BTN_ID;
+    btn.setAttribute("data-picker-ui", "true");
+    btn.textContent = "\u{1F504} Reload now";
+    btn.style.cssText = "margin-top:6px;padding:5px 12px;background:#6366f1;color:#fff;border:none;border-radius:6px;font-size:12px;cursor:pointer;display:block;";
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      window.location.reload();
+    });
+    try {
+      deps.statusMsg.appendChild(btn);
+    } catch (e) {
+    }
+  }
+  function startBlurPoll(rt, deps) {
+    const started = Date.now();
+    rt.pollTimer = setInterval(() => {
+      fetch(STATUS_URL, { cache: "no-store" }).then((r) => r.json()).then((raw) => {
+        const d = unwrapData(raw);
+        if (!d) return;
+        const revision = d.revision;
+        if (d.annotationStatus === "build_ready" && typeof revision === "number" && revision > rt.revisionAtSubmit) {
+          stopBlurPoll(rt);
+          clearLockOverlays(rt);
+          const sep = location.search ? location.search + "&" : "?";
+          const dest = location.pathname + sep + "v=" + revision + (location.hash || "");
+          window.location.href = dest;
+        }
+      }).catch(() => {
+      });
+    }, POLL_INTERVAL_MS);
+    rt.timeoutTimer = setTimeout(() => {
+      deps.statusMsg.textContent = "\u{1F916} Still building\u2026 (taking longer than usual)";
+      deps.statusMsg.style.display = "block";
+      ensureManualReloadBtn(deps);
+    }, SLOW_NOTICE_MS);
+    setTimeout(() => {
+      if (Date.now() - started < HARD_CAP_GUARD_MS) return;
+      stopBlurPoll(rt);
+      clearLockOverlays(rt);
+      deps.statusMsg.textContent = "\u26A0\uFE0F Build timed out \u2014 reload to check.";
+      deps.statusMsg.style.display = "block";
+      ensureManualReloadBtn(deps);
+    }, HARD_CAP_MS);
+  }
+
+  // src/blurlock/flow.ts
+  function persistAndPoll(rt, deps, selectors) {
+    writeBlurLock(selectors, rt.revisionAtSubmit);
+    reapplyLockOverlays(rt);
+    deps.statusMsg.textContent = "\u{1F916} AI is updating the selected elements\u2026";
+    deps.statusMsg.style.display = "block";
+    startBlurPoll(rt, deps);
+  }
+  function startBlurFlow(rt, deps, selectors, revision) {
+    if (typeof revision === "number") {
+      rt.revisionAtSubmit = revision;
+      persistAndPoll(rt, deps, selectors);
+      return Promise.resolve();
+    }
+    return fetch(STATUS_URL, { cache: "no-store" }).then((r) => r.json()).then((raw) => {
+      const d = unwrapData(raw);
+      rt.revisionAtSubmit = d && typeof d.revision === "number" ? d.revision : rt.revisionAtSubmit;
+    }).catch(() => {
+    }).then(() => {
+      persistAndPoll(rt, deps, selectors);
+    });
+  }
+  function restoreBlurLock(rt, deps) {
+    try {
+      reapplyLockOverlays(rt);
+      if (readBlurLock() && !rt.pollTimer) {
+        deps.statusMsg.textContent = "\u{1F916} AI is updating the selected elements\u2026";
+        deps.statusMsg.style.display = "block";
+        startBlurPoll(rt, deps);
+      }
+    } catch (e) {
+    }
+  }
+
+  // src/drag/runtime.ts
+  var DRAG_THRESHOLD_PX = 5;
+  var FAB_DRAG_MARGIN = 4;
+  var PANEL_DRAG_MARGIN = 4;
+  var PANEL_ANCHOR_WIDTH = 340;
+  var PANEL_ANCHOR_HEIGHT_FALLBACK = 320;
+  var PANEL_ANCHOR_MARGIN = 8;
+  function clampToViewport(left, top, width, height, margin) {
+    return {
+      left: Math.max(margin, Math.min(left, window.innerWidth - width - margin)),
+      top: Math.max(margin, Math.min(top, window.innerHeight - height - margin))
+    };
+  }
+  function createFabDragState() {
+    return { active: false, wasDragged: false, startX: 0, startY: 0, offsetX: 0, offsetY: 0 };
+  }
+  function createPanelDragState() {
+    return { active: false, wasMoved: false, startX: 0, startY: 0, startPanelLeft: 0, startPanelTop: 0 };
+  }
+
+  // src/drag/fab-drag.ts
+  var ANNOTATE_BTN_POS_KEY = "pk-btn-pos";
+  var FEEDBACK_BTN_POS_KEY = "pk-feedback-btn-pos";
+  function restoreFabPosition(btn, storageKey2) {
+    try {
+      const saved = localStorage.getItem(storageKey2);
+      if (saved) {
+        const pos = JSON.parse(saved);
+        const { left, top } = clampToViewport(pos.left, pos.top, btn.offsetWidth, btn.offsetHeight, FAB_DRAG_MARGIN);
+        btn.style.bottom = "";
+        btn.style.right = "";
+        btn.style.top = top + "px";
+        btn.style.left = left + "px";
+      }
+    } catch (e) {
+    }
+  }
+  function makeDraggable(btn, storageKey2, deps) {
+    const ds = createFabDragState();
+    restoreFabPosition(btn, storageKey2);
+    const onPointerDown = (e) => {
+      if (e.pointerType === "mouse" && e.button !== 0) return;
+      btn.setPointerCapture(e.pointerId);
+      ds.active = true;
+      ds.wasDragged = false;
+      ds.startX = e.clientX;
+      ds.startY = e.clientY;
+      const rect = btn.getBoundingClientRect();
+      ds.offsetX = e.clientX - rect.left;
+      ds.offsetY = e.clientY - rect.top;
+      e.preventDefault();
+    };
+    const onPointerMove = (e) => {
+      if (!ds.active) return;
+      const dx = e.clientX - ds.startX;
+      const dy = e.clientY - ds.startY;
+      if (!ds.wasDragged && Math.sqrt(dx * dx + dy * dy) < DRAG_THRESHOLD_PX) return;
+      ds.wasDragged = true;
+      const { left: newLeft, top: newTop } = clampToViewport(
+        e.clientX - ds.offsetX,
+        e.clientY - ds.offsetY,
+        btn.offsetWidth,
+        btn.offsetHeight,
+        FAB_DRAG_MARGIN
+      );
+      btn.style.bottom = "";
+      btn.style.right = "";
+      btn.style.left = newLeft + "px";
+      btn.style.top = newTop + "px";
+      if (deps.isPanelOpen() && btn === deps.getActiveBtn()) deps.repositionPanel();
+    };
+    const endDrag = () => {
+      if (!ds.active) return;
+      ds.active = false;
+      if (ds.wasDragged) {
+        try {
+          const rect = btn.getBoundingClientRect();
+          const pos = { top: rect.top, left: rect.left };
+          localStorage.setItem(storageKey2, JSON.stringify(pos));
+        } catch (e) {
+        }
+      }
+    };
+    const onResize = () => {
+      if (!btn.style.left && !btn.style.top) return;
+      const rect = btn.getBoundingClientRect();
+      const { left, top } = clampToViewport(rect.left, rect.top, btn.offsetWidth, btn.offsetHeight, FAB_DRAG_MARGIN);
+      btn.style.left = left + "px";
+      btn.style.top = top + "px";
+      try {
+        localStorage.setItem(storageKey2, JSON.stringify({ top, left }));
+      } catch (e) {
+      }
+      if (deps.isPanelOpen() && btn === deps.getActiveBtn()) deps.repositionPanel();
+    };
+    btn.addEventListener("pointerdown", onPointerDown);
+    btn.addEventListener("pointermove", onPointerMove);
+    btn.addEventListener("pointerup", endDrag);
+    btn.addEventListener("pointercancel", endDrag);
+    window.addEventListener("resize", onResize);
+    const dispose = () => {
+      btn.removeEventListener("pointerdown", onPointerDown);
+      btn.removeEventListener("pointermove", onPointerMove);
+      btn.removeEventListener("pointerup", endDrag);
+      btn.removeEventListener("pointercancel", endDrag);
+      window.removeEventListener("resize", onResize);
+    };
+    return { state: ds, dispose };
+  }
+
+  // src/drag/panel-drag.ts
+  var PANEL_POS_KEY = "pk-panel-pos";
+  function restorePanelPosition(overlay, state) {
+    try {
+      const saved = localStorage.getItem(PANEL_POS_KEY);
+      if (saved) {
+        const pos = JSON.parse(saved);
+        overlay.style.bottom = "";
+        overlay.style.right = "";
+        overlay.style.top = pos.top + "px";
+        overlay.style.left = pos.left + "px";
+        state.wasMoved = true;
+        return true;
+      }
+    } catch (e) {
+    }
+    return false;
+  }
+  function repositionPanel(overlay, state, getActiveBtn) {
+    if (state.wasMoved) return;
+    const activeBtn = getActiveBtn();
+    if (!activeBtn) return;
+    const btnRect = activeBtn.getBoundingClientRect();
+    const panelW = PANEL_ANCHOR_WIDTH;
+    const panelH = overlay.offsetHeight || PANEL_ANCHOR_HEIGHT_FALLBACK;
+    const margin = PANEL_ANCHOR_MARGIN;
+    let top = btnRect.top - panelH - margin;
+    if (top < margin) top = btnRect.bottom + margin;
+    let left = btnRect.right - panelW;
+    if (left < margin) left = margin;
+    if (left + panelW > window.innerWidth - margin) left = window.innerWidth - panelW - margin;
+    overlay.style.top = top + "px";
+    overlay.style.left = left + "px";
+    overlay.style.bottom = "";
+    overlay.style.right = "";
+  }
+  function installPanelDrag(panelDragHandle, overlay, getActiveBtn, state = createPanelDragState()) {
+    const onPointerDown = (e) => {
+      if (e.pointerType === "mouse" && e.button !== 0) return;
+      panelDragHandle.setPointerCapture(e.pointerId);
+      const panelRect = overlay.getBoundingClientRect();
+      state.active = true;
+      state.startX = e.clientX;
+      state.startY = e.clientY;
+      state.startPanelLeft = panelRect.left;
+      state.startPanelTop = panelRect.top;
+      panelDragHandle.style.cursor = "grabbing";
+      e.preventDefault();
+      e.stopPropagation();
+    };
+    const onPointerMove = (e) => {
+      if (!state.active) return;
+      const margin = PANEL_DRAG_MARGIN;
+      const panelW = overlay.offsetWidth || PANEL_ANCHOR_WIDTH;
+      const panelH = overlay.offsetHeight || PANEL_ANCHOR_HEIGHT_FALLBACK;
+      let newLeft = state.startPanelLeft + (e.clientX - state.startX);
+      let newTop = state.startPanelTop + (e.clientY - state.startY);
+      newLeft = Math.max(margin, Math.min(newLeft, window.innerWidth - panelW - margin));
+      newTop = Math.max(margin, Math.min(newTop, window.innerHeight - panelH - margin));
+      overlay.style.bottom = "";
+      overlay.style.right = "";
+      overlay.style.left = newLeft + "px";
+      overlay.style.top = newTop + "px";
+      state.wasMoved = true;
+    };
+    const endPanelDrag = () => {
+      if (!state.active) return;
+      state.active = false;
+      panelDragHandle.style.cursor = "grab";
+      try {
+        const pRect = overlay.getBoundingClientRect();
+        const pos = { top: pRect.top, left: pRect.left };
+        localStorage.setItem(PANEL_POS_KEY, JSON.stringify(pos));
+      } catch (e) {
+      }
+    };
+    panelDragHandle.addEventListener("pointerdown", onPointerDown);
+    panelDragHandle.addEventListener("pointermove", onPointerMove);
+    panelDragHandle.addEventListener("pointerup", endPanelDrag);
+    panelDragHandle.addEventListener("pointercancel", endPanelDrag);
+    const observer = new MutationObserver(() => {
+      if (overlay.style.display !== "none") repositionPanel(overlay, state, getActiveBtn);
+    });
+    observer.observe(overlay, { attributes: true, attributeFilter: ["style"] });
+    const dispose = () => {
+      panelDragHandle.removeEventListener("pointerdown", onPointerDown);
+      panelDragHandle.removeEventListener("pointermove", onPointerMove);
+      panelDragHandle.removeEventListener("pointerup", endPanelDrag);
+      panelDragHandle.removeEventListener("pointercancel", endPanelDrag);
+      observer.disconnect();
+    };
+    return { state, dispose };
+  }
+
+  // src/drag/restore.ts
+  function restoreFabs(opts) {
+    const {
+      annotateBtn,
+      feedbackBtn,
+      annotateConfig,
+      feedbackConfig,
+      draftCount,
+      resolvedMode,
+      nativeAnnotate,
+      hasFeedbackUrl: hasFeedbackUrl2
+    } = opts;
+    const badge = draftCount > 0 ? " (" + draftCount + ")" : "";
+    annotateBtn.textContent = annotateConfig.idleLabel + badge;
+    annotateBtn.style.background = annotateConfig.idleColor;
+    feedbackBtn.textContent = feedbackConfig.idleLabel + badge;
+    feedbackBtn.style.background = feedbackConfig.idleColor;
+    annotateBtn.style.display = resolvedMode === "feedback-only" || nativeAnnotate ? "none" : "block";
+    feedbackBtn.style.display = hasFeedbackUrl2 && resolvedMode !== "fix-only" ? "block" : "none";
+    return { sessionConfig: annotateConfig, activeBtn: annotateBtn };
+  }
+
+  // src/state-machine.ts
+  function restoreFabsFor(ctx) {
+    const result = restoreFabs({
+      annotateBtn: ctx.dom.annotateBtn,
+      feedbackBtn: ctx.dom.feedbackBtn,
+      annotateConfig: ctx.annotateConfig,
+      feedbackConfig: ctx.feedbackConfig,
+      draftCount: ctx.state.batchItems.length,
+      resolvedMode: ctx.resolvedMode,
+      nativeAnnotate: ctx.nativeAnnotate,
+      hasFeedbackUrl: ctx.hasFeedbackUrl
+    });
+    ctx.sessionConfig = result.sessionConfig;
+    ctx.activeBtn = result.activeBtn;
+    ctx.state.sessionKind = "annotate";
+  }
+  function createTransitionTo(ctx, sendDeps) {
+    const { dom, state } = ctx;
+    return function transitionTo(newState) {
+      if (newState === "SELECTING") {
+        state.phase = "SELECTING";
+        const inactiveBtn = ctx.sessionConfig === ctx.annotateConfig ? dom.feedbackBtn : dom.annotateBtn;
+        inactiveBtn.style.display = "none";
+        ctx.sessionConfig.btn.textContent = "\u2716 Cancel";
+        ctx.sessionConfig.btn.style.background = "#475569";
+        ctx.sessionConfig.btn.style.display = "block";
+        state.pendingSelections = [];
+        clearSelectionOutlines(state);
+        rebuildSelList(dom, state);
+        showSection("pk-selecting-section");
+        dom.overlay.style.display = "flex";
+        enterCrosshair();
+        updateAddFeedbackBtn(dom, state);
+      } else if (newState === "IDLE") {
+        state.phase = "IDLE";
+        restoreFabsFor(ctx);
+        clearSelectionOutlines(state);
+        state.pendingSelections = [];
+        state.editingOriginal = null;
+        state.feedbackIsGeneral = false;
+        if (ctx.picking.clickTimer) {
+          clearTimeout(ctx.picking.clickTimer);
+          ctx.picking.clickTimer = null;
+        }
+        ctx.picking.clickCount = 0;
+        clearPreview(state, ctx.picking);
+        clearBrowseHover(state, ctx.picking);
+        ctx.picking.browseCache = null;
+        exitCrosshair(ctx.picking);
+        dom.overlay.style.display = "none";
+      } else if (newState === "STACK_NAV") {
+        state.phase = "STACK_NAV";
+        exitCrosshair(ctx.picking);
+        showSection("pk-stacknav-section");
+      } else if (newState === "SELECTING_from_STACK") {
+        state.phase = "SELECTING";
+        clearStackHighlight(ctx.picking);
+        dom.stackList.innerHTML = "";
+        showSection("pk-selecting-section");
+        enterCrosshair();
+        rebuildSelList(dom, state);
+      } else if (newState === "PAUSED") {
+        state.phase = "PAUSED";
+        exitCrosshair(ctx.picking);
+        clearPreview(state, ctx.picking);
+        if (ctx.picking.clickTimer) {
+          clearTimeout(ctx.picking.clickTimer);
+          ctx.picking.clickTimer = null;
+        }
+        ctx.picking.clickCount = 0;
+        dom.overlay.style.display = "none";
+        const pauseCount = state.pendingSelections.length;
+        ctx.sessionConfig.btn.textContent = "\u25B6 Resume (" + pauseCount + " selected)";
+        ctx.sessionConfig.btn.style.background = "#92400e";
+        ctx.sessionConfig.btn.style.display = "block";
+      } else if (newState === "RESUME" || newState === "SELECTING_for_EDIT") {
+        state.phase = "SELECTING";
+        ctx.sessionConfig.btn.textContent = "\u2716 Cancel";
+        ctx.sessionConfig.btn.style.background = "#475569";
+        ctx.sessionConfig.btn.style.display = "block";
+        dom.overlay.style.display = "flex";
+        showSection("pk-selecting-section");
+        rebuildSelList(dom, state);
+        enterCrosshair();
+        updateAddFeedbackBtn(dom, state);
+      } else if (newState === "FEEDBACK") {
+        state.phase = "FEEDBACK";
+        ctx.sessionConfig.btn.style.display = "none";
+        exitCrosshair(ctx.picking);
+        updateFeedbackSummary(dom, state);
+        dom.feedbackTextarea.style.border = "1px solid #444";
+        if (state.editingOriginal) {
+          dom.researchCheckbox.checked = state.feedbackResearch;
+        } else {
+          state.feedbackResearch = false;
+          dom.researchCheckbox.checked = false;
+        }
+        showSection("pk-feedback-section");
+        setTimeout(() => dom.feedbackTextarea.focus(), 50);
+      } else if (newState === "FEEDBACK_back") {
+        state.phase = "SELECTING";
+        ctx.sessionConfig.btn.style.background = "#475569";
+        ctx.sessionConfig.btn.style.display = "block";
+        enterCrosshair();
+        rebuildSelList(dom, state);
+        showSection("pk-selecting-section");
+      } else if (newState === "BATCH_REVIEW") {
+        state.phase = "BATCH_REVIEW";
+        ctx.sessionConfig.btn.style.display = "none";
+        dom.overlay.style.display = "flex";
+        clearSelectionOutlines(state);
+        state.pendingSelections = [];
+        rebuildBatchList(dom, state, { transitionTo: ctx.transitionTo });
+        showSection("pk-batchreview-section");
+      } else if (newState === "BATCH_MORE") {
+        state.phase = "SELECTING";
+        ctx.sessionConfig.btn.textContent = "\u2716 Cancel";
+        ctx.sessionConfig.btn.style.background = "#475569";
+        ctx.sessionConfig.btn.style.display = "block";
+        state.pendingSelections = [];
+        rebuildSelList(dom, state);
+        showSection("pk-selecting-section");
+        enterCrosshair();
+        updateAddFeedbackBtn(dom, state);
+      } else if (newState === "CANCEL_ALL") {
+        state.batchItems = [];
+        clearDraft();
+        state.editingOriginal = null;
+        state.pendingAttachments = [];
+        renderAttachChips(dom, state);
+        state.phase = "IDLE";
+        restoreFabsFor(ctx);
+        dom.overlay.style.display = "none";
+      } else if (newState === "SENDING") {
+        void sendAll(dom, state, sendDeps);
+      }
+    };
+  }
+
+  // src/state/pause.ts
+  var PAUSE_STORAGE_KEY = "pk-paused-selections";
+  function stripLiveRefs(state) {
+    return state.pendingSelections.map((sel) => {
+      const copy = __spreadValues({}, sel);
+      delete copy._el;
+      return copy;
+    });
+  }
+  function serializePauseState(state, mockupId) {
+    return {
+      mockupId,
+      sessionKind: state.sessionKind,
+      selections: stripLiveRefs(state)
+    };
+  }
+  function parsePausedRecord(raw, mockupId) {
+    if (!raw) return null;
+    let parsed;
+    try {
+      parsed = JSON.parse(raw);
+    } catch (e) {
+      return null;
+    }
+    if (!parsed || parsed.mockupId !== mockupId) return null;
+    const sessionKind = parsed.sessionKind === "feedback" ? "feedback" : "annotate";
+    return {
+      mockupId,
+      sessionKind,
+      selections: Array.isArray(parsed.selections) ? parsed.selections : []
+    };
+  }
+  function applyPausedRecord(state, record) {
+    state.phase = "PAUSED";
+    state.sessionKind = record.sessionKind;
+    state.pendingSelections = record.selections.map((cap) => __spreadProps(__spreadValues({}, cap), { _el: null }));
+  }
+
+  // src/wiring-controls.ts
+  function wireBrowse(ctx, pickingDeps) {
+    const { dom, state } = ctx;
+    dom.browseBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (state.phase !== "SELECTING") return;
+      exitCrosshair(ctx.picking);
+      ctx.picking.browseCache = null;
+      buildBrowseList(dom, state, ctx.picking, pickingDeps, "");
+      showSection("pk-browse-section");
+      setTimeout(() => dom.browseFilter.focus(), 50);
+    });
+    dom.browseFilter.addEventListener("input", function() {
+      buildBrowseList(dom, state, ctx.picking, pickingDeps, this.value);
+    });
+    dom.browseBackBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      clearBrowseHover(state, ctx.picking);
+      ctx.picking.browseCache = null;
+      showSection("pk-selecting-section");
+      enterCrosshair();
+    });
+  }
+  function wireDrag(ctx) {
+    const { dom } = ctx;
+    ctx.panelDrag = createPanelDragState();
+    const getActiveBtn = () => ctx.activeBtn;
+    const reposition = () => repositionPanel(dom.overlay, ctx.panelDrag, getActiveBtn);
+    const isPanelOpen = () => dom.overlay.style.display !== "none";
+    const annotate = makeDraggable(dom.annotateBtn, ANNOTATE_BTN_POS_KEY, {
+      getActiveBtn,
+      isPanelOpen,
+      repositionPanel: reposition
+    });
+    const feedback = makeDraggable(dom.feedbackBtn, FEEDBACK_BTN_POS_KEY, {
+      getActiveBtn,
+      isPanelOpen,
+      repositionPanel: reposition
+    });
+    ctx.annotateDrag = annotate.state;
+    ctx.feedbackDrag = feedback.state;
+    restorePanelPosition(dom.overlay, ctx.panelDrag);
+    installPanelDrag(dom.panelDragHandle, dom.overlay, getActiveBtn, ctx.panelDrag);
+  }
+  function wireBlurLock(ctx) {
+    installBlurNavListeners(ctx.blurLock);
+    const blurDeps = { statusMsg: ctx.dom.statusMsg, buildSelector };
+    restoreBlurLock(ctx.blurLock, blurDeps);
+  }
+  function wirePausePersistence(ctx) {
+    window.addEventListener("beforeunload", () => {
+      try {
+        if (ctx.state.phase === "PAUSED") {
+          const record = serializePauseState(ctx.state, ctx.mockupId);
+          sessionStorage.setItem(PAUSE_STORAGE_KEY, JSON.stringify(record));
+        } else {
+          sessionStorage.removeItem(PAUSE_STORAGE_KEY);
+        }
+      } catch (e) {
+      }
+    });
+  }
+
+  // src/wiring.ts
+  function cancelActiveItem(ctx) {
+    const { dom, state } = ctx;
+    cancelEdit(state);
+    dom.feedbackTextarea.value = "";
+    state.pendingAttachments = [];
+    renderAttachChips(dom, state);
+    saveDraft(state);
+    ctx.transitionTo("IDLE");
+  }
+  function wireFabs(ctx) {
+    const { dom, state } = ctx;
+    dom.annotateBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (ctx.annotateDrag && ctx.annotateDrag.wasDragged) return;
+      if (state.phase === "IDLE") {
+        ctx.sessionConfig = ctx.annotateConfig;
+        ctx.activeBtn = dom.annotateBtn;
+        state.sessionKind = "annotate";
+        ctx.transitionTo(state.batchItems.length > 0 ? "BATCH_REVIEW" : "SELECTING");
+      } else if (state.phase === "SELECTING") {
+        cancelActiveItem(ctx);
+      } else if (state.phase === "PAUSED") {
+        ctx.transitionTo("RESUME");
+      }
+    });
+    dom.feedbackBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (ctx.feedbackDrag && ctx.feedbackDrag.wasDragged) return;
+      if (state.phase === "PAUSED") {
+        ctx.transitionTo("RESUME");
+        return;
+      }
+      if (state.phase === "SELECTING") {
+        cancelActiveItem(ctx);
+        return;
+      }
+      if (state.phase !== "IDLE") return;
+      ctx.sessionConfig = ctx.feedbackConfig;
+      ctx.activeBtn = dom.feedbackBtn;
+      state.sessionKind = "feedback";
+      ctx.transitionTo(state.batchItems.length > 0 ? "BATCH_REVIEW" : "SELECTING");
+    });
+  }
+  function wireSelecting(ctx) {
+    const { dom, state } = ctx;
+    dom.addFeedbackBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (state.phase !== "SELECTING") return;
+      if (state.pendingSelections.length === 0) return;
+      state.feedbackIsGeneral = false;
+      dom.feedbackTextarea.placeholder = "What should change about these elements?";
+      ctx.transitionTo("FEEDBACK");
+    });
+    dom.selCancelBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (state.editingOriginal) {
+        cancelEdit(state);
+        dom.feedbackTextarea.value = "";
+        ctx.transitionTo("BATCH_REVIEW");
+        return;
+      }
+      ctx.transitionTo(state.batchItems.length > 0 ? "BATCH_REVIEW" : "IDLE");
+    });
+    dom.pauseNavBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (state.phase !== "SELECTING") return;
+      ctx.transitionTo("PAUSED");
+    });
+    dom.generalNoteBtn.addEventListener("click", () => {
+      state.feedbackIsGeneral = true;
+      state.phase = "FEEDBACK";
+      ctx.sessionConfig.btn.style.display = "none";
+      exitCrosshair(ctx.picking);
+      updateFeedbackSummary(dom, state);
+      dom.feedbackTextarea.style.border = "1px solid #444";
+      state.feedbackResearch = false;
+      dom.researchCheckbox.checked = false;
+      showSection("pk-feedback-section");
+      dom.feedbackTextarea.placeholder = "General feedback about the overall design...";
+      dom.feedbackTextarea.focus();
+    });
+  }
+  function wireStackAndFeedback(ctx) {
+    const { dom, state } = ctx;
+    let addingToBatch = false;
+    dom.stackBackBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (state.phase !== "STACK_NAV") return;
+      clearStackHighlight(ctx.picking);
+      dom.stackList.innerHTML = "";
+      showSection("pk-selecting-section");
+      enterCrosshair();
+      state.phase = "SELECTING";
+    });
+    dom.feedbackBackBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (state.phase !== "FEEDBACK") return;
+      state.feedbackResearch = false;
+      dom.researchCheckbox.checked = false;
+      if (state.editingOriginal) {
+        cancelEdit(state);
+        dom.feedbackTextarea.value = "";
+        ctx.transitionTo("BATCH_REVIEW");
+        return;
+      }
+      ctx.transitionTo("FEEDBACK_back");
+    });
+    dom.addToBatchBtn.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      if (state.phase !== "FEEDBACK") return;
+      const item = composeInProgressItem(dom, state);
+      if (!item) {
+        dom.feedbackTextarea.style.border = "1px solid #ef4444";
+        dom.feedbackTextarea.style.animation = "pk-shake 0.3s ease";
+        setTimeout(() => {
+          dom.feedbackTextarea.style.border = "1px solid #444";
+          dom.feedbackTextarea.style.animation = "";
+        }, 600);
+        return;
+      }
+      if (addingToBatch) return;
+      addingToBatch = true;
+      dom.addToBatchBtn.disabled = true;
+      try {
+        const shots = await freezeNoteScreenshots(state);
+        if (shots.length) item.attachments.push(...shots);
+        commitEdit(state, item);
+        state.pendingAttachments = [];
+        renderAttachChips(dom, state);
+        state.feedbackIsGeneral = false;
+        state.feedbackResearch = false;
+        dom.researchCheckbox.checked = false;
+        dom.feedbackTextarea.value = "";
+        ctx.transitionTo("BATCH_REVIEW");
+      } finally {
+        addingToBatch = false;
+        dom.addToBatchBtn.disabled = false;
+      }
+    });
+  }
+  function wireBatchReview(ctx) {
+    const { dom, state } = ctx;
+    dom.addMoreBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (state.phase !== "BATCH_REVIEW") return;
+      ctx.transitionTo("BATCH_MORE");
+    });
+    dom.sendAllBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (state.phase !== "BATCH_REVIEW") return;
+      if (state.batchItems.length === 0) return;
+      ctx.transitionTo("SENDING");
+    });
+    dom.cancelAllBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (state.phase !== "BATCH_REVIEW") return;
+      ctx.transitionTo("CANCEL_ALL");
+    });
+    dom.minimizeBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (state.phase !== "BATCH_REVIEW") return;
+      ctx.transitionTo("IDLE");
+    });
+  }
+  function installWiring(ctx, pickingDeps) {
+    wireFabs(ctx);
+    wireSelecting(ctx);
+    wireStackAndFeedback(ctx);
+    wireBatchReview(ctx);
+    wireBrowse(ctx, pickingDeps);
+    installHoverHandlers(document, ctx.state, ctx.picking);
+    installClickHandlers(document, ctx.dom, ctx.state, ctx.picking, pickingDeps);
+    installAttachmentHandlers(ctx.dom, ctx.state, ctx.attachments);
+    wireDrag(ctx);
+    wireBlurLock(ctx);
+    wirePausePersistence(ctx);
+  }
+
+  // src/index.ts
+  function readNativeCapabilities() {
+    const caps = {};
+    const meta = document.querySelector('meta[name="colossus-annotate"]');
+    if (!meta) return caps;
+    const list = (meta.getAttribute("content") || "").split(",");
+    for (const raw of list) {
+      const cap = raw.trim();
+      if (cap) caps[cap] = true;
+    }
+    return caps;
+  }
+  function restorePausedSession(ctx) {
+    try {
+      const raw = sessionStorage.getItem(PAUSE_STORAGE_KEY);
+      const record = parsePausedRecord(raw, ctx.mockupId);
+      if (!record) return;
+      sessionStorage.removeItem(PAUSE_STORAGE_KEY);
+      applyPausedRecord(ctx.state, record);
+      if (record.sessionKind === "feedback" && ctx.hasFeedbackUrl && ctx.resolvedMode !== "fix-only") {
+        ctx.sessionConfig = ctx.feedbackConfig;
+        ctx.activeBtn = ctx.dom.feedbackBtn;
+      } else {
+        ctx.sessionConfig = ctx.annotateConfig;
+        ctx.activeBtn = ctx.dom.annotateBtn;
+      }
+      ctx.state.sessionKind = ctx.sessionConfig === ctx.feedbackConfig ? "feedback" : "annotate";
+      const n = ctx.state.pendingSelections.length;
+      ctx.sessionConfig.btn.textContent = "\u25B6 Resume (" + n + " selected)";
+      ctx.sessionConfig.btn.style.background = "#92400e";
+      ctx.sessionConfig.btn.style.display = "block";
+    } catch (e) {
+    }
+  }
+  function init() {
+    const win = window;
+    if (win.__COLOSSUS_PICKER_LOADED__) return;
+    const nativeCaps = readNativeCapabilities();
+    if (nativeCaps["annotate"] && nativeCaps["feedback"]) return;
+    win.__COLOSSUS_PICKER_LOADED__ = true;
+    const resolvedMode = resolveWidgetMode();
+    const hasFeedbackUrl2 = hasFeedbackUrl();
+    const nativeAnnotate = !!nativeCaps["annotate"];
+    const dom = buildWidgetDom({ nativeAnnotate });
+    const state = createWidgetState();
+    initDraftStore(MOCKUP_ID);
+    const restoredItems = loadDraft();
+    if (restoredItems) state.batchItems = restoredItems;
+    const annotateConfig = {
+      btn: dom.annotateBtn,
+      idleLabel: "\u270F\uFE0F Annotate",
+      idleColor: "#6366f1"
+    };
+    const feedbackConfig = {
+      btn: dom.feedbackBtn,
+      idleLabel: "\u{1F4AC} Feedback",
+      idleColor: "#10b981"
+    };
+    const ctx = {
+      dom,
+      state,
+      resolvedMode,
+      nativeAnnotate,
+      hasFeedbackUrl: hasFeedbackUrl2,
+      mockupId: MOCKUP_ID,
+      annotateConfig,
+      feedbackConfig,
+      sessionConfig: annotateConfig,
+      activeBtn: dom.annotateBtn,
+      picking: createPickingRuntime(),
+      attachments: createAttachmentRuntime(),
+      blurLock: createBlurLockRuntime(),
+      annotateDrag: null,
+      feedbackDrag: null,
+      panelDrag: null,
+      transitionTo: () => void 0
+      // assigned below
+    };
+    const blurDeps = { statusMsg: dom.statusMsg, buildSelector };
+    const sendDeps = {
+      transitionTo: (t) => ctx.transitionTo(t),
+      // Legacy _persistLock (1890–1900): start the blur poll, then tear down the panel UI back to
+      // IDLE so the user can browse while the overlay holds the lock.
+      startBlurFlow: (selectors) => {
+        void startBlurFlow(ctx.blurLock, blurDeps, selectors).then(() => {
+          ctx.transitionTo("IDLE");
+        });
+      }
+    };
+    ctx.transitionTo = createTransitionTo(ctx, sendDeps);
+    const pickingDeps = {
+      rebuildSelList: () => rebuildSelList(dom, state),
+      updateAddFeedbackBtn: () => updateAddFeedbackBtn(dom, state),
+      transitionTo: (t) => ctx.transitionTo(t)
+    };
+    installWiring(ctx, pickingDeps);
+    restorePausedSession(ctx);
+    if (state.batchItems.length > 0 && state.phase !== "PAUSED") ctx.transitionTo("IDLE");
+    window.addEventListener("pagehide", () => {
+      const pending = composeInProgressItem(ctx.dom, ctx.state);
+      if (pending) {
+        if (ctx.state.editingOriginal) commitEdit(ctx.state, pending);
+        else ctx.state.batchItems.push(pending);
+        ctx.dom.feedbackTextarea.value = "";
+        ctx.state.pendingSelections = [];
+        ctx.state.pendingAttachments = [];
+        ctx.state.feedbackIsGeneral = false;
+        saveDraft(ctx.state);
+      } else if (ctx.state.editingOriginal) {
+        cancelEdit(ctx.state);
+        saveDraft(ctx.state);
+      }
+      flushDraft();
+    });
+  }
+  init();
+})();
+
+</script>
+</body>
+</html>

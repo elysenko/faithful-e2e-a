@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/validation/validation.component.css"],
+  "sourcesContent": [".stat-label {\n  font-size: var(--fs-xs);\n  text-transform: uppercase;\n  letter-spacing: 0.03em;\n}\n.stat-value {\n  font-size: var(--fs-lg);\n  font-weight: 600;\n  margin-top: var(--sp-1);\n}\n\n.toggle {\n  display: inline-flex;\n  align-items: center;\n  gap: var(--sp-2);\n  margin: 0;\n  font-size: var(--fs-sm);\n  font-weight: 600;\n  color: var(--color-text-muted);\n  cursor: pointer;\n}\n.toggle input {\n  width: 18px;\n  height: 18px;\n  min-height: 0;\n  accent-color: var(--color-brand-600);\n  cursor: pointer;\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,aAAW,IAAI;AACf,kBAAgB;AAChB,kBAAgB;AAClB;AACA,CAAC;AACC,aAAW,IAAI;AACf,eAAa;AACb,cAAY,IAAI;AAClB;AAEA,CAAC;AACC,WAAS;AACT,eAAa;AACb,OAAK,IAAI;AACT,UAAQ;AACR,aAAW,IAAI;AACf,eAAa;AACb,SAAO,IAAI;AACX,UAAQ;AACV;AACA,CAVC,OAUO;AACN,SAAO;AACP,UAAQ;AACR,cAAY;AACZ,gBAAc,IAAI;AAClB,UAAQ;AACV;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/reports/low-stock.component.css"],
+  "sourcesContent": [".btn-sm { min-height: 36px; padding: 0 var(--space-3); font-size: var(--font-size-sm); }\n"],
+  "mappings": ";AAAA,CAAC;AAAS,cAAY;AAAM,WAAS,EAAE,IAAI;AAAY,aAAW,IAAI;AAAiB;",
+  "names": []
+}

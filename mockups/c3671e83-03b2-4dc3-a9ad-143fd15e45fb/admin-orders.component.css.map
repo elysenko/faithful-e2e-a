@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/admin/admin-orders.component.css"],
+  "sourcesContent": [".table-wrap { overflow-x: auto; }\n.table { width: 100%; border-collapse: collapse; min-width: 640px; }\n.table th, .table td { text-align: left; padding: var(--sp-3); border-bottom: 1px solid var(--color-border); }\n.table th { font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: .04em; color: var(--color-muted); }\n.order-link { color: var(--color-info); font-weight: 700; }\n.cell-actions { text-align: right; }\n"],
+  "mappings": ";AAAA,CAAC;AAAa,cAAY;AAAM;AAChC,CAAC;AAAQ,SAAO;AAAM,mBAAiB;AAAU,aAAW;AAAO;AACnE,CADC,MACM;AAAI,CADV,MACiB;AAAK,cAAY;AAAM,WAAS,IAAI;AAAS,iBAAe,IAAI,MAAM,IAAI;AAAiB;AAC7G,CAFC,MAEM;AAAK,aAAW,IAAI;AAAU,kBAAgB;AAAW,kBAAgB;AAAO,SAAO,IAAI;AAAgB;AAClH,CAAC;AAAa,SAAO,IAAI;AAAe,eAAa;AAAK;AAC1D,CAAC;AAAe,cAAY;AAAO;",
+  "names": []
+}

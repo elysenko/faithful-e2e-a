@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Warm Intro — Date your next connection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5EFE6;
+    --surface:#FFFFFF;
+    --surface-2:#FBF7F0;
+    --ink:#16233B;
+    --ink-2:#4B5B76;
+    --ink-3:#8394AB;
+    --line:#E7DECF;
+    --line-2:#F0E8DA;
+    --primary:#0A66C2;
+    --primary-deep:#084A8E;
+    --accent:#EF556B;
+    --accent-deep:#D33A52;
+    --accent-soft:#FCE7E9;
+    --gold:#C08A2E;
+    --success:#2E9E6B;
+    --success-soft:#E3F2EA;
+    --warn:#C4801E;
+    --warn-soft:#FBEFD9;
+    --radius:18px;
+    --radius-sm:12px;
+    --shadow-sm:0 1px 2px rgba(22,35,59,.06),0 2px 8px rgba(22,35,59,.05);
+    --shadow-md:0 6px 22px rgba(22,35,59,.10),0 2px 6px rgba(22,35,59,.06);
+    --shadow-lg:0 22px 60px rgba(22,35,59,.20);
+    --sidebar-w:248px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:"Space Grotesk",system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+  input,textarea,select{font-size:16px;font-family:inherit}
+  button{font-family:inherit;cursor:pointer}
+  ::selection{background:var(--accent-soft)}
+  h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;line-height:1.12;color:var(--ink);font-weight:600}
+
+  /* ---------- Shell ---------- */
+  .app{display:flex;min-height:100vh;min-height:100svh}
+  .sidebar{
+    width:var(--sidebar-w);flex:0 0 var(--sidebar-w);
+    background:linear-gradient(180deg,#152136 0%,#1B2C48 100%);
+    color:#DDE4EF;position:fixed;inset:0 auto 0 0;height:100vh;height:100svh;
+    display:flex;flex-direction:column;padding:22px 16px;z-index:40;
+  }
+  .brand{display:flex;align-items:center;gap:11px;padding:6px 8px 22px}
+  .brand-mark{width:38px;height:38px;border-radius:11px;flex:0 0 38px;
+    background:linear-gradient(135deg,var(--accent) 0%,var(--accent-deep) 100%);
+    display:grid;place-items:center;box-shadow:0 6px 16px rgba(211,58,82,.4)}
+  .brand-mark svg{width:20px;height:20px}
+  .brand-name{font-family:"Fraunces",serif;font-weight:600;font-size:20px;color:#fff;letter-spacing:.2px}
+  .brand-name small{display:block;font-family:"Space Grotesk";font-weight:400;font-size:10.5px;color:#8FA0BC;letter-spacing:.6px;text-transform:uppercase}
+  .nav{display:flex;flex-direction:column;gap:3px;margin-top:4px}
+  .nav-label{font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:#65779A;padding:16px 12px 6px}
+  .nav-item{
+    display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:12px;
+    color:#C2CDDE;background:transparent;border:none;width:100%;text-align:left;
+    font-size:14.5px;font-weight:500;min-height:44px;transition:.16s;position:relative;
+  }
+  .nav-item svg{width:19px;height:19px;flex:0 0 19px;opacity:.85}
+  .nav-item:hover{background:rgba(255,255,255,.06);color:#fff}
+  .nav-item.active{background:rgba(239,85,107,.16);color:#fff}
+  .nav-item.active::before{content:"";position:absolute;left:0;top:9px;bottom:9px;width:3px;border-radius:3px;background:var(--accent)}
+  .nav-item .badge{margin-left:auto;background:var(--accent);color:#fff;font-size:11px;font-weight:600;min-width:20px;height:20px;border-radius:10px;display:grid;place-items:center;padding:0 5px}
+  .side-foot{margin-top:auto;border-top:1px solid rgba(255,255,255,.08);padding-top:12px}
+  .user-chip{display:flex;align-items:center;gap:10px;padding:8px;border-radius:12px}
+  .user-chip:hover{background:rgba(255,255,255,.06)}
+  .avatar{border-radius:50%;flex:0 0 auto;display:grid;place-items:center;color:#fff;font-weight:600;font-family:"Space Grotesk";overflow:hidden}
+  .user-chip .avatar{width:38px;height:38px;font-size:14px}
+  .user-chip-info{min-width:0}
+  .user-chip-info b{font-size:13.5px;color:#fff;font-weight:600;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .user-chip-info span{font-size:11.5px;color:#8FA0BC}
+
+  .main{flex:1;margin-left:var(--sidebar-w);min-width:0;display:flex;flex-direction:column}
+  #screens-container{flex:1;display:flex;flex-direction:column}
+  .screen{display:none;flex:1;flex-direction:column}
+  .screen.active{display:flex;animation:fade .3s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  /* chromeless (login/onboarding) */
+  body.chromeless .sidebar,body.chromeless .bottom-nav{display:none}
+  body.chromeless .main{margin-left:0}
+
+  .topbar{position:sticky;top:0;z-index:20;background:rgba(245,239,230,.86);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);padding:16px 32px;display:flex;align-items:center;gap:14px}
+  .topbar h1{font-size:24px}
+  .topbar .sub{color:var(--ink-2);font-size:13px;margin-top:2px}
+  .topbar .spacer{flex:1}
+  .content{padding:26px 32px 60px;flex:1;overscroll-behavior-y:contain}
+  .wrap{max-width:640px;margin:0 auto;width:100%}
+  .wrap-wide{max-width:1040px;margin:0 auto;width:100%}
+
+  /* ---------- Buttons ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid transparent;
+    border-radius:12px;padding:12px 18px;font-size:14.5px;font-weight:600;min-height:44px;transition:.16s;background:var(--surface);color:var(--ink)}
+  .btn svg{width:18px;height:18px}
+  .btn-primary{background:var(--primary);color:#fff;box-shadow:0 6px 16px rgba(10,102,194,.28)}
+  .btn-primary:hover{background:var(--primary-deep)}
+  .btn-accent{background:var(--accent);color:#fff;box-shadow:0 6px 16px rgba(239,85,107,.32)}
+  .btn-accent:hover{background:var(--accent-deep)}
+  .btn-ghost{background:var(--surface);border-color:var(--line);color:var(--ink)}
+  .btn-ghost:hover{background:var(--surface-2);border-color:var(--ink-3)}
+  .btn-danger{background:#fff;border-color:#F0C5CC;color:var(--accent-deep)}
+  .btn-danger:hover{background:var(--accent-soft)}
+  .btn-block{width:100%}
+  .btn-sm{padding:8px 13px;min-height:38px;font-size:13px;border-radius:10px}
+
+  /* ---------- Cards / bits ---------- */
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm)}
+  .pill{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:20px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-2)}
+  .pill svg{width:13px;height:13px}
+  .badge-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block}
+  .status{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:4px 11px;border-radius:20px}
+  .status.ok{background:var(--success-soft);color:var(--success)}
+  .status.warn{background:var(--warn-soft);color:var(--warn)}
+  .status.ban{background:var(--accent-soft);color:var(--accent-deep)}
+  .link{color:var(--primary);font-weight:600;text-decoration:none;font-size:13.5px}
+  .link:hover{text-decoration:underline}
+  .muted{color:var(--ink-2)}
+
+  /* ---------- Login ---------- */
+  .auth{flex:1;display:grid;grid-template-columns:1.05fr .95fr;min-height:100vh;min-height:100svh}
+  .auth-art{position:relative;overflow:hidden;background:linear-gradient(155deg,#16233B 0%,#20365B 55%,#33507F 100%);color:#fff;padding:56px;display:flex;flex-direction:column}
+  .auth-art .brand-name{font-size:24px}
+  .auth-art .halo{position:absolute;border-radius:50%;filter:blur(4px);opacity:.9}
+  .auth-quote{margin-top:auto;max-width:440px}
+  .auth-quote h2{color:#fff;font-size:38px;font-weight:600;line-height:1.08}
+  .auth-quote h2 em{color:var(--accent);font-style:italic}
+  .auth-quote p{color:#AEBCD3;margin-top:16px;font-size:15px}
+  .auth-stats{display:flex;gap:30px;margin-top:34px}
+  .auth-stats b{font-family:"Fraunces",serif;font-size:26px;color:#fff;display:block}
+  .auth-stats span{font-size:12px;color:#8FA0BC}
+  .float-card{position:absolute;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:11px 14px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow-md)}
+  .float-card .avatar{width:34px;height:34px;font-size:13px}
+  .float-card b{font-size:13px;color:#fff;display:block}
+  .float-card span{font-size:11px;color:#C2CDDE}
+  .auth-form{display:flex;flex-direction:column;justify-content:center;padding:56px;background:var(--paper)}
+  .auth-form .inner{max-width:380px;width:100%;margin:0 auto}
+  .auth-form h1{font-size:32px;margin-bottom:8px}
+  .auth-form>.inner>p.lede{color:var(--ink-2);margin-bottom:28px}
+  .li-btn{width:100%;background:var(--primary);color:#fff;border:none;border-radius:12px;padding:15px;font-size:15px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:11px;min-height:52px;box-shadow:0 8px 20px rgba(10,102,194,.3);transition:.16s}
+  .li-btn:hover{background:var(--primary-deep)}
+  .li-btn svg{width:22px;height:22px}
+  .auth-note{font-size:12.5px;color:var(--ink-3);text-align:center;margin-top:18px;line-height:1.6}
+  .divider{display:flex;align-items:center;gap:12px;color:var(--ink-3);font-size:12px;margin:22px 0}
+  .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+  .trust{display:flex;flex-direction:column;gap:11px;margin-top:26px}
+  .trust-row{display:flex;gap:11px;align-items:flex-start;font-size:13px;color:var(--ink-2)}
+  .trust-row svg{width:18px;height:18px;color:var(--success);flex:0 0 18px;margin-top:1px}
+  .error-banner{display:none;background:var(--accent-soft);border:1px solid #F0C5CC;color:var(--accent-deep);border-radius:12px;padding:12px 14px;font-size:13px;font-weight:500;margin-bottom:20px;gap:9px;align-items:flex-start}
+  .error-banner.show{display:flex}
+  .error-banner svg{width:17px;height:17px;flex:0 0 17px;margin-top:1px}
+
+  /* ---------- Onboarding ---------- */
+  .ob{flex:1;display:flex;flex-direction:column;align-items:center;padding:32px 20px 60px;overflow:auto;overscroll-behavior-y:contain}
+  .ob-head{max-width:560px;width:100%;margin-bottom:22px}
+  .ob-head .brand{padding:0 0 20px;justify-content:center}
+  .steps{display:flex;gap:8px;margin-bottom:8px}
+  .step{flex:1;height:6px;border-radius:4px;background:var(--line)}
+  .step.done{background:var(--success)}
+  .step.on{background:var(--accent)}
+  .ob-head p{color:var(--ink-2);font-size:13.5px;text-align:center;margin-top:12px}
+  .ob-card{max-width:560px;width:100%;padding:28px}
+  .ob-card h2{font-size:26px;margin-bottom:6px}
+  .field{margin-top:18px}
+  .field label{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:7px}
+  .field .imported{font-size:10.5px;font-weight:600;color:var(--primary);background:#E6F0FA;padding:2px 8px;border-radius:20px;display:inline-flex;align-items:center;gap:4px}
+  .field .imported svg{width:11px;height:11px}
+  input.inp,textarea.inp,select.inp{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--surface-2);color:var(--ink);transition:.16s}
+  input.inp:focus,textarea.inp:focus,select.inp:focus{outline:none;border-color:var(--primary);background:#fff;box-shadow:0 0 0 3px rgba(10,102,194,.12)}
+  textarea.inp{resize:vertical;min-height:96px}
+  .hint{font-size:11.5px;color:var(--ink-3);margin-top:6px}
+  .photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
+  .photo-tile{aspect-ratio:3/4;border-radius:14px;overflow:hidden;position:relative;border:1px solid var(--line)}
+  .photo-tile.add{border:2px dashed var(--line);background:var(--surface-2);display:grid;place-items:center;color:var(--ink-3);cursor:pointer}
+  .photo-tile.add:hover{border-color:var(--primary);color:var(--primary)}
+  .photo-tile.add svg{width:26px;height:26px}
+  .photo-tile .rm{position:absolute;top:6px;right:6px;width:24px;height:24px;border-radius:50%;background:rgba(22,35,59,.7);color:#fff;border:none;display:grid;place-items:center;font-size:14px}
+  .ph{width:100%;height:100%;display:grid;place-items:center;color:#fff;font-family:"Fraunces",serif;font-size:28px;font-weight:600}
+
+  /* ---------- Feed ---------- */
+  .feed-stage{flex:1;display:flex;flex-direction:column;align-items:center;padding:22px 20px 40px}
+  .swipe-wrap{max-width:420px;width:100%;position:relative}
+  .swipe-card{background:var(--surface);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow-md)}
+  .sc-photo{aspect-ratio:4/5;position:relative;display:grid;place-items:end stretch}
+  .sc-photo .ph{position:absolute;inset:0;font-size:76px}
+  .sc-grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,35,59,0) 42%,rgba(22,35,59,.82) 100%)}
+  .sc-tags{position:absolute;top:14px;left:14px;display:flex;gap:7px;flex-wrap:wrap}
+  .sc-tag{background:rgba(255,255,255,.9);backdrop-filter:blur(4px);color:var(--ink);font-size:11.5px;font-weight:600;padding:5px 10px;border-radius:20px;display:inline-flex;gap:5px;align-items:center}
+  .sc-tag svg{width:13px;height:13px;color:var(--primary)}
+  .sc-tag.verify svg{color:var(--success)}
+  .sc-report{position:absolute;top:14px;right:14px;background:rgba(22,35,59,.4);border:none;color:#fff;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;backdrop-filter:blur(4px)}
+  .sc-report svg{width:17px;height:17px}
+  .sc-info{position:relative;padding:18px 18px 20px;color:#fff;z-index:2}
+  .sc-info h2{color:#fff;font-size:27px;font-weight:600}
+  .sc-info h2 span{font-weight:400;opacity:.9;font-size:22px}
+  .sc-role{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:14px;color:#EAF0F8}
+  .sc-role svg{width:15px;height:15px;opacity:.9}
+  .sc-body{padding:16px 18px 4px}
+  .sc-bio{color:var(--ink-2);font-size:14px;line-height:1.55}
+  .interests{display:flex;flex-wrap:wrap;gap:7px;padding:12px 18px 18px}
+  .mutual{display:flex;align-items:center;gap:8px;padding:0 18px 18px;color:var(--ink-2);font-size:12.5px}
+  .mutual .stack{display:flex}
+  .mutual .stack .avatar{width:24px;height:24px;font-size:10px;border:2px solid #fff;margin-left:-8px}
+  .mutual .stack .avatar:first-child{margin-left:0}
+  .swipe-actions{display:flex;justify-content:center;gap:16px;margin-top:22px}
+  .sw-btn{width:64px;height:64px;border-radius:50%;border:1px solid var(--line);background:#fff;display:grid;place-items:center;box-shadow:var(--shadow-md);transition:.16s}
+  .sw-btn:hover{transform:translateY(-3px)}
+  .sw-btn svg{width:28px;height:28px}
+  .sw-btn.pass{color:var(--ink-2)}
+  .sw-btn.pass:hover{color:var(--accent-deep);border-color:#F0C5CC}
+  .sw-btn.like{background:var(--accent);color:#fff;border-color:transparent;width:74px;height:74px;box-shadow:0 10px 26px rgba(239,85,107,.4)}
+  .sw-btn.like svg{width:34px;height:34px}
+  .sw-btn.info{color:var(--primary)}
+  .sw-btn.info:hover{border-color:var(--primary)}
+  .feed-hint{color:var(--ink-3);font-size:12px;margin-top:16px;text-align:center}
+  .empty{max-width:420px;text-align:center;padding:60px 20px;display:none;flex-direction:column;align-items:center;gap:8px}
+  .empty.show{display:flex}
+  .empty .ic{width:72px;height:72px;border-radius:50%;background:var(--surface-2);border:1px solid var(--line);display:grid;place-items:center;margin-bottom:8px;color:var(--ink-3)}
+  .empty .ic svg{width:32px;height:32px}
+  .empty h3{font-size:22px}
+
+  /* ---------- Matches / list ---------- */
+  .match-list{display:flex;flex-direction:column;gap:2px}
+  .match-row{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:14px;background:var(--surface);border:1px solid var(--line);text-align:left;width:100%;transition:.14s;box-shadow:var(--shadow-sm)}
+  .match-row:hover{border-color:var(--ink-3);transform:translateX(2px)}
+  .match-row .avatar{width:56px;height:56px;font-size:20px}
+  .mr-main{flex:1;min-width:0}
+  .mr-top{display:flex;align-items:baseline;gap:8px}
+  .mr-top b{font-size:15.5px;font-weight:600}
+  .mr-top .time{margin-left:auto;font-size:11.5px;color:var(--ink-3);white-space:nowrap}
+  .mr-role{font-size:12px;color:var(--primary);font-weight:500}
+  .mr-preview{font-size:13px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px}
+  .mr-preview.unread{color:var(--ink);font-weight:600}
+  .mr-badge{width:22px;height:22px;flex:0 0 22px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;font-weight:600;display:grid;place-items:center}
+  .new-matches{display:flex;gap:14px;overflow-x:auto;padding:4px 2px 16px;overscroll-behavior-x:contain}
+  .nm{display:flex;flex-direction:column;align-items:center;gap:7px;flex:0 0 auto;background:none;border:none}
+  .nm .avatar{width:64px;height:64px;font-size:22px;border:3px solid var(--accent);padding:2px}
+  .nm span{font-size:12px;font-weight:500;color:var(--ink)}
+  .section-h{display:flex;align-items:center;gap:10px;margin:8px 0 14px}
+  .section-h h3{font-size:16px}
+  .section-h .count{font-size:12px;color:var(--ink-3);background:var(--surface-2);border:1px solid var(--line);padding:2px 9px;border-radius:20px;font-weight:600}
+
+  /* ---------- Conversation ---------- */
+  .convo{flex:1;display:flex;flex-direction:column;min-height:0}
+  .convo-head{display:flex;align-items:center;gap:12px;padding:14px 24px;border-bottom:1px solid var(--line);background:var(--surface);position:sticky;top:0;z-index:10}
+  .convo-head .back{background:none;border:none;color:var(--ink-2);width:38px;height:38px;border-radius:10px;display:grid;place-items:center}
+  .convo-head .back:hover{background:var(--surface-2)}
+  .convo-head .avatar{width:44px;height:44px;font-size:16px}
+  .convo-head .ch-info b{font-size:15px;font-weight:600;display:block}
+  .convo-head .ch-info span{font-size:12px;color:var(--primary);font-weight:500}
+  .convo-body{flex:1;overflow-y:auto;overscroll-behavior-y:contain;padding:24px;display:flex;flex-direction:column;gap:12px;background:var(--surface-2)}
+  .day-sep{text-align:center;font-size:11px;color:var(--ink-3);margin:6px 0}
+  .msg{max-width:74%;padding:11px 15px;border-radius:18px;font-size:14px;line-height:1.5}
+  .msg.in{background:#fff;border:1px solid var(--line);color:var(--ink);align-self:flex-start;border-bottom-left-radius:6px}
+  .msg.out{background:var(--primary);color:#fff;align-self:flex-end;border-bottom-right-radius:6px}
+  .msg .t{display:block;font-size:10px;opacity:.6;margin-top:4px}
+  .match-note{align-self:center;background:var(--accent-soft);color:var(--accent-deep);font-size:12px;font-weight:600;padding:7px 14px;border-radius:20px;display:flex;align-items:center;gap:7px}
+  .match-note svg{width:14px;height:14px}
+  .composer{padding:14px 24px calc(14px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:var(--surface);display:flex;gap:10px;align-items:flex-end}
+  .composer textarea{flex:1;border:1px solid var(--line);border-radius:22px;padding:11px 16px;background:var(--surface-2);resize:none;max-height:120px;min-height:44px;line-height:1.4}
+  .composer textarea:focus{outline:none;border-color:var(--primary);background:#fff}
+  .composer .send{width:44px;height:44px;flex:0 0 44px;border-radius:50%;background:var(--primary);color:#fff;border:none;display:grid;place-items:center}
+  .composer .send svg{width:19px;height:19px}
+
+  /* ---------- Profile ---------- */
+  .prof-hero{position:relative;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:20px}
+  .prof-cover{height:150px;background:linear-gradient(135deg,#20365B,#33507F)}
+  .prof-hero .body{padding:0 24px 24px;background:var(--surface);border:1px solid var(--line);border-top:none;border-radius:0 0 20px 20px}
+  .prof-avatar{width:104px;height:104px;font-size:38px;border:5px solid var(--surface);margin-top:-52px;box-shadow:var(--shadow-sm)}
+  .prof-name{display:flex;align-items:center;gap:10px;margin-top:12px}
+  .prof-name h2{font-size:26px}
+  .verified{color:var(--success);display:inline-flex}
+  .verified svg{width:20px;height:20px}
+  .prof-role{display:flex;align-items:center;gap:8px;color:var(--primary);font-weight:500;margin-top:4px;font-size:14px}
+  .prof-role svg{width:16px;height:16px}
+  .prof-section{padding:20px 22px}
+  .prof-section h4{font-size:12px;text-transform:uppercase;letter-spacing:.8px;color:var(--ink-3);font-family:"Space Grotesk";font-weight:600;margin-bottom:10px}
+  .prof-section p{color:var(--ink-2);font-size:14px;line-height:1.6}
+
+  /* ---------- Admin ---------- */
+  [role="tablist"]{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:20px;overflow-x:auto;overscroll-behavior-x:contain}
+  [role="tab"]{padding:11px 16px;border:none;background:transparent;cursor:pointer;border-bottom:2px solid transparent;font-size:14px;font-weight:600;color:var(--ink-2);white-space:nowrap;min-height:44px;font-family:"Space Grotesk"}
+  [role="tab"][aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+  [role="tab"]:hover{color:var(--ink)}
+  [role="tabpanel"]{padding:2px 0}
+  [role="tabpanel"]:focus{outline:none}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-bottom:24px}
+  .kpi{padding:16px 18px}
+  .kpi .k-label{font-size:12px;color:var(--ink-2);font-weight:500}
+  .kpi .k-val{font-family:"Fraunces",serif;font-size:30px;font-weight:600;margin-top:6px}
+  .kpi .k-val small{font-size:13px;font-family:"Space Grotesk";color:var(--success);font-weight:600}
+  .tbl{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .tbl thead th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:var(--ink-3);font-weight:600;padding:12px 16px;background:var(--surface-2);border-bottom:1px solid var(--line)}
+  .tbl td{padding:13px 16px;border-bottom:1px solid var(--line-2);font-size:13.5px;vertical-align:middle}
+  .tbl tr:last-child td{border-bottom:none}
+  .cell-user{display:flex;align-items:center;gap:10px}
+  .cell-user .avatar{width:34px;height:34px;font-size:13px}
+  .cell-user b{font-weight:600;font-size:13.5px}
+  .cell-user span{font-size:11.5px;color:var(--ink-3)}
+  .reason-chip{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:3px 9px;font-size:12px;color:var(--ink-2);font-weight:500}
+  .report-card{padding:16px 18px;margin-bottom:12px;display:flex;gap:16px;align-items:flex-start}
+  .report-card .who{flex:1;min-width:0}
+  .report-card .who p{font-size:13px;color:var(--ink-2);margin-top:8px;background:var(--surface-2);padding:9px 12px;border-radius:10px;border:1px solid var(--line-2)}
+  .rc-actions{display:flex;flex-direction:column;gap:8px;flex:0 0 auto}
+
+  /* ---------- Settings / integrations ---------- */
+  .setup-banner{display:flex;gap:12px;align-items:flex-start;background:var(--warn-soft);border:1px solid #EBD3A6;border-radius:14px;padding:15px 18px;margin-bottom:22px}
+  .setup-banner .ic{width:34px;height:34px;flex:0 0 34px;border-radius:10px;background:#fff;display:grid;place-items:center;color:var(--warn);box-shadow:var(--shadow-sm)}
+  .setup-banner .ic svg{width:19px;height:19px}
+  .setup-banner b{font-size:14px;color:#8A5A14}
+  .setup-banner p{font-size:13px;color:#9A6A24;margin-top:2px}
+  .svc{margin-bottom:14px;overflow:hidden}
+  .svc-head{display:flex;align-items:center;gap:14px;padding:16px 18px;width:100%;background:none;border:none;text-align:left}
+  .svc-head:hover{background:var(--surface-2)}
+  .svc-logo{width:44px;height:44px;flex:0 0 44px;border-radius:11px;display:grid;place-items:center;font-family:"Fraunces",serif;font-weight:600;font-size:17px;color:#fff}
+  .svc-main{flex:1;min-width:0}
+  .svc-main b{font-size:15px;font-weight:600;display:block}
+  .svc-main span{font-size:12.5px;color:var(--ink-2)}
+  .svc-chev{color:var(--ink-3);transition:.2s}
+  .svc-chev svg{width:20px;height:20px}
+  .svc.open .svc-chev{transform:rotate(180deg)}
+  .svc-body{display:none;padding:4px 18px 20px;border-top:1px solid var(--line-2)}
+  .svc.open .svc-body{display:block}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+  .form-grid .field{margin-top:0}
+  .form-grid .full{grid-column:1/-1}
+  .svc-foot{display:flex;align-items:center;gap:12px;margin-top:16px}
+
+  /* ---------- Modal ---------- */
+  .overlay{position:fixed;inset:0;background:rgba(16,26,44,.55);backdrop-filter:blur(4px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+  .overlay.show{display:flex;animation:fade .25s ease}
+  .modal{background:var(--surface);border-radius:24px;max-width:400px;width:100%;padding:36px 30px;text-align:center;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+  .modal .beam{position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:260px;height:260px;background:radial-gradient(circle,rgba(239,85,107,.22),transparent 70%);pointer-events:none}
+  .modal.match h2{font-family:"Fraunces",serif;font-size:34px;color:var(--accent);font-style:italic;margin-bottom:6px}
+  .match-avatars{display:flex;justify-content:center;margin:20px 0 8px}
+  .match-avatars .avatar{width:88px;height:88px;font-size:32px;border:4px solid #fff;box-shadow:var(--shadow-md)}
+  .match-avatars .avatar:last-child{margin-left:-22px}
+  .modal p{color:var(--ink-2);font-size:14px;margin-bottom:22px}
+  .modal .actions{display:flex;flex-direction:column;gap:10px}
+  .modal .x{position:absolute;top:16px;right:16px;background:var(--surface-2);border:1px solid var(--line);width:34px;height:34px;border-radius:50%;color:var(--ink-2);display:grid;place-items:center;z-index:2}
+  .report-modal{text-align:left;max-width:440px}
+  .report-modal h3{font-size:22px;margin-bottom:4px}
+  .report-modal .rm-lede{color:var(--ink-2);font-size:13.5px;margin-bottom:16px}
+  .reason-opts{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+  .reason-opt{display:flex;align-items:center;gap:11px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font-size:14px;font-weight:500;background:var(--surface-2)}
+  .reason-opt:hover{border-color:var(--primary)}
+  .reason-opt input{accent-color:var(--primary);width:18px;height:18px}
+
+  /* ---------- Bottom nav (mobile) ---------- */
+  .bottom-nav{display:none}
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:900px){
+    .auth{grid-template-columns:1fr}
+    .auth-art{display:none}
+    .form-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:768px){
+    .sidebar{display:none}
+    .main{margin-left:0}
+    .topbar{padding:14px 18px}
+    .topbar h1{font-size:20px}
+    .content{padding:18px 16px 96px}
+    .convo-body{padding:16px}
+    .convo-head{padding:12px 16px}
+    .composer{padding:12px 16px calc(12px + env(safe-area-inset-bottom))}
+    .report-card{flex-direction:column}
+    .rc-actions{flex-direction:row;width:100%}
+    .rc-actions .btn{flex:1}
+    .tbl-scroll{overflow-x:auto;overscroll-behavior-x:contain;border-radius:14px}
+    .tbl{min-width:560px}
+    .bottom-nav{
+      display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;
+      background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-top:1px solid var(--line);
+      padding:6px 6px calc(6px + env(safe-area-inset-bottom));
+    }
+    body.chromeless .bottom-nav{display:none}
+    .bn-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+      background:none;border:none;min-height:52px;color:var(--ink-3);font-size:10.5px;font-weight:600;position:relative;border-radius:12px}
+    .bn-item svg{width:23px;height:23px}
+    .bn-item.active{color:var(--accent)}
+    .bn-item .badge{position:absolute;top:2px;right:calc(50% - 22px);background:var(--accent);color:#fff;font-size:9px;min-width:16px;height:16px;border-radius:9px;display:grid;place-items:center;padding:0 4px}
+    .auth-form{padding:36px 22px}
+    .modal{padding:30px 22px}
+  }
+  @media(max-width:420px){
+    .photo-grid{grid-template-columns:repeat(2,1fr)}
+    .swipe-actions{gap:12px}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7.5-4.9-7.5-10A4.5 4.5 0 0 1 12 8.5 4.5 4.5 0 0 1 19.5 11c0 5.1-7.5 10-7.5 10Z" fill="#fff"/><circle cx="9" cy="10.5" r="1.4" fill="#EF556B"/><circle cx="15" cy="10.5" r="1.4" fill="#EF556B"/><path d="M10.4 10.5h3.2" stroke="#EF556B" stroke-width="1.2"/></svg>
+      </span>
+      <span class="brand-name">Warm Intro<small>Professional dating</small></span>
+    </div>
+    <div class="nav-label">Discover</div>
+    <nav class="nav">
+      <button class="nav-item active" data-nav="feed" onclick="go('feed')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6M4 8V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2M4 8h16M9 13h6"/></svg>
+        Feed
+      </button>
+      <button class="nav-item" data-nav="matches" onclick="go('matches')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7.5-4.9-7.5-10A4.5 4.5 0 0 1 12 8.5 4.5 4.5 0 0 1 19.5 11c0 5.1-7.5 10-7.5 10Z"/></svg>
+        Matches
+        <span class="badge">3</span>
+      </button>
+      <button class="nav-item" data-nav="profile" onclick="go('profile')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+        My Profile
+      </button>
+    </nav>
+    <div class="nav-label">Moderation</div>
+    <nav class="nav">
+      <button class="nav-item" data-nav="admin" onclick="go('admin')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v5c0 4.4-3 8.3-7 9.5C8 19.3 5 15.4 5 11V6l7-3Z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg>
+        Admin Console
+        <span class="badge">4</span>
+      </button>
+    </nav>
+    <div class="side-foot">
+      <button class="user-chip" onclick="go('profile')" style="border:none;width:100%">
+        <span class="avatar" style="background:linear-gradient(135deg,#0A66C2,#33507F)">JM</span>
+        <span class="user-chip-info">
+          <b>Jordan Mercer</b>
+          <span>Senior PM · Admin</span>
+        </span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+    <div id="screens-container">
+      <!-- PATCH:screens-container -->
+
+      <!-- ============ LOGIN ============ -->
+      <section class="screen" id="screen-login">
+        <div class="auth">
+          <div class="auth-art">
+            <div class="halo" style="width:300px;height:300px;background:radial-gradient(circle,rgba(239,85,107,.4),transparent 70%);top:-60px;right:-40px"></div>
+            <div class="halo" style="width:240px;height:240px;background:radial-gradient(circle,rgba(10,102,194,.5),transparent 70%);bottom:60px;left:-60px"></div>
+            <div class="brand" style="padding:0">
+              <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7.5-4.9-7.5-10A4.5 4.5 0 0 1 12 8.5 4.5 4.5 0 0 1 19.5 11c0 5.1-7.5 10-7.5 10Z" fill="#fff"/><circle cx="9" cy="10.5" r="1.4" fill="#EF556B"/><circle cx="15" cy="10.5" r="1.4" fill="#EF556B"/><path d="M10.4 10.5h3.2" stroke="#EF556B" stroke-width="1.2"/></svg></span>
+              <span class="brand-name" style="color:#fff">Warm Intro</span>
+            </div>
+            <div class="float-card" style="top:120px;right:56px">
+              <span class="avatar" style="width:34px;height:34px;background:linear-gradient(135deg,#EF556B,#D33A52)">PN</span>
+              <div><b>Priya & you matched</b><span>VP Marketing · Notion</span></div>
+            </div>
+            <div class="float-card" style="top:230px;left:48px">
+              <span class="avatar" style="width:34px;height:34px;background:linear-gradient(135deg,#2E9E6B,#1F7A50)">DR</span>
+              <div><b>Daniel liked you</b><span>Staff Engineer · Stripe</span></div>
+            </div>
+            <div class="auth-quote">
+              <h2>Date someone who <em>gets</em> your ambition.</h2>
+              <p>Warm Intro connects professionals who already share your world — verified through LinkedIn, matched on where you're headed.</p>
+              <div class="auth-stats">
+                <div><b>48k</b><span>verified members</span></div>
+                <div><b>12k</b><span>intros made</span></div>
+                <div><b>94%</b><span>real profiles</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="auth-form">
+            <div class="inner">
+              <div class="error-banner" id="loginError">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+                <span>LinkedIn sign-in was cancelled. You'll need to authorize Warm Intro to continue.</span>
+              </div>
+              <h1>Welcome</h1>
+              <p class="lede">Sign in with LinkedIn to verify you're a real professional. New here? Your account is created automatically.</p>
+              <button class="li-btn" onclick="go('onboarding')">
+                <svg viewBox="0 0 24 24" fill="#fff"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+                Continue with LinkedIn
+              </button>
+              <p class="auth-note">By continuing you agree to our Terms & Privacy Policy. We only import your name, photo, role and employer.</p>
+              <div class="divider">why LinkedIn?</div>
+              <div class="trust">
+                <div class="trust-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span><b>No catfish.</b> Every profile is a verified professional identity.</span></div>
+                <div class="trust-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span><b>Instant profile.</b> Your role and employer are imported for you.</span></div>
+                <div class="trust-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span><b>Private.</b> We never post to LinkedIn or share your connections.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ ONBOARDING ============ -->
+      <section class="screen" id="screen-onboarding">
+        <div class="ob">
+          <div class="ob-head">
+            <div class="brand"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7.5-4.9-7.5-10A4.5 4.5 0 0 1 12 8.5 4.5 4.5 0 0 1 19.5 11c0 5.1-7.5 10-7.5 10Z" fill="#fff"/></svg></span><span class="brand-name">Warm Intro</span></div>
+            <div class="steps"><div class="step done"></div><div class="step on"></div><div class="step"></div></div>
+            <p>Step 2 of 3 · Complete your profile to start browsing</p>
+          </div>
+          <div class="ob-card card">
+            <h2>Confirm your work</h2>
+            <p class="muted" style="font-size:13.5px">We pulled these from LinkedIn — edit anything that's out of date.</p>
+            <div class="field">
+              <label>Job title <span class="imported"><svg viewBox="0 0 24 24" fill="#0A66C2"><path d="M20 6 9 17l-5-5" stroke="#0A66C2" stroke-width="2" fill="none"/></svg>Imported</span></label>
+              <input class="inp" value="Senior Product Manager">
+            </div>
+            <div class="field">
+              <label>Employer <span class="imported"><svg viewBox="0 0 24 24" fill="#0A66C2"><path d="M20 6 9 17l-5-5" stroke="#0A66C2" stroke-width="2" fill="none"/></svg>Imported</span></label>
+              <input class="inp" value="Atlassian">
+            </div>
+            <div class="field">
+              <label>About you</label>
+              <textarea class="inp" placeholder="Share what drives you outside of work…">Product person who ships fast and hikes on weekends. Looking for someone equally curious — bonus points if you can debate roadmaps over natural wine.</textarea>
+              <div class="hint">A bio is required before you can see the feed.</div>
+            </div>
+            <div class="field">
+              <label>Photos <span class="muted" style="font-weight:400">— at least one required</span></label>
+              <div class="photo-grid">
+                <div class="photo-tile"><div class="ph" style="background:linear-gradient(135deg,#0A66C2,#33507F)">JM</div><button class="rm">×</button></div>
+                <div class="photo-tile add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></div>
+                <div class="photo-tile add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></div>
+              </div>
+              <div class="hint">JPEG, PNG or WebP · up to 10MB each</div>
+            </div>
+            <div style="display:flex;gap:12px;margin-top:26px">
+              <button class="btn btn-ghost" onclick="go('login')">Back</button>
+              <button class="btn btn-primary btn-block" onclick="go('feed')">Start browsing →</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FEED ============ -->
+      <section class="screen" id="screen-feed">
+        <div class="topbar">
+          <div><h1>Your feed</h1><div class="sub">People near you, matched on your world</div></div>
+          <div class="spacer"></div>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg>Filters</span>
+        </div>
+        <div class="content">
+          <div class="feed-stage">
+            <div class="swipe-wrap" id="swipeWrap">
+              <div class="swipe-card">
+                <div class="sc-photo">
+                  <div class="ph" style="background:linear-gradient(150deg,#D33A52,#EF556B 60%,#F2857A)">PN</div>
+                  <div class="sc-tags">
+                    <span class="sc-tag verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Verified</span>
+                    <span class="sc-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>2.4 km away</span>
+                  </div>
+                  <button class="sc-report" onclick="openReport('Priya Nair')" title="Report profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 21V4h13l-2 4 2 4H4"/></svg></button>
+                  <div class="sc-grad"></div>
+                  <div class="sc-info">
+                    <h2>Priya Nair <span>· 31</span></h2>
+                    <div class="sc-role"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>VP Marketing · Notion</div>
+                  </div>
+                </div>
+                <div class="sc-body"><p class="sc-bio">Brand builder & marathon runner. I turn complex products into stories people love. Looking for someone who's driven but knows when to log off.</p></div>
+                <div class="interests">
+                  <span class="pill">🏃 Running</span><span class="pill">📚 Non-fiction</span><span class="pill">🍷 Natural wine</span><span class="pill">✈️ Travel</span>
+                </div>
+                <div class="mutual">
+                  <div class="stack"><span class="avatar" style="background:#0A66C2">A</span><span class="avatar" style="background:#2E9E6B">M</span><span class="avatar" style="background:#C08A2E">K</span></div>
+                  <span>12 mutual connections · 3 shared interests</span>
+                </div>
+              </div>
+              <div class="swipe-actions">
+                <button class="sw-btn pass" onclick="nextCard()" title="Pass"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+                <button class="sw-btn like" onclick="triggerMatch()" title="Like"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.9-7.5-10A4.5 4.5 0 0 1 12 8.5 4.5 4.5 0 0 1 19.5 11c0 5.1-7.5 10-7.5 10Z"/></svg></button>
+                <button class="sw-btn info" onclick="go('profile')" title="View profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></button>
+              </div>
+              <div class="feed-hint">Tap ✕ to pass · ♥ to like · ⓘ for full profile</div>
+            </div>
+            <div class="empty" id="feedEmpty">
+              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.9-7.5-10A4.5 4.5 0 0 1 12 8.5 4.5 4.5 0 0 1 19.5 11c0 5.1-7.5 10-7.5 10Z"/></svg></div>
+              <h3>You're all caught up</h3>
+              <p class="muted">No more profiles for now — check back later or widen your filters.</p>
+              <button class="btn btn-ghost btn-sm" style="margin-top:12px" onclick="resetFeed()">Reset feed</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ MATCHES ============ -->
+      <section class="screen" id="screen-matches">
+        <div class="topbar"><div><h1>Matches</h1><div class="sub">People who liked you back</div></div></div>
+        <div class="content">
+          <div class="wrap">
+            <div class="section-h"><h3>New matches</h3><span class="count">3 new</span></div>
+            <div class="new-matches">
+              <button class="nm" onclick="go('conversation')"><span class="avatar" style="background:linear-gradient(135deg,#D33A52,#EF556B)">PN</span><span>Priya</span></button>
+              <button class="nm" onclick="go('conversation')"><span class="avatar" style="background:linear-gradient(135deg,#2E9E6B,#1F7A50)">DR</span><span>Daniel</span></button>
+              <button class="nm" onclick="go('conversation')"><span class="avatar" style="background:linear-gradient(135deg,#0A66C2,#33507F)">NA</span><span>Naomi</span></button>
+            </div>
+            <div class="section-h"><h3>Conversations</h3></div>
+            <div class="match-list">
+              <button class="match-row" onclick="go('conversation')">
+                <span class="avatar" style="background:linear-gradient(135deg,#D33A52,#EF556B)">PN</span>
+                <div class="mr-main">
+                  <div class="mr-top"><b>Priya Nair</b><span class="time">2m</span></div>
+                  <div class="mr-role">VP Marketing · Notion</div>
+                  <div class="mr-preview unread">Ha, roadmaps over wine — you're on. Thursday?</div>
+                </div>
+                <span class="mr-badge">2</span>
+              </button>
+              <button class="match-row" onclick="go('conversation')">
+                <span class="avatar" style="background:linear-gradient(135deg,#2E9E6B,#1F7A50)">DR</span>
+                <div class="mr-main">
+                  <div class="mr-top"><b>Daniel Reyes</b><span class="time">1h</span></div>
+                  <div class="mr-role">Staff Engineer · Stripe</div>
+                  <div class="mr-preview">Which climbing gym do you go to?</div>
+                </div>
+              </button>
+              <button class="match-row" onclick="go('conversation')">
+                <span class="avatar" style="background:linear-gradient(135deg,#0A66C2,#33507F)">NA</span>
+                <div class="mr-main">
+                  <div class="mr-top"><b>Naomi Okafor</b><span class="time">yesterday</span></div>
+                  <div class="mr-role">Product Designer · Figma</div>
+                  <div class="mr-preview">You matched — say hi 👋</div>
+                </div>
+              </button>
+              <button class="match-row" onclick="go('conversation')">
+                <span class="avatar" style="background:linear-gradient(135deg,#C08A2E,#E0A93E)">TM</span>
+                <div class="mr-main">
+                  <div class="mr-top"><b>Theo Mbeki</b><span class="time">3d</span></div>
+                  <div class="mr-role">Founder · Kettle Labs</div>
+                  <div class="mr-preview">Great chatting — let's grab that coffee soon.</div>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CONVERSATION ============ -->
+      <section class="screen" id="screen-conversation">
+        <div class="convo">
+          <div class="convo-head">
+            <button class="back" onclick="go('matches')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <span class="avatar" style="background:linear-gradient(135deg,#D33A52,#EF556B)">PN</span>
+            <div class="ch-info"><b>Priya Nair</b><span>VP Marketing · Notion</span></div>
+            <div class="spacer" style="flex:1"></div>
+            <button class="btn btn-danger btn-sm" onclick="openReport('Priya Nair')">Report</button>
+          </div>
+          <div class="convo-body">
+            <div class="match-note"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.9-7.5-10A4.5 4.5 0 0 1 12 8.5 4.5 4.5 0 0 1 19.5 11c0 5.1-7.5 10-7.5 10Z"/></svg>You matched with Priya on Jul 5</div>
+            <div class="msg in">Hey! Your bio mentioned debating roadmaps over natural wine — dangerous combination 😄<span class="t">10:42</span></div>
+            <div class="msg out">Guilty. I have strong opinions about both. What are you drinking these days?<span class="t">10:44</span></div>
+            <div class="msg in">Currently obsessed with a Slovenian orange wine. Also — Notion PM here, so I might steal your roadmap tips.<span class="t">10:46</span></div>
+            <div class="msg out">Trade you: tips for a bottle recommendation. Free Thursday evening?<span class="t">10:47</span></div>
+            <div class="msg in">Ha, roadmaps over wine — you're on. Thursday?<span class="t">10:49</span></div>
+          </div>
+          <div class="composer">
+            <textarea placeholder="Message Priya…" rows="1"></textarea>
+            <button class="send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PROFILE ============ -->
+      <section class="screen" id="screen-profile">
+        <div class="topbar"><div><h1>My profile</h1><div class="sub">This is how members see you</div></div><div class="spacer"></div><button class="btn btn-ghost btn-sm" onclick="go('login')">Log out</button></div>
+        <div class="content">
+          <div class="wrap">
+            <div class="prof-hero">
+              <div class="prof-cover"></div>
+              <div class="body">
+                <span class="avatar prof-avatar" style="background:linear-gradient(135deg,#0A66C2,#33507F)">JM</span>
+                <div class="prof-name"><h2>Jordan Mercer <span>· 33</span></h2><span class="verified" title="Verified via LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 9.8 4.2 6.7 3.7 5.6 6.7 2.6 7.8 3.1 11 1 13.2l2.1 2.2-.5 3.2 3 1.1 1.1 3 3.1-.5 2.2 2.1 2.2-2.1 3.1.5 1.1-3 3-1.1-.5-3.2L23 13.2 20.9 11l.5-3.2-3-1.1-1.1-3-3.1.5L12 2Z"/><path d="M8.5 12l2.2 2.2 4.8-4.8" stroke="#fff" stroke-width="1.6" fill="none"/></svg></span></div>
+                <div class="prof-role"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Senior Product Manager · Atlassian</div>
+                <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+                  <button class="btn btn-primary btn-sm" onclick="go('onboarding')">Edit profile</button>
+                  <button class="btn btn-ghost btn-sm">Preview</button>
+                </div>
+              </div>
+            </div>
+            <div class="card prof-section">
+              <h4>About</h4>
+              <p>Product person who ships fast and hikes on weekends. Looking for someone equally curious — bonus points if you can debate roadmaps over natural wine.</p>
+            </div>
+            <div class="card prof-section" style="margin-top:16px">
+              <h4>Photos</h4>
+              <div class="photo-grid">
+                <div class="photo-tile"><div class="ph" style="background:linear-gradient(135deg,#0A66C2,#33507F)">JM</div></div>
+                <div class="photo-tile"><div class="ph" style="background:linear-gradient(135deg,#2E9E6B,#1F7A50)">2</div></div>
+                <div class="photo-tile add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></div>
+              </div>
+            </div>
+            <div class="card prof-section" style="margin-top:16px">
+              <h4>Interests</h4>
+              <div style="display:flex;flex-wrap:wrap;gap:8px"><span class="pill">🥾 Hiking</span><span class="pill">🍷 Natural wine</span><span class="pill">📈 Product</span><span class="pill">🎧 Techno</span><span class="pill">➕ Add</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ ADMIN ============ -->
+      <section class="screen" id="screen-admin">
+        <div class="topbar"><div><h1>Admin console</h1><div class="sub">Moderation & platform configuration</div></div></div>
+        <div class="content">
+          <div class="wrap-wide">
+            <div class="kpis">
+              <div class="card kpi"><div class="k-label">Pending reports</div><div class="k-val">4</div></div>
+              <div class="card kpi"><div class="k-label">Active members</div><div class="k-val">1,284 <small>+38</small></div></div>
+              <div class="card kpi"><div class="k-label">Banned users</div><div class="k-val">7</div></div>
+              <div class="card kpi"><div class="k-label">Services needing setup</div><div class="k-val" style="color:var(--warn)">4</div></div>
+            </div>
+
+            <div class="tabs">
+              <div role="tablist" aria-label="Admin sections">
+                <button role="tab" aria-selected="true" aria-controls="panel-reports" id="tab-reports" tabindex="0">Reports</button>
+                <button role="tab" aria-selected="false" aria-controls="panel-users" id="tab-users" tabindex="-1">Users</button>
+                <button role="tab" aria-selected="false" aria-controls="panel-settings" id="tab-settings" tabindex="-1">Settings</button>
+              </div>
+              <div class="tab-panels">
+
+                <!-- Reports panel -->
+                <div id="panel-reports" role="tabpanel" tabindex="0" aria-labelledby="tab-reports">
+                  <div class="report-card card">
+                    <div class="who">
+                      <div class="cell-user"><span class="avatar" style="background:#8394AB">RK</span><div><b>Reported: Rowan Kelly</b><span>Growth Lead · unverified employer</span></div></div>
+                      <p>"Profile photos don't match — suspect impersonation of a public figure."</p>
+                      <div style="margin-top:8px;font-size:12px;color:var(--ink-3)">Reported by Naomi Okafor · 2h ago · <span class="reason-chip">Fake profile</span></div>
+                    </div>
+                    <div class="rc-actions">
+                      <button class="btn btn-danger btn-sm" onclick="confirmBan('Rowan Kelly')">Ban user</button>
+                      <button class="btn btn-ghost btn-sm">Dismiss</button>
+                    </div>
+                  </div>
+                  <div class="report-card card">
+                    <div class="who">
+                      <div class="cell-user"><span class="avatar" style="background:#8394AB">MV</span><div><b>Reported: Marco Vidal</b><span>Sales Director · Oracle</span></div></div>
+                      <p>"Sent inappropriate messages after matching."</p>
+                      <div style="margin-top:8px;font-size:12px;color:var(--ink-3)">Reported by Priya Nair · 5h ago · <span class="reason-chip">Harassment</span></div>
+                    </div>
+                    <div class="rc-actions">
+                      <button class="btn btn-danger btn-sm" onclick="confirmBan('Marco Vidal')">Ban user</button>
+                      <button class="btn btn-ghost btn-sm">Dismiss</button>
+                    </div>
+                  </div>
+                  <div class="report-card card">
+                    <div class="who">
+                      <div class="cell-user"><span class="avatar" style="background:#8394AB">SP</span><div><b>Reported: Sasha Petrov</b><span>Consultant · Deloitte</span></div></div>
+                      <p>"Spam — linking an external crypto site in every message."</p>
+                      <div style="margin-top:8px;font-size:12px;color:var(--ink-3)">Reported by Daniel Reyes · 1d ago · <span class="reason-chip">Spam</span></div>
+                    </div>
+                    <div class="rc-actions">
+                      <button class="btn btn-danger btn-sm" onclick="confirmBan('Sasha Petrov')">Ban user</button>
+                      <button class="btn btn-ghost btn-sm">Dismiss</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Users panel -->
+                <div id="panel-users" role="tabpanel" tabindex="0" aria-labelledby="tab-users" hidden>
+                  <div class="tbl-scroll">
+                    <table class="tbl">
+                      <thead><tr><th>Member</th><th>Role</th><th>Joined</th><th>Status</th><th style="text-align:right">Action</th></tr></thead>
+                      <tbody>
+                        <tr>
+                          <td><div class="cell-user"><span class="avatar" style="background:#0A66C2">JM</span><div><b>Jordan Mercer</b><span>Senior PM · Atlassian</span></div></div></td>
+                          <td><span class="pill">Admin</span></td><td>Jan 2026</td><td><span class="status ok">● Active</span></td>
+                          <td style="text-align:right"><button class="btn btn-ghost btn-sm" disabled style="opacity:.5">You</button></td>
+                        </tr>
+                        <tr>
+                          <td><div class="cell-user"><span class="avatar" style="background:#D33A52">PN</span><div><b>Priya Nair</b><span>VP Marketing · Notion</span></div></div></td>
+                          <td><span class="pill">Member</span></td><td>Mar 2026</td><td><span class="status ok">● Active</span></td>
+                          <td style="text-align:right"><button class="btn btn-danger btn-sm" onclick="confirmBan('Priya Nair')">Ban</button></td>
+                        </tr>
+                        <tr>
+                          <td><div class="cell-user"><span class="avatar" style="background:#2E9E6B">DR</span><div><b>Daniel Reyes</b><span>Staff Engineer · Stripe</span></div></div></td>
+                          <td><span class="pill">Member</span></td><td>Apr 2026</td><td><span class="status ok">● Active</span></td>
+                          <td style="text-align:right"><button class="btn btn-danger btn-sm" onclick="confirmBan('Daniel Reyes')">Ban</button></td>
+                        </tr>
+                        <tr>
+                          <td><div class="cell-user"><span class="avatar" style="background:#8394AB">MV</span><div><b>Marco Vidal</b><span>Sales Director · Oracle</span></div></div></td>
+                          <td><span class="pill">Member</span></td><td>Feb 2026</td><td><span class="status ban">● Banned</span></td>
+                          <td style="text-align:right"><button class="btn btn-ghost btn-sm">Unban</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <!-- Settings panel -->
+                <div id="panel-settings" role="tabpanel" tabindex="0" aria-labelledby="tab-settings" hidden>
+                  <div class="setup-banner">
+                    <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></span>
+                    <div><b>4 services need credentials to activate.</b><p>Warm Intro is running with placeholder credentials. Configure each service below to enable sign-in, photos, matching and messaging.</p></div>
+                  </div>
+
+                  <!-- LinkedIn -->
+                  <div class="card svc open" id="svc-linkedin">
+                    <button class="svc-head" onclick="toggleSvc('svc-linkedin')">
+                      <span class="svc-logo" style="background:#0A66C2">in</span>
+                      <span class="svc-main"><b>LinkedIn OAuth 2.0 / OIDC</b><span>Sign-in & profile import</span></span>
+                      <span class="status warn">Needs setup</span>
+                      <span class="svc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span>
+                    </button>
+                    <div class="svc-body">
+                      <div class="form-grid">
+                        <div class="field"><label>Client ID</label><input class="inp" placeholder="86xxxxxxxxxxxx"></div>
+                        <div class="field"><label>Client Secret</label><input class="inp" type="password" placeholder="••••••••••••"></div>
+                        <div class="field full"><label>Redirect / Callback URL</label><input class="inp" value="https://warmintro.app/dating-test/api/auth/linkedin/callback"></div>
+                      </div>
+                      <div class="svc-foot"><button class="btn btn-primary btn-sm">Save & verify</button><span class="muted" style="font-size:12.5px">Required for members to sign in.</span></div>
+                    </div>
+                  </div>
+
+                  <!-- PostgreSQL -->
+                  <div class="card svc" id="svc-postgres">
+                    <button class="svc-head" onclick="toggleSvc('svc-postgres')">
+                      <span class="svc-logo" style="background:#31648C">Pg</span>
+                      <span class="svc-main"><b>PostgreSQL</b><span>Primary datastore</span></span>
+                      <span class="status warn">Needs setup</span>
+                      <span class="svc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span>
+                    </button>
+                    <div class="svc-body">
+                      <div class="form-grid">
+                        <div class="field full"><label>Database URL</label><input class="inp" placeholder="postgresql://user:pass@host:5432/warmintro"></div>
+                      </div>
+                      <div class="svc-foot"><button class="btn btn-primary btn-sm">Save & verify</button><span class="muted" style="font-size:12.5px">Migrations run automatically on save.</span></div>
+                    </div>
+                  </div>
+
+                  <!-- MinIO -->
+                  <div class="card svc" id="svc-minio">
+                    <button class="svc-head" onclick="toggleSvc('svc-minio')">
+                      <span class="svc-logo" style="background:#C0392B">Mi</span>
+                      <span class="svc-main"><b>MinIO (S3-compatible)</b><span>Profile photo storage</span></span>
+                      <span class="status warn">Needs setup</span>
+                      <span class="svc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span>
+                    </button>
+                    <div class="svc-body">
+                      <div class="form-grid">
+                        <div class="field"><label>Endpoint</label><input class="inp" placeholder="minio.internal:9000"></div>
+                        <div class="field"><label>Bucket</label><input class="inp" placeholder="warmintro-photos"></div>
+                        <div class="field"><label>Access Key</label><input class="inp" placeholder="AKIA…"></div>
+                        <div class="field"><label>Secret Key</label><input class="inp" type="password" placeholder="••••••••"></div>
+                      </div>
+                      <div class="svc-foot"><button class="btn btn-primary btn-sm">Save & verify</button></div>
+                    </div>
+                  </div>
+
+                  <!-- Redis -->
+                  <div class="card svc" id="svc-redis">
+                    <button class="svc-head" onclick="toggleSvc('svc-redis')">
+                      <span class="svc-logo" style="background:#A93226">Rd</span>
+                      <span class="svc-main"><b>Redis</b><span>Rate limiting, sessions & live notifications</span></span>
+                      <span class="status warn">Needs setup</span>
+                      <span class="svc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span>
+                    </button>
+                    <div class="svc-body">
+                      <div class="form-grid">
+                        <div class="field full"><label>Redis URL</label><input class="inp" placeholder="redis://:pass@host:6379"></div>
+                      </div>
+                      <div class="svc-foot"><button class="btn btn-primary btn-sm">Save & verify</button></div>
+                    </div>
+                  </div>
+
+                  <p class="muted" style="font-size:12.5px;margin-top:8px;display:flex;align-items:center;gap:8px">
+                    <span class="status ok" style="font-size:11px">● JWT signing key</span> configured via deploy secret — no action needed.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- /PATCH:screens-container -->
+    </div>
+  </main>
+
+  <!-- ============ BOTTOM NAV (mobile) ============ -->
+  <nav class="bottom-nav">
+    <button class="bn-item active" data-nav="feed" onclick="go('feed')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6M4 8V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2M4 8h16"/></svg>Feed
+    </button>
+    <button class="bn-item" data-nav="matches" onclick="go('matches')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7.5-4.9-7.5-10A4.5 4.5 0 0 1 12 8.5 4.5 4.5 0 0 1 19.5 11c0 5.1-7.5 10-7.5 10Z"/></svg>Matches<span class="badge">3</span>
+    </button>
+    <button class="bn-item" data-nav="profile" onclick="go('profile')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Profile
+    </button>
+    <button class="bn-item" data-nav="admin" onclick="go('admin')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v5c0 4.4-3 8.3-7 9.5C8 19.3 5 15.4 5 11V6l7-3Z"/></svg>Admin
+    </button>
+  </nav>
+</div>
+
+<!-- ============ MATCH MODAL ============ -->
+<div class="overlay" id="matchModal">
+  <div class="modal match">
+    <div class="beam"></div>
+    <button class="x" onclick="closeModal('matchModal')">✕</button>
+    <h2>It's a match!</h2>
+    <p style="margin-top:0">You and Priya both swiped right.</p>
+    <div class="match-avatars">
+      <span class="avatar" style="background:linear-gradient(135deg,#0A66C2,#33507F)">JM</span>
+      <span class="avatar" style="background:linear-gradient(135deg,#D33A52,#EF556B)">PN</span>
+    </div>
+    <p>Priya is a VP Marketing at Notion — you share 12 connections.</p>
+    <div class="actions">
+      <button class="btn btn-accent btn-block" onclick="closeModal('matchModal');go('conversation')">Send a message</button>
+      <button class="btn btn-ghost btn-block" onclick="closeModal('matchModal');nextCard()">Keep browsing</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ REPORT MODAL ============ -->
+<div class="overlay" id="reportModal">
+  <div class="modal report-modal">
+    <button class="x" onclick="closeModal('reportModal')">✕</button>
+    <h3>Report <span id="reportName">this member</span></h3>
+    <p class="rm-lede">Reports are confidential and reviewed by our moderation team.</p>
+    <div class="reason-opts">
+      <label class="reason-opt"><input type="radio" name="reason" checked> Fake or impersonating profile</label>
+      <label class="reason-opt"><input type="radio" name="reason"> Harassment or abuse</label>
+      <label class="reason-opt"><input type="radio" name="reason"> Spam or scam</label>
+      <label class="reason-opt"><input type="radio" name="reason"> Inappropriate content</label>
+    </div>
+    <div class="field"><label>Details (optional)</label><textarea class="inp" placeholder="Add any context that will help our team…"></textarea></div>
+    <div style="display:flex;gap:10px;margin-top:18px">
+      <button class="btn btn-ghost btn-block" onclick="closeModal('reportModal')">Cancel</button>
+      <button class="btn btn-accent btn-block" onclick="closeModal('reportModal')">Submit report</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  var CHROMELESS = {login:1, onboarding:1};
+  function go(id){
+    document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active')});
+    var el = document.getElementById('screen-'+id);
+    if(el) el.classList.add('active');
+    document.body.classList.toggle('chromeless', !!CHROMELESS[id]);
+    // active nav state (map conversation -> matches)
+    var navId = (id==='conversation') ? 'matches' : id;
+    document.querySelectorAll('[data-nav]').forEach(function(n){
+      n.classList.toggle('active', n.getAttribute('data-nav')===navId);
+    });
+    var main = document.querySelector('.main');
+    if(main) main.scrollTop = 0;
+    window.scrollTo(0,0);
+  }
+
+  // Feed
+  function nextCard(){
+    document.getElementById('swipeWrap').style.display='none';
+    document.getElementById('feedEmpty').classList.add('show');
+  }
+  function resetFeed(){
+    document.getElementById('swipeWrap').style.display='';
+    document.getElementById('feedEmpty').classList.remove('show');
+  }
+  function triggerMatch(){ openModal('matchModal'); }
+
+  // Modals
+  function openModal(id){ document.getElementById(id).classList.add('show'); }
+  function closeModal(id){ document.getElementById(id).classList.remove('show'); }
+  function openReport(name){
+    document.getElementById('reportName').textContent = name;
+    openModal('reportModal');
+  }
+  function confirmBan(name){
+    alert(name + ' has been banned. Their session is invalidated and they are removed from the feed.');
+  }
+  document.querySelectorAll('.overlay').forEach(function(o){
+    o.addEventListener('click', function(e){ if(e.target===o) o.classList.remove('show'); });
+  });
+
+  // Settings accordions
+  function toggleSvc(id){ document.getElementById(id).classList.toggle('open'); }
+
+  // Accessible tabs (canonical pattern)
+  (function () {
+    var tabLists = document.querySelectorAll('[role="tablist"]');
+    tabLists.forEach(function (tabList) {
+      var tabs = Array.prototype.slice.call(tabList.querySelectorAll('[role="tab"]'));
+      function showTab(targetTab) {
+        tabs.forEach(function (tab) {
+          var panel = document.getElementById(tab.getAttribute('aria-controls'));
+          var sel = tab === targetTab;
+          tab.setAttribute('aria-selected', sel ? 'true':'false');
+          tab.tabIndex = sel ? 0 : -1;
+          if (panel) panel.hidden = !sel;
+        });
+      }
+      tabs.forEach(function (tab) { tab.addEventListener('click', function () { showTab(tab); }); });
+      tabList.addEventListener('keydown', function (e) {
+        var i = tabs.indexOf(document.activeElement);
+        if (i === -1) return;
+        var n = i;
+        if (e.key === 'ArrowRight') n = (i + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft') n = (i - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home') n = 0;
+        else if (e.key === 'End') n = tabs.length - 1;
+        else return;
+        e.preventDefault(); tabs[n].focus(); showTab(tabs[n]);
+      });
+    });
+  })();
+
+  // Start on login
+  go('login');
+</script>
+</body>
+</html>

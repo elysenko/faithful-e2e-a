@@ -1,0 +1,1 @@
+import{_ as n}from"./chunk-L3Y7HGJU.js";var c=(()=>{class t{transform(e){return((e??0)/100).toLocaleString("en-US",{style:"currency",currency:"USD"})}static{this.\u0275fac=function(r){return new(r||t)}}static{this.\u0275pipe=n({name:"cents",type:t,pure:!0,standalone:!0})}}return t})();export{c as a};

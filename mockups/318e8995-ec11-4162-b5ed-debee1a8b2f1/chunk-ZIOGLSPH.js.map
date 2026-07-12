@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/shared/money.pipe.ts"],
+  "sourcesContent": ["import { Pipe, PipeTransform } from '@angular/core';\n\n/** Formats integer cents into a currency string, e.g. 1299 -> \"$12.99\". */\n@Pipe({ name: 'money', standalone: true })\nexport class MoneyPipe implements PipeTransform {\n  transform(cents: number | null | undefined): string {\n    const value = (cents ?? 0) / 100;\n    return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });\n  }\n}\n"],
+  "mappings": ";;;;;AAIM,IAAO,YAAP,MAAO,WAAS;EACpB,UAAU,OAAgC;AACxC,UAAM,SAAS,SAAS,KAAK;AAC7B,WAAO,MAAM,eAAe,SAAS,EAAE,OAAO,YAAY,UAAU,MAAK,CAAE;EAC7E;;qBAJW,YAAS;EAAA;oFAAT,YAAS,MAAA,MAAA,YAAA,KAAA,CAAA;;",
+  "names": []
+}

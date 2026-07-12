@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/admin-settings/admin-settings.component.css"],
+  "sourcesContent": [":host { display: block; }\n\n.services { display: flex; flex-direction: column; gap: var(--space-4); }\n.service { padding: var(--space-5); }\n.service-head {\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n  gap: var(--space-3);\n  margin-bottom: var(--space-4);\n  padding-bottom: var(--space-3);\n  border-bottom: 1px solid var(--color-border);\n}\n.service-head h2 { font-size: var(--fs-md); }\n.key { font-size: var(--fs-xs); }\n\n.fields {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));\n  gap: var(--space-3) var(--space-4);\n}\n.fields .field { margin-bottom: 0; }\n\n.service-foot {\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  gap: var(--space-3);\n  margin-top: var(--space-4);\n}\n"],
+  "mappings": ";AAAA;AAAQ,WAAS;AAAO;AAExB,CAAC;AAAW,WAAS;AAAM,kBAAgB;AAAQ,OAAK,IAAI;AAAY;AACxE,CAAC;AAAU,WAAS,IAAI;AAAY;AACpC,CAAC;AACC,WAAS;AACT,eAAa;AACb,mBAAiB;AACjB,OAAK,IAAI;AACT,iBAAe,IAAI;AACnB,kBAAgB,IAAI;AACpB,iBAAe,IAAI,MAAM,IAAI;AAC/B;AACA,CATC,aASa;AAAK,aAAW,IAAI;AAAU;AAC5C,CAAC;AAAM,aAAW,IAAI;AAAU;AAEhC,CAAC;AACC,WAAS;AACT,yBAAuB,OAAO,SAAS,EAAE,OAAO,KAAK,EAAE;AACvD,OAAK,IAAI,WAAW,IAAI;AAC1B;AACA,CALC,OAKO,CAAC;AAAQ,iBAAe;AAAG;AAEnC,CAAC;AACC,WAAS;AACT,eAAa;AACb,mBAAiB;AACjB,OAAK,IAAI;AACT,cAAY,IAAI;AAClB;",
+  "names": []
+}

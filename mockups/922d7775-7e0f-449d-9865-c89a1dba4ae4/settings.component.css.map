@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/settings/settings.component.css"],
+  "sourcesContent": ["/* Settings uses shared card/field/badge helpers from styles.css. */\n.service-head {\n  display: flex;\n  align-items: flex-start;\n  gap: var(--space-3);\n  margin-bottom: var(--space-4);\n}\n.service-head h2 { font-size: var(--fs-lg); }\n.service-blurb { margin: var(--space-1) 0 0; font-size: var(--fs-sm); }\n.key-hint { font-size: var(--fs-xs); font-weight: 400; }\n.spacer { flex: 1; }\n.toolbar { display: flex; align-items: center; gap: var(--space-3); margin-top: var(--space-2); }\n"],
+  "mappings": ";AACA,CAAC;AACC,WAAS;AACT,eAAa;AACb,OAAK,IAAI;AACT,iBAAe,IAAI;AACrB;AACA,CANC,aAMa;AAAK,aAAW,IAAI;AAAU;AAC5C,CAAC;AAAgB,UAAQ,IAAI,WAAW,EAAE;AAAG,aAAW,IAAI;AAAU;AACtE,CAAC;AAAW,aAAW,IAAI;AAAU,eAAa;AAAK;AACvD,CAAC;AAAS,QAAM;AAAG;AACnB,CAAC;AAAU,WAAS;AAAM,eAAa;AAAQ,OAAK,IAAI;AAAY,cAAY,IAAI;AAAY;",
+  "names": []
+}

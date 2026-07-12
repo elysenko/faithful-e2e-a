@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/admin/admin-product-form/admin-product-form.component.css"],
+  "sourcesContent": [".narrow { max-width: 640px; }\n.back { display: inline-block; margin-bottom: var(--sp-4); }\n.form { padding: var(--sp-5); }\n.row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4); }\n.form-actions { display: flex; justify-content: flex-end; gap: var(--sp-3); margin-top: var(--sp-4); }\n\n@media (max-width: 768px) {\n  .row { grid-template-columns: 1fr; }\n  .form-actions { flex-direction: column-reverse; }\n  .form-actions .btn { width: 100%; }\n}\n"],
+  "mappings": ";AAAA,CAAC;AAAS,aAAW;AAAO;AAC5B,CAAC;AAAO,WAAS;AAAc,iBAAe,IAAI;AAAS;AAC3D,CAAC;AAAO,WAAS,IAAI;AAAS;AAC9B,CAAC;AAAM,WAAS;AAAM,yBAAuB,IAAI;AAAK,OAAK,IAAI;AAAS;AACxE,CAAC;AAAe,WAAS;AAAM,mBAAiB;AAAU,OAAK,IAAI;AAAS,cAAY,IAAI;AAAS;AAErG,OAAO,CAAC,SAAS,EAAE;AACjB,GAJD;AAIQ,2BAAuB;AAAK;AACnC,GAJD;AAIiB,oBAAgB;AAAgB;AAChD,GALD,aAKe,CAAC;AAAM,WAAO;AAAM;AACpC;",
+  "names": []
+}

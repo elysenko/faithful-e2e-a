@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/checkout/checkout.component.css"],
+  "sourcesContent": [".checkout-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: var(--sp-5); align-items: start; }\n.ship-form { padding: var(--sp-4); }\n.ship-form h2, .summary h2 { font-size: var(--fs-md); margin-top: 0; }\n.summary { padding: var(--sp-4); display: flex; flex-direction: column; gap: var(--sp-2); }\n.row { display: flex; justify-content: space-between; gap: var(--sp-3); font-size: var(--fs-sm); }\n.row.total { font-size: var(--fs-md); font-weight: 800; padding-top: var(--sp-3); margin-top: var(--sp-2); border-top: 1px solid var(--color-border); }\n\n@media (max-width: 768px) {\n  .checkout-layout { grid-template-columns: 1fr; }\n}\n"],
+  "mappings": ";AAAA,CAAC;AAAkB,WAAS;AAAM,yBAAuB,OAAO,CAAC,EAAE,KAAK;AAAO,OAAK,IAAI;AAAS,eAAa;AAAO;AACrH,CAAC;AAAY,WAAS,IAAI;AAAS;AACnC,CADC,UACU;AAAI,CAAC,QAAQ;AAAK,aAAW,IAAI;AAAU,cAAY;AAAG;AACrE,CADgB;AACL,WAAS,IAAI;AAAS,WAAS;AAAM,kBAAgB;AAAQ,OAAK,IAAI;AAAS;AAC1F,CAAC;AAAM,WAAS;AAAM,mBAAiB;AAAe,OAAK,IAAI;AAAS,aAAW,IAAI;AAAU;AACjG,CADC,GACG,CAAC;AAAQ,aAAW,IAAI;AAAU,eAAa;AAAK,eAAa,IAAI;AAAS,cAAY,IAAI;AAAS,cAAY,IAAI,MAAM,IAAI;AAAiB;AAEtJ,OAAO,CAAC,SAAS,EAAE;AACjB,GARD;AAQoB,2BAAuB;AAAK;AACjD;",
+  "names": []
+}

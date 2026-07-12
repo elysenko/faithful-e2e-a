@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/items/items-list.component.css"],
+  "sourcesContent": [".item-card { display: block; }\n.item-card:hover { text-decoration: none; box-shadow: var(--shadow-md); }\n.item-card:active { transform: scale(0.99); }\n.qty-row { margin-top: var(--space-2); }\n.qty { font-size: var(--font-size-lg); font-weight: 700; }\n"],
+  "mappings": ";AAAA,CAAC;AAAY,WAAS;AAAO;AAC7B,CADC,SACS;AAAS,mBAAiB;AAAM,cAAY,IAAI;AAAc;AACxE,CAFC,SAES;AAAU,aAAW,MAAM;AAAO;AAC5C,CAAC;AAAU,cAAY,IAAI;AAAY;AACvC,CAAC;AAAM,aAAW,IAAI;AAAiB,eAAa;AAAK;",
+  "names": []
+}

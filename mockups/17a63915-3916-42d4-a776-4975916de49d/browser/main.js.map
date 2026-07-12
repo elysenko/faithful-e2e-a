@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/app.component.ts", "src/main.ts"],
+  "sourcesContent": ["import { ChangeDetectionStrategy, Component } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\n\n@Component({\n  selector: 'app-root',\n  imports: [RouterOutlet],\n  // data-testid=\"app-ready\" is the universal readiness landmark: it enters the DOM only\n  // after Angular bootstraps this root component, so the render gate can wait on it to\n  // confirm the SPA hydrated (not a blank shell / 404 / failed bundle). Keep it here.\n  template: `<div data-testid=\"app-ready\"><router-outlet /></div>`,\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class AppComponent {}\n", "import { bootstrapApplication } from '@angular/platform-browser';\nimport { AppComponent } from './app/app.component';\nimport { appConfig } from './app/app.config';\n\nbootstrapApplication(AppComponent, appConfig).catch((err) =>\n  console.error(err),\n);\n"],
+  "mappings": ";;;;;;;;;;;;;;;AAYM,IAAO,eAAP,MAAO,cAAY;;;uCAAZ,eAAY;IAAA;EAAA;;yEAAZ,eAAY,WAAA,CAAA,CAAA,UAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,QAAA,CAAA,CAAA,eAAA,WAAA,CAAA,GAAA,UAAA,SAAA,sBAAA,IAAA,KAAA;AAAA,UAAA,KAAA,GAAA;AAHZ,QAAA,yBAAA,GAAA,OAAA,CAAA;AAA6B,QAAA,oBAAA,GAAA,eAAA;AAAiB,QAAA,uBAAA;;sBAJ/C,YAAY,GAAA,eAAA,GAAA,iBAAA,EAAA,CAAA;EAAA;;;sEAOX,cAAY,CAAA;UATxB;WAAU;MACT,UAAU;MACV,SAAS,CAAC,YAAY;;;;MAItB,UAAU;MACV,iBAAiB,wBAAwB;KAC1C;;;;6EACY,cAAY,EAAA,WAAA,gBAAA,UAAA,4BAAA,YAAA,GAAA,CAAA;AAAA,GAAA;;;ACRzB,qBAAqB,cAAc,SAAS,EAAE,MAAM,CAAC,QACnD,QAAQ,MAAM,GAAG,CAAC;",
+  "names": []
+}

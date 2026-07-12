@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/wizard/income/income.component.css"],
+  "sourcesContent": [".total-row {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: var(--space-3) var(--space-4);\n  margin-bottom: var(--space-4);\n  background: var(--color-brand-tint);\n  border-radius: var(--radius);\n  font-variant-numeric: tabular-nums;\n}\n.total-row strong { font-size: var(--fs-md); color: var(--color-brand-dark); }\n"],
+  "mappings": ";AAAA,CAAC;AACC,WAAS;AACT,mBAAiB;AACjB,eAAa;AACb,WAAS,IAAI,WAAW,IAAI;AAC5B,iBAAe,IAAI;AACnB,cAAY,IAAI;AAChB,iBAAe,IAAI;AACnB,wBAAsB;AACxB;AACA,CAVC,UAUU;AAAS,aAAW,IAAI;AAAU,SAAO,IAAI;AAAqB;",
+  "names": []
+}

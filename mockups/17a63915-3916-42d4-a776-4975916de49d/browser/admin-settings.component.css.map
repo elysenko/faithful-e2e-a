@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/admin/admin-settings.component.css"],
+  "sourcesContent": [".admin-grid {\n  display: grid;\n  grid-template-columns: 1fr;\n  gap: var(--space-5);\n}\n@media (min-width: 900px) {\n  .admin-grid {\n    grid-template-columns: 1fr 1fr;\n    align-items: start;\n  }\n}\n\n.badge-admin {\n  background: var(--color-primary);\n}\n\n.saved-note {\n  color: var(--color-success);\n  font-weight: 600;\n  margin: 0 0 var(--space-3);\n}\n\n.member-row {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: var(--space-3);\n  min-height: 56px;\n  padding: var(--space-2) 0;\n  border-bottom: 1px solid var(--color-border);\n}\n.member-row:last-child {\n  border-bottom: none;\n}\n.member-meta {\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n}\n.member-meta small {\n  font-size: 0.8rem;\n}\n.role-select {\n  width: auto;\n  min-width: 110px;\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,WAAS;AACT,yBAAuB;AACvB,OAAK,IAAI;AACX;AACA,QAAO,WAAY;AACjB,GAND;AAOG,2BAAuB,IAAI;AAC3B,iBAAa;AACf;AACF;AAEA,CAAC;AACC,cAAY,IAAI;AAClB;AAEA,CAAC;AACC,SAAO,IAAI;AACX,eAAa;AACb,UAAQ,EAAE,EAAE,IAAI;AAClB;AAEA,CAAC;AACC,WAAS;AACT,eAAa;AACb,mBAAiB;AACjB,OAAK,IAAI;AACT,cAAY;AACZ,WAAS,IAAI,WAAW;AACxB,iBAAe,IAAI,MAAM,IAAI;AAC/B;AACA,CATC,UASU;AACT,iBAAe;AACjB;AACA,CAAC;AACC,WAAS;AACT,kBAAgB;AAChB,aAAW;AACb;AACA,CALC,YAKY;AACX,aAAW;AACb;AACA,CAAC;AACC,SAAO;AACP,aAAW;AACb;",
+  "names": []
+}

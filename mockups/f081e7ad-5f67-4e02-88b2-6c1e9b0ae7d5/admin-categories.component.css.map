@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/admin-categories/admin-categories.component.css"],
+  "sourcesContent": [".cards {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));\n  gap: var(--sp-3);\n}\n.cat-card {\n  padding: var(--sp-4);\n  display: flex;\n  flex-direction: column;\n  gap: var(--sp-3);\n}\n.cat-head {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: var(--sp-2);\n}\n.btn.sm {\n  min-height: 36px;\n  padding: 0 var(--sp-3);\n  font-size: var(--fs-xs);\n}\n.cat-stats {\n  display: flex;\n  gap: var(--sp-5);\n}\n.stat-cell {\n  display: flex;\n  flex-direction: column;\n}\n.stat-cell .num {\n  font-size: var(--fs-xl);\n  font-weight: 800;\n  line-height: 1.1;\n}\n.stat-cell .lbl {\n  font-size: var(--fs-xs);\n  color: var(--color-text-subtle);\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,WAAS;AACT,yBAAuB,OAAO,SAAS,EAAE,OAAO,KAAK,EAAE;AACvD,OAAK,IAAI;AACX;AACA,CAAC;AACC,WAAS,IAAI;AACb,WAAS;AACT,kBAAgB;AAChB,OAAK,IAAI;AACX;AACA,CAAC;AACC,WAAS;AACT,eAAa;AACb,mBAAiB;AACjB,OAAK,IAAI;AACX;AACA,CAAC,GAAG,CAAC;AACH,cAAY;AACZ,WAAS,EAAE,IAAI;AACf,aAAW,IAAI;AACjB;AACA,CAAC;AACC,WAAS;AACT,OAAK,IAAI;AACX;AACA,CAAC;AACC,WAAS;AACT,kBAAgB;AAClB;AACA,CAJC,UAIU,CAAC;AACV,aAAW,IAAI;AACf,eAAa;AACb,eAAa;AACf;AACA,CATC,UASU,CAAC;AACV,aAAW,IAAI;AACf,SAAO,IAAI;AACb;",
+  "names": []
+}

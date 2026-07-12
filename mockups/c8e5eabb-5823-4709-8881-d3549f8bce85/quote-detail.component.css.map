@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/quotes/quote-detail.component.css"],
+  "sourcesContent": [".line-note {\n  font-size: var(--fs-xs);\n  margin-top: var(--sp-1);\n}\n\n.detail-layout {\n  display: grid;\n  grid-template-columns: 1fr;\n  gap: var(--sp-4);\n  align-items: start;\n}\n.detail-layout-panel {\n  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);\n}\n.detail-main { min-width: 0; }\n\n.detail-panel {\n  border-left: 3px solid var(--color-accent-600);\n}\n\n.issue-item {\n  padding: var(--sp-3) 0;\n  border-bottom: 1px solid var(--color-border);\n}\n\n@media (max-width: 768px) {\n  .detail-layout-panel {\n    grid-template-columns: 1fr;\n  }\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,aAAW,IAAI;AACf,cAAY,IAAI;AAClB;AAEA,CAAC;AACC,WAAS;AACT,yBAAuB;AACvB,OAAK,IAAI;AACT,eAAa;AACf;AACA,CAAC;AACC,yBAAuB,OAAO,CAAC,EAAE,KAAK,OAAO,KAAK,EAAE;AACtD;AACA,CAAC;AAAc,aAAW;AAAG;AAE7B,CAAC;AACC,eAAa,IAAI,MAAM,IAAI;AAC7B;AAEA,CAAC;AACC,WAAS,IAAI,QAAQ;AACrB,iBAAe,IAAI,MAAM,IAAI;AAC/B;AAEA,OAAO,CAAC,SAAS,EAAE;AACjB,GAfD;AAgBG,2BAAuB;AACzB;AACF;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/catalog/catalog.component.css"],
+  "sourcesContent": [".catalog-head {\n  display: flex;\n  align-items: flex-end;\n  justify-content: space-between;\n  gap: var(--sp-4);\n  flex-wrap: wrap;\n  margin-bottom: var(--sp-5);\n}\n.catalog-head h1 { margin-bottom: var(--sp-1); }\n.search { flex: 1; min-width: 220px; max-width: 360px; }\n.empty { padding: var(--sp-8); text-align: center; }\n\n@media (max-width: 768px) {\n  .search { max-width: none; width: 100%; }\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,WAAS;AACT,eAAa;AACb,mBAAiB;AACjB,OAAK,IAAI;AACT,aAAW;AACX,iBAAe,IAAI;AACrB;AACA,CARC,aAQa;AAAK,iBAAe,IAAI;AAAS;AAC/C,CAAC;AAAS,QAAM;AAAG,aAAW;AAAO,aAAW;AAAO;AACvD,CAAC;AAAQ,WAAS,IAAI;AAAS,cAAY;AAAQ;AAEnD,OAAO,CAAC,SAAS,EAAE;AACjB,GAJD;AAIW,eAAW;AAAM,WAAO;AAAM;AAC1C;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/venue-form/venue-form.component.css"],
+  "sourcesContent": [".narrow { max-width: 560px; }\n.back-link { display: inline-block; margin-bottom: var(--space-3); font-size: var(--fs-sm); font-weight: 600; }\n.form-actions { display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-2); }\n"],
+  "mappings": ";AAAA,CAAC;AAAS,aAAW;AAAO;AAC5B,CAAC;AAAY,WAAS;AAAc,iBAAe,IAAI;AAAY,aAAW,IAAI;AAAU,eAAa;AAAK;AAC9G,CAAC;AAAe,WAAS;AAAM,mBAAiB;AAAU,OAAK,IAAI;AAAY,cAAY,IAAI;AAAY;",
+  "names": []
+}

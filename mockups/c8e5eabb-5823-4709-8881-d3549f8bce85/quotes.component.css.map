@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/quotes/quotes.component.css"],
+  "sourcesContent": [".stat-label {\n  font-size: var(--fs-xs);\n  text-transform: uppercase;\n  letter-spacing: 0.03em;\n}\n.stat-value {\n  font-size: var(--fs-lg);\n  font-weight: 600;\n  margin-top: var(--sp-1);\n}\n\n.chips { gap: var(--sp-2); }\n.chip {\n  min-height: 36px;\n  padding: 6px 14px;\n  border-radius: 999px;\n  border: 1px solid var(--color-border-strong);\n  background: var(--color-surface);\n  color: var(--color-text-muted);\n  font-size: var(--fs-sm);\n  font-weight: 600;\n  cursor: pointer;\n}\n.chip-active {\n  background: var(--color-brand-600);\n  border-color: var(--color-brand-600);\n  color: var(--color-text-invert);\n}\n\ntr.clickable { cursor: pointer; }\n"],
+  "mappings": ";AAAA,CAAC;AACC,aAAW,IAAI;AACf,kBAAgB;AAChB,kBAAgB;AAClB;AACA,CAAC;AACC,aAAW,IAAI;AACf,eAAa;AACb,cAAY,IAAI;AAClB;AAEA,CAAC;AAAQ,OAAK,IAAI;AAAS;AAC3B,CAAC;AACC,cAAY;AACZ,WAAS,IAAI;AACb,iBAAe;AACf,UAAQ,IAAI,MAAM,IAAI;AACtB,cAAY,IAAI;AAChB,SAAO,IAAI;AACX,aAAW,IAAI;AACf,eAAa;AACb,UAAQ;AACV;AACA,CAAC;AACC,cAAY,IAAI;AAChB,gBAAc,IAAI;AAClB,SAAO,IAAI;AACb;AAEA,EAAE,CAAC;AAAY,UAAQ;AAAS;",
+  "names": []
+}

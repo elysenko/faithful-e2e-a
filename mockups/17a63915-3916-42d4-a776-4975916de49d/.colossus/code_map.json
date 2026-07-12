@@ -1,0 +1,72 @@
+{
+  "app-login": {
+    "component_file": "frontend/src/app/auth/login.component.ts",
+    "template_file": "frontend/src/app/auth/login.component.html",
+    "source": "summary_parse"
+  },
+  "app-signup": {
+    "component_file": "frontend/src/app/auth/signup.component.ts",
+    "template_file": "frontend/src/app/auth/signup.component.html",
+    "source": "summary_parse"
+  },
+  "app-shell": {
+    "component_file": "frontend/src/app/shell/shell.component.ts",
+    "template_file": "frontend/src/app/shell/shell.component.html",
+    "source": "summary_parse"
+  },
+  "app-dashboard": {
+    "component_file": "frontend/src/app/dashboard/dashboard.component.ts",
+    "template_file": "frontend/src/app/dashboard/dashboard.component.html",
+    "source": "summary_parse"
+  },
+  "app-accounts": {
+    "component_file": "frontend/src/app/accounts/accounts.component.ts",
+    "template_file": "frontend/src/app/accounts/accounts.component.html",
+    "source": "summary_parse"
+  },
+  "app-account-detail": {
+    "component_file": "frontend/src/app/accounts/account-detail.component.ts",
+    "template_file": "frontend/src/app/accounts/account-detail.component.html",
+    "source": "summary_parse"
+  },
+  "app-contacts": {
+    "component_file": "frontend/src/app/contacts/contacts.component.ts",
+    "template_file": "frontend/src/app/contacts/contacts.component.html",
+    "source": "summary_parse"
+  },
+  "app-opportunities": {
+    "component_file": "frontend/src/app/opportunities/opportunities.component.ts",
+    "template_file": "frontend/src/app/opportunities/opportunities.component.html",
+    "source": "summary_parse"
+  },
+  "app-pipeline": {
+    "component_file": "frontend/src/app/pipeline/pipeline.component.ts",
+    "template_file": "frontend/src/app/pipeline/pipeline.component.html",
+    "source": "summary_parse"
+  },
+  "app-leads": {
+    "component_file": "frontend/src/app/leads/leads.component.ts",
+    "template_file": "frontend/src/app/leads/leads.component.html",
+    "source": "summary_parse"
+  },
+  "app-tasks": {
+    "component_file": "frontend/src/app/tasks/tasks.component.ts",
+    "template_file": "frontend/src/app/tasks/tasks.component.html",
+    "source": "summary_parse"
+  },
+  "app-admin-settings": {
+    "component_file": "frontend/src/app/admin/admin-settings.component.ts",
+    "template_file": "frontend/src/app/admin/admin-settings.component.html",
+    "source": "summary_parse"
+  },
+  "app-root": {
+    "component_file": "/workspace/frontend/src/app/app.component.ts",
+    "template_file": "/workspace/frontend/src/app/app.component.ts",
+    "source": "filesystem_scan"
+  },
+  "app-home": {
+    "component_file": "/workspace/frontend/src/app/home/home.component.ts",
+    "template_file": "/workspace/frontend/src/app/home/home.component.ts",
+    "source": "filesystem_scan"
+  }
+}
