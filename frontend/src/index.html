@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>App</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body>
+    <app-root></app-root>
+    <!-- Colossus feedback widget (host-agnostic; ships with every scaffolded app).
+         deploymentId + public ingest token substituted at build/deploy; icon gated live by the
+         Widget Mode toggle in Colossus. Works on any host; self-deduplicates with edge injection. -->
+    <script>window.__COLOSSUS_FEEDBACK__={d:"__COLOSSUS_DEPLOYMENT_ID__",token:"__COLOSSUS_FEEDBACK_TOKEN__"};</script>
+    <script src="https://colossus.athenconsult.com/ingest/v1/loader.js" defer></script>
+  </body>
+</html>
