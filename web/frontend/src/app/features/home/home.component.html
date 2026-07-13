@@ -1,0 +1,35 @@
+<div class="page">
+  <div class="home-head">
+    <div>
+      <h1 class="home-title" data-testid="home-title">My Recipes</h1>
+      <p class="home-sub">
+        {{ allRecipes().length }} saved · {{ favoriteCount() }} favorites
+      </p>
+    </div>
+    <a class="btn btn-primary add-btn" routerLink="/recipes/new" data-testid="add-recipe">
+      <span aria-hidden="true">＋</span> Add recipe
+    </a>
+  </div>
+
+  <div class="home-search">
+    <app-search-bar [value]="q()" (valueChange)="onSearch($event)" />
+  </div>
+
+  @if (filtered().length > 0) {
+    <app-recipe-grid [recipes]="filtered()" (favorite)="onFavorite($event)" />
+  } @else if (q()) {
+    <app-empty-state
+      icon="🔎"
+      title="No recipes match “{{ q() }}”"
+      message="Try a different title, or clear the search to see everything."
+    />
+  } @else {
+    <app-empty-state
+      icon="🍽️"
+      title="Your rack is empty"
+      message="Add your first recipe to start your collection."
+    >
+      <a class="btn btn-primary" routerLink="/recipes/new">Add your first recipe</a>
+    </app-empty-state>
+  }
+</div>

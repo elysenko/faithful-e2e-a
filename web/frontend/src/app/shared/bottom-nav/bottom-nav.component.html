@@ -1,0 +1,16 @@
+<nav class="bottom-nav" aria-label="Primary">
+  <a class="tab" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+    <span class="tab-icon" aria-hidden="true">📖</span>
+    <span class="tab-label">Recipes</span>
+  </a>
+  <a class="tab tab-fab" routerLink="/recipes/new" routerLinkActive="active" aria-label="Add recipe">
+    <span class="tab-icon" aria-hidden="true">＋</span>
+    <span class="tab-label">Add</span>
+  </a>
+  @if (isAdmin()) {
+    <a class="tab" routerLink="/admin/settings" routerLinkActive="active">
+      <span class="tab-icon" aria-hidden="true">⚙️</span>
+      <span class="tab-label">Settings</span>
+    </a>
+  }
+</nav>

@@ -1,0 +1,22 @@
+# deploy/values-postgresql.yaml
+# Bitnami PostgreSQL Helm chart values — reflects the already-provisioned release.
+# Release name: postgres  (service: postgres-postgresql.colossus-faithful-e2e-a.svc.cluster.local:5432)
+# Deploy with:
+#   helm upgrade --install postgres bitnami/postgresql \
+#     -f deploy/values-postgresql.yaml -n colossus-faithful-e2e-a
+
+auth:
+  postgresPassword: "oELSflgzOGgPe8HVpnNpvBCT"
+  database: app
+
+primary:
+  persistence:
+    size: 5Gi
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi

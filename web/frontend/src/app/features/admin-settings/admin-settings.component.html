@@ -1,0 +1,50 @@
+<div class="page page-narrow">
+  <h1 class="settings-title" data-testid="settings-title">Service Settings</h1>
+  <p class="settings-sub">Configure the credentials RecipeRack uses for its backing services.</p>
+
+  @for (group of groups(); track group.service) {
+    <section class="service card" [attr.data-testid]="'service-' + group.service">
+      <header class="service-head">
+        <div>
+          <h2 class="service-name">{{ group.name }}</h2>
+          <p class="service-desc">{{ group.description }}</p>
+        </div>
+        @if (group.configured) {
+          <span class="badge badge-ok" data-testid="status-configured">● Configured</span>
+        } @else {
+          <span class="badge badge-off" data-testid="status-unconfigured">○ Not configured</span>
+        }
+      </header>
+
+      <div class="service-body">
+        @for (setting of group.settings; track setting.key) {
+          <div class="setting-row">
+            <label [attr.for]="setting.key" class="setting-label">
+              {{ setting.label }}
+              <code class="setting-key">{{ setting.key }}</code>
+            </label>
+            <div class="setting-control">
+              <input
+                [id]="setting.key"
+                class="input"
+                type="text"
+                [placeholder]="setting.configured ? setting.value : 'Not set'"
+                [(ngModel)]="drafts[setting.key]"
+                [attr.data-testid]="'input-' + setting.key"
+              />
+              <button
+                type="button"
+                class="btn btn-primary"
+                [attr.data-testid]="'save-' + setting.key"
+                (click)="save(setting.key)"
+              >Save</button>
+            </div>
+            @if (savedKey === setting.key) {
+              <span class="saved-hint">Saved ✓</span>
+            }
+          </div>
+        }
+      </div>
+    </section>
+  }
+</div>

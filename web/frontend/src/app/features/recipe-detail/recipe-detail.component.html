@@ -1,0 +1,65 @@
+<div class="page">
+  <a class="back-link" routerLink="/" data-testid="back-link">← All recipes</a>
+
+  @if (recipe(); as r) {
+    <article class="detail card" data-testid="recipe-detail">
+      <header class="detail-head">
+        <div class="detail-hero" aria-hidden="true">🍳</div>
+        <div class="detail-heading">
+          <h1 class="detail-title" data-testid="detail-title">{{ r.title }}</h1>
+          <div class="detail-fav">
+            <app-favorite-toggle
+              [active]="r.isFavorite"
+              size="lg"
+              (toggled)="toggleFavorite()"
+            />
+            <span class="fav-label">{{ r.isFavorite ? 'Favorite' : 'Mark favorite' }}</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="detail-section">
+        <h2 class="section-title">Ingredients</h2>
+        <ul class="ingredient-list">
+          @for (ing of r.ingredients; track ing) {
+            <li class="ingredient">{{ ing }}</li>
+          }
+        </ul>
+      </section>
+
+      <section class="detail-section">
+        <h2 class="section-title">Instructions</h2>
+        <p class="instructions">{{ r.instructions }}</p>
+      </section>
+
+      <div class="detail-actions">
+        <a class="btn btn-secondary" [routerLink]="['/recipes', r.id, 'edit']" data-testid="edit-recipe">
+          Edit
+        </a>
+        <button type="button" class="btn btn-danger" data-testid="delete-recipe" (click)="askDelete()">
+          Delete
+        </button>
+      </div>
+    </article>
+
+    @if (showDeleteConfirm()) {
+      <app-confirm-dialog
+        title="Delete this recipe?"
+        message="“{{ r.title }}” will be permanently removed from your rack."
+        confirmLabel="Delete recipe"
+        cancelLabel="Keep it"
+        [danger]="true"
+        (confirm)="confirmDelete()"
+        (cancel)="cancelDelete()"
+      />
+    }
+  } @else {
+    <app-empty-state
+      icon="🍂"
+      title="Recipe not found"
+      message="This recipe doesn’t exist or may have been deleted."
+    >
+      <a class="btn btn-primary" routerLink="/">Back to my recipes</a>
+    </app-empty-state>
+  }
+</div>

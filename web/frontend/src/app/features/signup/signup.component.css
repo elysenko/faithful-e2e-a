@@ -1,0 +1,32 @@
+.auth-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: var(--space-5) var(--space-4);
+  background: linear-gradient(160deg, var(--color-accent-soft), var(--color-bg) 55%);
+}
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  padding: var(--space-6) var(--space-5);
+}
+.auth-brand { text-align: center; margin-bottom: var(--space-5); }
+.auth-mark { font-size: 40px; }
+.auth-title {
+  margin-top: var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+}
+.auth-tagline {
+  margin: var(--space-1) 0 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+.auth-alt {
+  margin: var(--space-4) 0 0;
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}

@@ -1,0 +1,5 @@
+<div class="grid" data-testid="recipe-grid">
+  @for (recipe of recipes; track recipe.id) {
+    <app-recipe-card [recipe]="recipe" (favorite)="favorite.emit($event)" />
+  }
+</div>

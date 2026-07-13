@@ -1,0 +1,25 @@
+# deploy/values-minio.yaml
+# Bitnami MinIO Helm chart values — reflects the already-provisioned release.
+# Release name: minio  (service: minio.colossus-faithful-e2e-a.svc.cluster.local:9000)
+# Deploy with:
+#   helm upgrade --install minio bitnami/minio \
+#     -f deploy/values-minio.yaml -n colossus-faithful-e2e-a
+
+mode: standalone
+
+auth:
+  rootUser: "admin"
+  rootPassword: "8YHl0Dr0L-hvcOqUkhPRzaHz"
+
+defaultBuckets: "app-uploads"
+
+persistence:
+  size: 5Gi
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi

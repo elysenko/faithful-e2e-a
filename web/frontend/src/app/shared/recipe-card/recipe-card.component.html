@@ -1,0 +1,24 @@
+<a class="recipe-card" [routerLink]="['/recipes', recipe.id]" [attr.data-testid]="'recipe-card'">
+  <div class="thumb" aria-hidden="true">
+    <span class="thumb-emoji">🍳</span>
+    <app-favorite-toggle
+      class="thumb-fav"
+      [active]="recipe.isFavorite"
+      (toggled)="favorite.emit(recipe.id)"
+    />
+  </div>
+
+  <div class="body">
+    <h3 class="title" data-testid="recipe-card-title">{{ recipe.title }}</h3>
+    <p class="meta">{{ recipe.ingredients.length }} ingredients</p>
+
+    <ul class="chips">
+      @for (ing of recipe.ingredients.slice(0, 3); track ing) {
+        <li class="chip">{{ ing }}</li>
+      }
+      @if (recipe.ingredients.length > 3) {
+        <li class="chip chip-more">+{{ recipe.ingredients.length - 3 }}</li>
+      }
+    </ul>
+  </div>
+</a>

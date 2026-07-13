@@ -1,0 +1,28 @@
+<header class="app-header">
+  <a class="brand" routerLink="/" aria-label="RecipeRack home">
+    <span class="brand-mark" aria-hidden="true">🍳</span>
+    <span class="brand-name">RecipeRack</span>
+  </a>
+
+  <nav class="desktop-nav" aria-label="Primary">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Recipes</a>
+    <a routerLink="/recipes/new" routerLinkActive="active">Add</a>
+    @if (isAdmin()) {
+      <a routerLink="/admin/settings" routerLinkActive="active" data-testid="nav-admin">Settings</a>
+    }
+  </nav>
+
+  <div class="header-user">
+    @if (user(); as u) {
+      <span class="user-chip">
+        <span class="user-name">{{ u.name }}</span>
+        @if (u.role === 'admin') {
+          <span class="badge badge-role">Admin</span>
+        }
+      </span>
+    }
+    <button type="button" class="btn btn-ghost logout-btn" data-testid="logout-btn" (click)="logout()">
+      Log out
+    </button>
+  </div>
+</header>

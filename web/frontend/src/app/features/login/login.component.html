@@ -1,0 +1,59 @@
+<div class="auth-page">
+  <div class="auth-card card">
+    <div class="auth-brand">
+      <span class="auth-mark" aria-hidden="true">🍳</span>
+      <h1 class="auth-title">RecipeRack</h1>
+      <p class="auth-tagline">Your private kitchen, organised.</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      <div class="field">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          class="input"
+          type="email"
+          formControlName="email"
+          autocomplete="email"
+          placeholder="you@kitchen.com"
+          data-testid="login-email"
+        />
+        @if (form.controls.email.invalid && form.controls.email.touched) {
+          <span class="field-error">Enter a valid email address.</span>
+        }
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          class="input"
+          type="password"
+          formControlName="password"
+          autocomplete="current-password"
+          placeholder="Your password"
+          data-testid="login-password"
+        />
+        @if (form.controls.password.invalid && form.controls.password.touched) {
+          <span class="field-error">Password is required.</span>
+        }
+      </div>
+
+      @if (errorMessage) {
+        <div class="alert alert-error">{{ errorMessage }}</div>
+      }
+
+      <button type="submit" class="btn btn-primary btn-block" data-testid="login-submit" [disabled]="loading">
+        {{ loading ? 'Signing in…' : 'Log in' }}
+      </button>
+    </form>
+
+    <p class="auth-alt">
+      New to RecipeRack? <a routerLink="/signup" data-testid="go-signup">Create an account</a>
+    </p>
+
+    <button type="button" class="demo-link" data-testid="demo-mode" (click)="demoMode()">
+      Skip login — explore Demo Mode →
+    </button>
+  </div>
+</div>

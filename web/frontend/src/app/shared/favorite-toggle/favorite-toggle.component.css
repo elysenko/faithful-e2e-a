@@ -1,0 +1,23 @@
+.fav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-pill);
+  color: var(--color-border-strong);
+  transition: transform 0.1s ease, color 0.15s ease, background 0.15s ease;
+}
+.fav:hover { background: var(--color-accent-soft); }
+.fav:active { transform: scale(0.85); }
+.fav-active { color: var(--color-accent); }
+
+.star {
+  font-size: var(--text-xl);
+  line-height: 1;
+}
+.fav-lg { min-width: 48px; min-height: 48px; }
+.fav-lg .star { font-size: var(--text-3xl); }

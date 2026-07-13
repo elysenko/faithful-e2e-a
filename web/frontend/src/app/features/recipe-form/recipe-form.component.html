@@ -1,0 +1,68 @@
+<div class="page page-narrow">
+  @if (notFound) {
+    <div class="card notfound">
+      <h1>Recipe not found</h1>
+      <p>The recipe you’re trying to edit doesn’t exist.</p>
+      <a class="btn btn-primary" routerLink="/">Back to my recipes</a>
+    </div>
+  } @else {
+    <a class="back-link" (click)="cancel()">← Cancel</a>
+    <h1 class="form-title" data-testid="form-title">{{ isEdit ? 'Edit recipe' : 'Add a recipe' }}</h1>
+
+    <form class="card form-card" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      <div class="field">
+        <label for="title">Title</label>
+        <input id="title" class="input" type="text" formControlName="title"
+          placeholder="e.g. Roasted Tomato Soup" data-testid="recipe-title" />
+        @if (form.get('title')!.invalid && (form.get('title')!.touched || submitted)) {
+          <span class="field-error" data-testid="error-title">Title is required.</span>
+        }
+      </div>
+
+      <div class="field">
+        <label>Ingredients</label>
+        <div class="ingredients" formArrayName="ingredients">
+          @for (ctrl of ingredients.controls; track ctrl; let i = $index) {
+            <div class="ingredient-row">
+              <input
+                class="input"
+                type="text"
+                [formControlName]="i"
+                [attr.placeholder]="'Ingredient ' + (i + 1)"
+                [attr.data-testid]="'ingredient-' + i"
+              />
+              <button
+                type="button"
+                class="btn btn-ghost remove-btn"
+                aria-label="Remove ingredient"
+                (click)="removeIngredient(i)"
+              >✕</button>
+            </div>
+          }
+        </div>
+        <button type="button" class="btn btn-secondary add-ing" data-testid="add-ingredient" (click)="addIngredient()">
+          ＋ Add ingredient
+        </button>
+        @if (!hasIngredient && submitted) {
+          <span class="field-error" data-testid="error-ingredients">Add at least one ingredient.</span>
+        }
+      </div>
+
+      <div class="field">
+        <label for="instructions">Instructions</label>
+        <textarea id="instructions" class="textarea" formControlName="instructions"
+          placeholder="Describe the steps…" data-testid="recipe-instructions"></textarea>
+        @if (form.get('instructions')!.invalid && (form.get('instructions')!.touched || submitted)) {
+          <span class="field-error" data-testid="error-instructions">Instructions are required.</span>
+        }
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+        <button type="submit" class="btn btn-primary" data-testid="save-recipe">
+          {{ isEdit ? 'Save changes' : 'Create recipe' }}
+        </button>
+      </div>
+    </form>
+  }
+</div>

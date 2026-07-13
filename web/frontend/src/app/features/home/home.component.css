@@ -1,0 +1,23 @@
+.home-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+.home-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+}
+.home-sub {
+  margin: var(--space-1) 0 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+.add-btn { flex-shrink: 0; }
+.home-search { margin-bottom: var(--space-5); }
+
+/* On small screens the bottom-nav FAB covers "Add", so hide the header button */
+@media (max-width: 600px) {
+  .add-btn { display: none; }
+}

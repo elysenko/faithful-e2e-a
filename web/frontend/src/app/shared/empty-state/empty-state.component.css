@@ -1,0 +1,28 @@
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+  padding: var(--space-7) var(--space-4);
+  background: var(--color-surface);
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-lg);
+}
+.empty-icon { font-size: 52px; }
+.empty-title {
+  font-size: var(--text-xl);
+  font-family: var(--font-display);
+}
+.empty-message {
+  margin: 0;
+  max-width: 42ch;
+  color: var(--color-text-muted);
+}
+.empty-actions {
+  margin-top: var(--space-2);
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  justify-content: center;
+}

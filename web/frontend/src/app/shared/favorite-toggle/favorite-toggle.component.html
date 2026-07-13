@@ -1,0 +1,12 @@
+<button
+  type="button"
+  class="fav"
+  [class.fav-active]="active"
+  [class.fav-lg]="size === 'lg'"
+  [attr.aria-pressed]="active"
+  [attr.aria-label]="active ? 'Remove from favorites' : 'Add to favorites'"
+  [attr.data-testid]="'favorite-toggle'"
+  (click)="onClick($event)"
+>
+  <span class="star" aria-hidden="true">{{ active ? '★' : '☆' }}</span>
+</button>
