@@ -12,9 +12,10 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  // Required by the Prisma CLI (`migrate deploy`, `db seed`). The NestJS runtime
-  // connects through the `@prisma/adapter-pg` driver adapter instead.
-  url      = env("DATABASE_URL")
+  // Prisma 7 no longer allows `url` in schema files (validation error P1012).
+  // The Prisma CLI (`migrate deploy`, `db seed`) reads the connection URL from
+  // `prisma.config.ts`; the NestJS runtime connects through the
+  // `@prisma/adapter-pg` driver adapter.
 }
 
 enum Role {

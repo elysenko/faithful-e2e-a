@@ -2,6 +2,16 @@
 /dist
 /node_modules
 
+# TypeScript incremental build cache (stale copies break `nest build` emit)
+*.tsbuildinfo
+
+# Compiled Prisma config shadow — Prisma 7 fails to parse prisma.config.js and
+# it shadows the authoritative prisma.config.ts; never commit the compiled form.
+prisma.config.js
+prisma.config.cjs
+prisma.config.mjs
+prisma.config.d.ts
+
 # Logs
 logs
 *.log
