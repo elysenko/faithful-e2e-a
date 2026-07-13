@@ -52,4 +52,17 @@ export class AuthController {
   refreshToken(@GetUser() user: User) {
     return this.authService.refreshToken(user);
   }
+
+  @Get('me')
+  @ApiOperation({
+    summary: 'ME',
+    description: 'Private endpoint returning the currently authenticated user.',
+  })
+  @ApiBearerAuth()
+  @ApiResponse({ status: 200, description: 'Ok', type: User })
+  @ApiResponse({ status: 401, description: 'Unauthorized' }) //Swagger
+  @Auth()
+  me(@GetUser() user: User) {
+    return user;
+  }
 }

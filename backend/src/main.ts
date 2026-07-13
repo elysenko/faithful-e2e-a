@@ -5,6 +5,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { swaggerOptions, swaggerTitle, swaggerDescription } from './common';
 import { ConfigService } from '@nestjs/config';
 import helmet from 'helmet';
+import { AllExceptionsFilter } from './common/filters/all-exceptions.filter';
 
 export async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -24,6 +25,9 @@ export async function bootstrap() {
       forbidNonWhitelisted: true,
     })
   );
+
+  // Maps TypeORM/Prisma connectivity errors → 503, not-found → 404, etc.
+  app.useGlobalFilters(new AllExceptionsFilter());
 
   // Swagger Configuration --------------------------------
   // swaggerOptions, swaggerTitle, swaggerDescription variables are customized and defined in common/swagger/swagger.config.ts
