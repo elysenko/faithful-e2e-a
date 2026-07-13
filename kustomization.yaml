@@ -7,6 +7,6 @@ resources:
   - k8s/ingress.yaml
 images:
   - name: ubuntu:30500/faithful-e2e-a-staging
-    digest: sha256:c0b936d661f795dbedb5d444fa04817cb051b45a55fb49e6aa1331690d0c10ee
+    digest: sha256:ff6d8fc5e76eaabf1e03d1bf6bcbe1cc731702d0504ca48c66ad18d39cc82a4d
 # Redeploy:  kubectl apply -k . (re-applies this exact image)
 # Rebuild:   re-trigger the deploy pipeline for branch main in Colossus

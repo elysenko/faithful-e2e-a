@@ -27,8 +27,7 @@ RUN --mount=type=cache,target=/root/.npm \
     npm install --omit=dev --legacy-peer-deps --no-audit --no-fund
 COPY --from=backend-builder /app/backend/dist ./dist
 COPY --from=backend-builder /app/backend/prisma ./prisma
-COPY --from=backend-builder /app/backend/node_modules/.prisma ./node_modules/.prisma
-COPY --from=backend-builder /app/backend/node_modules/@prisma ./node_modules/@prisma
+# Prisma 7 `prisma-client` generator emits to src/generated/prisma (no node_modules/.prisma).
 COPY --from=backend-builder /app/backend/src/generated ./src/generated
 COPY backend/prisma.config.ts ./prisma.config.ts
 
@@ -40,5 +39,5 @@ COPY index.html /usr/share/nginx/html/index.html
 COPY nginx.conf /etc/nginx/http.d/default.conf
 COPY supervisord.conf /etc/supervisord.conf
 
-EXPOSE 80
+EXPOSE 8080
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
