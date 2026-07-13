@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: faithful-e2e-a
-  namespace: colossus-faithful-e2e-a
+  name: faithful-e2e-a-staging
+  namespace: colossus-faithful-e2e-a-staging
   labels:
-    app: faithful-e2e-a
+    app: faithful-e2e-a-staging
     managed-by: colossus
 spec:
   replicas: 1
@@ -12,11 +12,11 @@ spec:
     type: Recreate
   selector:
     matchLabels:
-      app: faithful-e2e-a
+      app: faithful-e2e-a-staging
   template:
     metadata:
       labels:
-        app: faithful-e2e-a
+        app: faithful-e2e-a-staging
     spec:
       hostAliases:
         - ip: "192.168.50.250"
@@ -24,7 +24,7 @@ spec:
             - "ubuntu.desmana-truck.ts.net"
       containers:
         - name: app
-          image: ubuntu:30500/faithful-e2e-a:latest
+          image: ubuntu:30500/faithful-e2e-a-staging:latest
           imagePullPolicy: Always
           envFrom:
             - secretRef:

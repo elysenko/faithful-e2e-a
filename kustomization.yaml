@@ -1,12 +1,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: colossus-faithful-e2e-a
+namespace: colossus-faithful-e2e-a-staging
 resources:
   - k8s/deployment.yaml
   - k8s/service.yaml
   - k8s/ingress.yaml
 images:
-  - name: ubuntu:30500/faithful-e2e-a
-    digest: sha256:4a0f4bebbc45904da6959130452a6faccca1e828a6278d1191b57fcf5c1b3730
+  - name: ubuntu:30500/faithful-e2e-a-staging
+    digest: sha256:c0b936d661f795dbedb5d444fa04817cb051b45a55fb49e6aa1331690d0c10ee
 # Redeploy:  kubectl apply -k . (re-applies this exact image)
 # Rebuild:   re-trigger the deploy pipeline for branch main in Colossus
