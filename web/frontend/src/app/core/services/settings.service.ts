@@ -5,7 +5,7 @@ import { environment } from '../../../environments/environment';
 import { SystemSetting } from '../models/models';
 
 /**
- * SettingsService — wired to the admin-only NestJS `/api/v1/admin/settings`
+ * SettingsService — wired to the admin-only NestJS `/api/admin/settings`
  * endpoints. `settings` stays a `signal<SystemSetting[]>` populated by `load()`;
  * values come back masked with a `configured` flag (never the raw secret).
  */

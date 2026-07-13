@@ -44,7 +44,7 @@ describe('AuthController', () => {
     });
   });
 
-  describe('register', () => {
+  describe('signup', () => {
     it('should register a new user', async () => {
       const registerDto: RegisterUserDto = {
         name: 'Test User',
@@ -65,7 +65,7 @@ describe('AuthController', () => {
 
       authService.registerUser.mockResolvedValue(expectedResult);
 
-      const result = await controller.register(registerDto);
+      const result = await controller.signup(registerDto);
 
       expect(result).toEqual(expectedResult);
       expect(authService.registerUser).toHaveBeenCalledWith(registerDto);
@@ -83,7 +83,7 @@ describe('AuthController', () => {
       const error = new Error('Registration failed');
       authService.registerUser.mockRejectedValue(error);
 
-      await expect(controller.register(registerDto)).rejects.toThrow(error);
+      await expect(controller.signup(registerDto)).rejects.toThrow(error);
       expect(authService.registerUser).toHaveBeenCalledWith(registerDto);
     });
   });

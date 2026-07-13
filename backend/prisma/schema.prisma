@@ -12,6 +12,9 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+  // Required by the Prisma CLI (`migrate deploy`, `db seed`). The NestJS runtime
+  // connects through the `@prisma/adapter-pg` driver adapter instead.
+  url      = env("DATABASE_URL")
 }
 
 enum Role {
@@ -45,8 +48,10 @@ model Recipe {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
+  // A case-insensitive functional index on lower(title) backs the ILIKE title
+  // search; it is created via a raw SQL migration (Prisma schema cannot express
+  // expression indexes), so no `@@index([title])` is declared here.
   @@index([ownerId])
-  @@index([title])
 }
 
 model SystemSetting {

@@ -1,4 +1,6 @@
 import { Module } from '@nestjs/common';
+import { join } from 'path';
+import { ServeStaticModule } from '@nestjs/serve-static';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
@@ -17,6 +19,15 @@ import { APP_GUARD } from '@nestjs/core';
     ConfigModule.forRoot({
       isGlobal: true,
       validate: (config) => validateConfig(config),
+    }),
+    // Serve the built Angular SPA. In the production image the frontend build
+    // output is copied to `/app/client` (sibling of the compiled `dist/`), so
+    // resolving from __dirname (/app/dist) → ../client points at it. `/api*`
+    // routes are excluded so the JSON API is never shadowed by the SPA fallback.
+    ServeStaticModule.forRoot({
+      rootPath: process.env.STATIC_ROOT || join(__dirname, '..', 'client'),
+      serveRoot: '/',
+      exclude: ['/api/{*path}'],
     }),
     ThrottlerModule.forRootAsync({
       imports: [ConfigModule],

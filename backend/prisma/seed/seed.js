@@ -1,48 +1,46 @@
-'use strict';
-/**
- * Production seed — runs with plain `node`, no TypeScript toolchain needed.
- * Dependencies: pg + bcryptjs (both in package.json "dependencies").
- * Usage:  node prisma/seed/seed.js
- * Called by: npx prisma db seed  (via package.json "prisma.seed" field)
- */
-const { Pool } = require('pg');
-const { createHash, randomUUID } = require('crypto');
-const bcrypt = require('bcryptjs');
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const adapter_pg_1 = require("@prisma/adapter-pg");
+const client_1 = require("../../src/generated/prisma/client");
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
+const crypto_1 = require("crypto");
+const DATABASE_URL = process.env.DATABASE_URL;
+if (!DATABASE_URL) {
+    throw new Error('DATABASE_URL is not defined in the environment variables');
+}
+const adapter = new adapter_pg_1.PrismaPg({ connectionString: DATABASE_URL });
+const prisma = new client_1.PrismaClient({ adapter });
 function derivePassword(email) {
-  return createHash('sha256')
-    .update(email + (process.env.SEED_SECRET || 'colossus-seed'))
-    .digest('hex')
-    .slice(0, 16);
+    return (0, crypto_1.createHash)('sha256')
+        .update(email + (process.env.SEED_SECRET || 'colossus-seed'))
+        .digest('hex')
+        .slice(0, 16);
 }
-
 const SEED_USERS = [
-  { name: 'Admin Name', email: 'admin@example.com', role: 'admin' },
-  { name: 'User Name',  email: 'user@example.com',  role: 'user'  },
+    { name: 'Admin Name', email: 'admin@example.com', role: 'admin' },
+    { name: 'User Name', email: 'user@example.com', role: 'user' },
 ];
-
 async function main() {
-  if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL not set');
-  const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-  try {
     for (const u of SEED_USERS) {
-      const plain  = derivePassword(u.email);
-      const hashed = bcrypt.hashSync(plain, 10);
-      await pool.query(
-        `INSERT INTO "User" (id, name, email, password, role, "createdAt", "updatedAt")
-         VALUES ($1, $2, $3, $4, $5::"Role", now(), now())
-         ON CONFLICT (email) DO UPDATE
-           SET name     = EXCLUDED.name,
-               password = EXCLUDED.password,
-               role     = EXCLUDED.role,
-               "updatedAt" = now()`,
-        [randomUUID(), u.name, u.email, hashed, u.role],
-      );
-      console.log(`SEED_CRED ${u.role} ${u.email} ${plain}`);
+        const plainPassword = derivePassword(u.email);
+        const hashedPassword = bcryptjs_1.default.hashSync(plainPassword, 10);
+        await prisma.user.upsert({
+            where: { email: u.email },
+            update: { name: u.name, role: u.role, password: hashedPassword },
+            create: { name: u.name, email: u.email, password: hashedPassword, role: u.role },
+        });
+        console.log(`SEED_CRED ${u.role} ${u.email} ${plainPassword}`);
     }
-  } finally {
-    await pool.end();
-  }
 }
-
-main().catch(e => { console.error(e.message); process.exit(1); });
+main()
+    .catch(e => {
+    console.error(e);
+    process.exit(1);
+})
+    .finally(async () => {
+    await prisma.$disconnect();
+});
+//# sourceMappingURL=seed.js.map

@@ -40,8 +40,13 @@ export class AuthService {
       const { passwordconf, ...newUserData } = dto;
       newUserData.password = hashedPassword;
 
+      // The very first account provisioned becomes the platform admin; every
+      // subsequent signup defaults to the "user" role.
+      const userCount = await this.prisma.user.count();
+      const role: 'admin' | 'user' = userCount === 0 ? 'admin' : 'user';
+
       const newuser = await this.prisma.user.create({
-        data: newUserData,
+        data: { ...newUserData, role },
         select: {
           id: true,
           name: true,

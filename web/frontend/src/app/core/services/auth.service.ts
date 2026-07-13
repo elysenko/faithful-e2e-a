@@ -14,7 +14,7 @@ export interface AuthResponse {
 }
 
 /**
- * AuthService — wired to the NestJS `/api/v1/auth/*` endpoints.
+ * AuthService — wired to the NestJS `/api/auth/*` endpoints.
  * The JWT is persisted under `auth_token` (read by the auth interceptor) and the
  * user profile under `user`, so guards resolve synchronously on reload.
  */
@@ -44,10 +44,10 @@ export class AuthService {
       .pipe(tap((res) => this.persist(res)));
   }
 
-  /** POST /auth/register — creates an account and logs the user in. */
+  /** POST /auth/signup — creates an account and logs the user in. */
   signup(name: string, email: string, password: string, passwordconf: string): Observable<AuthResponse> {
     return this.http
-      .post<AuthResponse>(`${this.base}/register`, { name, email, password, passwordconf })
+      .post<AuthResponse>(`${this.base}/signup`, { name, email, password, passwordconf })
       .pipe(tap((res) => this.persist(res)));
   }
 

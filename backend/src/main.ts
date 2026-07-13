@@ -10,7 +10,7 @@ import { AllExceptionsFilter } from './common/filters/all-exceptions.filter';
 export async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.setGlobalPrefix('api/v1');
+  app.setGlobalPrefix('api');
 
   const configService = app.get(ConfigService);
   app.use(helmet());
@@ -43,7 +43,7 @@ export async function bootstrap() {
 
   // End Swagger Configurations --------------------------------
 
-  await app.listen(3000);
-  Logger.log(`App running on Port 3000`);
+  await app.listen(80, '0.0.0.0');
+  Logger.log(`App running on Port 80`);
 }
 bootstrap();

@@ -7,7 +7,7 @@ import { Recipe } from '../models/models';
 export type RecipeInput = Pick<Recipe, 'title' | 'ingredients' | 'instructions'>;
 
 /**
- * RecipeService — wired to the NestJS `/api/v1/recipes` endpoints.
+ * RecipeService — wired to the NestJS `/api/recipes` endpoints.
  * `recipes` remains a `signal<Recipe[]>` so components stay reactive; it is the
  * client-side cache populated by `load()` and kept in sync on mutations.
  */

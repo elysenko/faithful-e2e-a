@@ -30,7 +30,9 @@ export class HomeComponent implements OnInit {
   readonly error = this.recipeService.error;
 
   ngOnInit(): void {
-    this.recipeService.load();
+    // Restore the search from the `?q=` URL param so the state is deep-linkable,
+    // and let the API perform the case-insensitive title filtering.
+    this.recipeService.load(this.query());
   }
 
   readonly filtered = computed(() => {
@@ -46,6 +48,8 @@ export class HomeComponent implements OnInit {
       queryParams: { q: value || null },
       queryParamsHandling: 'merge',
     });
+    // Re-query the API with the new term (server-side `?q=` filtering).
+    this.recipeService.load(value);
   }
 
   onFavorite(id: string): void {

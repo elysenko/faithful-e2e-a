@@ -25,6 +25,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/faithful-e2e-a/",
               "optimization": {
                 "scripts": true,
                 "styles": { "minify": true, "inlineCritical": false },

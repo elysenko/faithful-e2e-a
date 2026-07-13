@@ -14,16 +14,31 @@ import { User } from 'src/user/entities/user.entity';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post('register')
+  @Post('signup')
   @ApiOperation({
-    summary: 'REGISTER',
-    description: 'Public endpoint to register a new user with "user" Role.',
+    summary: 'SIGNUP',
+    description:
+      'Public endpoint to sign up a new user. The first account created becomes "admin"; all subsequent accounts get the "user" role.',
   })
   @ApiResponse({ status: 201, description: 'Ok', type: LoginResponse })
   @ApiResponse({ status: 400, description: 'Bad request' })
   @ApiResponse({ status: 500, description: 'Server error' }) //Swagger
-  register(@Body() createUserDto: RegisterUserDto) {
+  signup(@Body() createUserDto: RegisterUserDto) {
     return this.authService.registerUser(createUserDto);
+  }
+
+  @Post('logout')
+  @ApiOperation({
+    summary: 'LOGOUT',
+    description:
+      'Private endpoint. JWTs are stateless, so logout is a client-side token discard; the server-side handler is a no-op that confirms the session.',
+  })
+  @ApiBearerAuth()
+  @ApiResponse({ status: 201, description: 'Ok' })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
+  @Auth()
+  logout(): void {
+    return;
   }
 
   @Post('login')
