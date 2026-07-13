@@ -57,10 +57,14 @@
         }
       </div>
 
+      @if (errorMessage) {
+        <div class="alert alert-error" data-testid="form-error">{{ errorMessage }}</div>
+      }
+
       <div class="form-actions">
         <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
-        <button type="submit" class="btn btn-primary" data-testid="save-recipe">
-          {{ isEdit ? 'Save changes' : 'Create recipe' }}
+        <button type="submit" class="btn btn-primary" data-testid="save-recipe" [disabled]="saving">
+          {{ saving ? 'Saving…' : (isEdit ? 'Save changes' : 'Create recipe') }}
         </button>
       </div>
     </form>

@@ -15,6 +15,10 @@
     <app-search-bar [value]="q()" (valueChange)="onSearch($event)" />
   </div>
 
+  @if (error()) {
+    <div class="alert alert-error" data-testid="home-error">{{ error() }}</div>
+  }
+
   @if (filtered().length > 0) {
     <app-recipe-grid [recipes]="filtered()" (favorite)="onFavorite($event)" />
   } @else if (q()) {

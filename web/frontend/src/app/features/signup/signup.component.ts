@@ -22,6 +22,7 @@ export class SignupComponent {
   private router = inject(Router);
 
   loading = false;
+  errorMessage = '';
 
   form = this.fb.nonNullable.group(
     {
@@ -39,8 +40,14 @@ export class SignupComponent {
       return;
     }
     this.loading = true;
-    const { name, email } = this.form.getRawValue();
-    this.auth.signup(name, email);
-    this.router.navigate(['/']);
+    this.errorMessage = '';
+    const { name, email, password, confirm } = this.form.getRawValue();
+    this.auth.signup(name, email, password, confirm).subscribe({
+      next: () => this.router.navigate(['/']),
+      error: (err) => {
+        this.loading = false;
+        this.errorMessage = err?.error?.message || 'Sign up failed. Please try again.';
+      },
+    });
   }
 }

@@ -53,6 +53,8 @@
         (cancel)="cancelDelete()"
       />
     }
+  } @else if (loading()) {
+    <p class="detail-loading" data-testid="detail-loading">Loading recipe…</p>
   } @else {
     <app-empty-state
       icon="🍂"

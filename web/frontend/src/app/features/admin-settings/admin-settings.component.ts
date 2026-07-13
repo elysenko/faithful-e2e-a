@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, OnInit, computed, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SettingsService } from '../../core/services/settings.service';
 import { SystemSetting } from '../../core/models/models';
@@ -18,8 +18,11 @@ interface ServiceGroup {
   templateUrl: './admin-settings.component.html',
   styleUrl: './admin-settings.component.css',
 })
-export class AdminSettingsComponent {
+export class AdminSettingsComponent implements OnInit {
   private settingsService = inject(SettingsService);
+
+  readonly loading = this.settingsService.loading;
+  readonly error = this.settingsService.error;
 
   drafts: Record<string, string> = {};
   savedKey: string | null = null;
@@ -42,9 +45,17 @@ export class AdminSettingsComponent {
     });
   });
 
+  ngOnInit(): void {
+    this.settingsService.load();
+  }
+
   save(key: string): void {
-    this.settingsService.save(key, this.drafts[key] ?? '');
-    this.drafts[key] = '';
-    this.savedKey = key;
+    const value = this.drafts[key] ?? '';
+    this.settingsService.save(key, value).subscribe({
+      next: () => {
+        this.drafts[key] = '';
+        this.savedKey = key;
+      },
+    });
   }
 }

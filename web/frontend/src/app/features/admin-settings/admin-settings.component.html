@@ -2,6 +2,10 @@
   <h1 class="settings-title" data-testid="settings-title">Service Settings</h1>
   <p class="settings-sub">Configure the credentials RecipeRack uses for its backing services.</p>
 
+  @if (error()) {
+    <div class="alert alert-error" data-testid="settings-error">{{ error() }}</div>
+  }
+
   @for (group of groups(); track group.service) {
     <section class="service card" [attr.data-testid]="'service-' + group.service">
       <header class="service-head">

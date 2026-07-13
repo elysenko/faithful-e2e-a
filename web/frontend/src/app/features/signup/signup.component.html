@@ -43,6 +43,10 @@
         }
       </div>
 
+      @if (errorMessage) {
+        <div class="alert alert-error">{{ errorMessage }}</div>
+      }
+
       <button type="submit" class="btn btn-primary btn-block" data-testid="signup-submit" [disabled]="loading">
         {{ loading ? 'Creating account…' : 'Sign up' }}
       </button>

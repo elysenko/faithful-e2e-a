@@ -1,44 +1,50 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, inject } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, tap } from 'rxjs';
+import { environment } from '../../../environments/environment';
 import { SystemSetting } from '../models/models';
 
 /**
- * Mockup admin settings service.
- * DATA CONTRACT: `settings` stays a `signal<SystemSetting[]>([...])` so it can
- * be emptied by mockup_cleaner and wired to GET/PATCH /api/admin/settings.
+ * SettingsService — wired to the admin-only NestJS `/api/v1/admin/settings`
+ * endpoints. `settings` stays a `signal<SystemSetting[]>` populated by `load()`;
+ * values come back masked with a `configured` flag (never the raw secret).
  */
 @Injectable({ providedIn: 'root' })
 export class SettingsService {
-  readonly settings = signal<SystemSetting[]>([
-    {
-      key: 'DATABASE_URL',
-      label: 'Connection URL',
-      service: 'postgresql',
-      value: 'postgres://••••••@postgres:5432/reciperack',
-      configured: true,
-    },
-    {
-      key: 'MINIO_ENDPOINT',
-      label: 'Endpoint',
-      service: 'minio',
-      value: '',
-      configured: false,
-    },
-    {
-      key: 'MINIO_ACCESS_KEY',
-      label: 'Access Key',
-      service: 'minio',
-      value: '',
-      configured: false,
-    },
-  ]);
+  private http = inject(HttpClient);
+  private readonly base = `${environment.apiUrl}/admin/settings`;
 
-  save(key: string, value: string): void {
-    this.settings.update((list) =>
-      list.map((s) =>
-        s.key === key
-          ? { ...s, value: value ? '••••••••' : '', configured: value.trim().length > 0 }
-          : s,
-      ),
-    );
+  readonly settings = signal<SystemSetting[]>([]);
+  readonly loading = signal(false);
+  readonly error = signal<string | null>(null);
+
+  /** GET /admin/settings — catalog of service credential keys with masked values. */
+  load(): void {
+    this.loading.set(true);
+    this.error.set(null);
+    this.http.get<SystemSetting[]>(this.base).subscribe({
+      next: (list) => {
+        this.settings.set(list);
+        this.loading.set(false);
+      },
+      error: (err) => {
+        this.error.set(this.messageFrom(err));
+        this.loading.set(false);
+      },
+    });
+  }
+
+  /** PATCH /admin/settings — upserts a single key/value pair, returns the refreshed catalog. */
+  save(key: string, value: string): Observable<SystemSetting[]> {
+    return this.http
+      .patch<SystemSetting[]>(this.base, { items: [{ key, value }] })
+      .pipe(tap((list) => this.settings.set(list)));
+  }
+
+  private messageFrom(err: HttpErrorResponse): string {
+    if (err.status === 503 || err.status === 0) {
+      return 'Settings service is temporarily unavailable.';
+    }
+    return err.error?.message || 'Could not load settings.';
   }
 }

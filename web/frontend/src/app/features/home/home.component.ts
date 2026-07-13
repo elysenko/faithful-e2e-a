@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, OnInit, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { map } from 'rxjs';
@@ -14,7 +14,7 @@ import { EmptyStateComponent } from '../../shared/empty-state/empty-state.compon
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   private recipeService = inject(RecipeService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
@@ -26,6 +26,12 @@ export class HomeComponent {
 
   readonly q = computed(() => this.query());
   readonly allRecipes = this.recipeService.recipes;
+  readonly loading = this.recipeService.loading;
+  readonly error = this.recipeService.error;
+
+  ngOnInit(): void {
+    this.recipeService.load();
+  }
 
   readonly filtered = computed(() => {
     const term = this.query().trim().toLowerCase();
@@ -43,6 +49,6 @@ export class HomeComponent {
   }
 
   onFavorite(id: string): void {
-    this.recipeService.toggleFavorite(id);
+    this.recipeService.toggleFavorite(id).subscribe();
   }
 }

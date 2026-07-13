@@ -1,7 +1,8 @@
-import { Component, computed, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { Component, computed, inject, signal } from '@angular/core';
+import { toSignal, takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { map } from 'rxjs';
+import { Recipe } from '../../core/models/models';
 import { RecipeService } from '../../core/services/recipe.service';
 import { FavoriteToggleComponent } from '../../shared/favorite-toggle/favorite-toggle.component';
 import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
@@ -19,20 +20,48 @@ export class RecipeDetailComponent {
   private router = inject(Router);
   private recipeService = inject(RecipeService);
 
-  private id = toSignal(this.route.paramMap.pipe(map((p) => p.get('id') ?? '')), {
-    initialValue: '',
-  });
   private confirmParam = toSignal(
     this.route.queryParamMap.pipe(map((p) => p.get('confirm'))),
     { initialValue: null },
   );
 
-  readonly recipe = computed(() => this.recipeService.getById(this.id()));
+  readonly recipe = signal<Recipe | null>(null);
+  readonly loading = signal(true);
   readonly showDeleteConfirm = computed(() => this.confirmParam() === 'delete');
+
+  constructor() {
+    // Fetch the recipe whenever the :id route param changes (supports deep links).
+    this.route.paramMap
+      .pipe(
+        map((p) => p.get('id') ?? ''),
+        takeUntilDestroyed(),
+      )
+      .subscribe((id) => {
+        if (!id) {
+          this.loading.set(false);
+          this.recipe.set(null);
+          return;
+        }
+        this.loading.set(true);
+        this.recipeService.getById(id).subscribe({
+          next: (r) => {
+            this.recipe.set(r);
+            this.loading.set(false);
+          },
+          error: () => {
+            this.recipe.set(null);
+            this.loading.set(false);
+          },
+        });
+      });
+  }
 
   toggleFavorite(): void {
     const r = this.recipe();
-    if (r) this.recipeService.toggleFavorite(r.id);
+    if (!r) return;
+    this.recipeService.toggleFavorite(r.id).subscribe({
+      next: (updated) => this.recipe.set(updated),
+    });
   }
 
   askDelete(): void {
@@ -53,7 +82,13 @@ export class RecipeDetailComponent {
 
   confirmDelete(): void {
     const r = this.recipe();
-    if (r) this.recipeService.remove(r.id);
-    this.router.navigate(['/']);
+    if (!r) {
+      this.router.navigate(['/']);
+      return;
+    }
+    this.recipeService.remove(r.id).subscribe({
+      next: () => this.router.navigate(['/']),
+      error: () => this.router.navigate(['/']),
+    });
   }
 }

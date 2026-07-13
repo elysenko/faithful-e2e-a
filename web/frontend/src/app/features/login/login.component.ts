@@ -30,12 +30,25 @@ export class LoginComponent {
     }
     this.loading = true;
     this.errorMessage = '';
-    const { email } = this.form.getRawValue();
-    this.auth.login(email);
-    this.router.navigate(['/']);
+    const { email, password } = this.form.getRawValue();
+    this.auth.login(email, password).subscribe({
+      next: () => this.router.navigate(['/']),
+      error: (err) => {
+        this.loading = false;
+        this.errorMessage = err?.error?.message || 'Login failed. Please check your credentials.';
+      },
+    });
   }
 
   demoMode(): void {
-    this.auth.demoLogin();
+    this.loading = true;
+    this.errorMessage = '';
+    this.auth.demoLogin().subscribe({
+      next: () => this.router.navigate(['/']),
+      error: () => {
+        this.loading = false;
+        this.errorMessage = 'Demo Mode is unavailable right now. Please sign in.';
+      },
+    });
   }
 }

@@ -19,6 +19,8 @@ export class RecipeFormComponent implements OnInit {
   editingId: string | null = null;
   notFound = false;
   submitted = false;
+  saving = false;
+  errorMessage = '';
 
   form = this.fb.nonNullable.group({
     title: ['', [Validators.required]],
@@ -41,16 +43,18 @@ export class RecipeFormComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      const recipe = this.recipeService.getById(id);
-      if (!recipe) {
-        this.notFound = true;
-        return;
-      }
-      this.editingId = id;
-      this.form.patchValue({ title: recipe.title, instructions: recipe.instructions });
-      recipe.ingredients.forEach((ing) => this.ingredients.push(this.fb.nonNullable.control(ing)));
-    }
-    if (this.ingredients.length === 0) {
+      this.recipeService.getById(id).subscribe({
+        next: (recipe) => {
+          this.editingId = id;
+          this.form.patchValue({ title: recipe.title, instructions: recipe.instructions });
+          recipe.ingredients.forEach((ing) => this.ingredients.push(this.fb.nonNullable.control(ing)));
+          if (this.ingredients.length === 0) this.addIngredient();
+        },
+        error: () => {
+          this.notFound = true;
+        },
+      });
+    } else {
       this.addIngredient();
     }
   }
@@ -76,12 +80,26 @@ export class RecipeFormComponent implements OnInit {
       .filter((v) => v.length > 0);
     const { title, instructions } = this.form.getRawValue();
 
+    this.saving = true;
+    this.errorMessage = '';
+
     if (this.editingId) {
-      this.recipeService.update(this.editingId, { title, instructions, ingredients: cleaned });
-      this.router.navigate(['/recipes', this.editingId]);
+      const editingId = this.editingId;
+      this.recipeService.update(editingId, { title, instructions, ingredients: cleaned }).subscribe({
+        next: () => this.router.navigate(['/recipes', editingId]),
+        error: (err) => {
+          this.saving = false;
+          this.errorMessage = err?.error?.message || 'Could not save the recipe. Please try again.';
+        },
+      });
     } else {
-      const created = this.recipeService.create({ title, instructions, ingredients: cleaned });
-      this.router.navigate(['/recipes', created.id]);
+      this.recipeService.create({ title, instructions, ingredients: cleaned }).subscribe({
+        next: (created) => this.router.navigate(['/recipes', created.id]),
+        error: (err) => {
+          this.saving = false;
+          this.errorMessage = err?.error?.message || 'Could not create the recipe. Please try again.';
+        },
+      });
     }
   }
 
